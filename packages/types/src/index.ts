@@ -228,7 +228,7 @@ export abstract class Connector {
   /**
    * Set the account index to be used by the connector.
    */
-  public abstract setAccountIndex?(index?: number): void
+  public setAccountIndex?(index?: number): void
 
   /**
    * Initiate a connection.

@@ -98,9 +98,11 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
         }}
       >
         {isActive && connector !== network && (
-          <SignerButton connector={connector} provider={provider} account={account} disabled={isReadOnly} />
+          <>
+            <SignerButton connector={connector} provider={provider} account={account} disabled={isReadOnly} />
+            <LatestTransactionView provider={provider} account={account} />
+          </>
         )}
-        <LatestTransactionView provider={provider} account={account} />
         <SpacerView />
         <Button style={{ marginBottom: '16px' }} onClick={() => setSelectedConnector()} disabled={isPriority}>
           {`Reset to Priority (${priorityConnectorName})`}

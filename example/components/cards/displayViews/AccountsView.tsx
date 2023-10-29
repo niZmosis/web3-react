@@ -163,6 +163,7 @@ export default function AccountsView({
                     flexDirection: 'column',
                     justifyContent: 'space-around',
                     alignItems: 'flex-start',
+                    cursor: 'pointer',
                   }}
                   onClick={() => setAccountIndex(connector, index)}
                 >
