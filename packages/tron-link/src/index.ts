@@ -5,7 +5,7 @@ import type {
   ProviderRpcError,
   RequestArguments,
   WatchAssetParameters,
-  Web3ReactState
+  Web3ReactState,
 } from '@web3-react/types'
 import { Connector } from '@web3-react/types'
 
@@ -143,7 +143,7 @@ export class TronLink extends Connector {
     this.tronLink = tronLink
     this.tronLink.tronLinkParams = {
       websiteName: this.options?.websiteName,
-      websiteIcon: this.options?.websiteIcon
+      websiteIcon: this.options?.websiteIcon,
     }
 
     if (!tronLink.ready) return
@@ -189,7 +189,7 @@ export class TronLink extends Connector {
         this.actions.update({
           chainId: this.parseChainId(chainId),
           accounts: [this.convertAddressTo0x(address)],
-          accountIndex: 0
+          accountIndex: 0,
         })
       }
 
@@ -198,7 +198,7 @@ export class TronLink extends Connector {
         if (data?.address) {
           this.actions.update({
             accounts: [this.convertAddressTo0x(data.address)],
-            accountIndex: 0
+            accountIndex: 0,
           })
         } else {
           this.actions.resetState()
@@ -225,7 +225,7 @@ export class TronLink extends Connector {
 
     try {
       const { code } = (await this.customProvider.request({
-        method: 'tron_requestAccounts'
+        method: 'tron_requestAccounts',
       })) as {
         code: number
         message: string
@@ -243,7 +243,7 @@ export class TronLink extends Connector {
       return this.actions.update({
         chainId: this.getChainId(),
         accounts: [address],
-        accountIndex: address ? 0 : undefined
+        accountIndex: address ? 0 : undefined,
       })
     } catch (error) {
       console.debug('connectEagerly Could not connect eagerly', error)
@@ -267,7 +267,7 @@ export class TronLink extends Connector {
     }
 
     const requestAccounts = this.customProvider.request({
-      method: 'tron_requestAccounts'
+      method: 'tron_requestAccounts',
     }) as Promise<{
       code: number
       message: string
@@ -286,7 +286,7 @@ export class TronLink extends Connector {
         this.actions.update({
           chainId: this.getChainId(),
           accounts: [address],
-          accountIndex: address ? 0 : undefined
+          accountIndex: address ? 0 : undefined,
         })
       })
       .catch((error: ProviderRpcError) => {
@@ -303,8 +303,8 @@ export class TronLink extends Connector {
         address,
         symbol,
         decimals,
-        image
-      }
+        image,
+      },
     })
 
     return this.customProvider
@@ -316,9 +316,9 @@ export class TronLink extends Connector {
             address, // The address that the token is at.
             symbol, // A ticker symbol or shorthand, up to 5 chars.
             decimals, // The number of decimals in the token
-            image // A string url of the token logo
-          }
-        }
+            image, // A string url of the token logo
+          },
+        },
       })
       .catch(() => {
         this.actions.update({ watchingAsset: undefined })

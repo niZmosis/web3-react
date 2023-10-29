@@ -109,7 +109,7 @@ export const connectors: [Connector, Web3ReactHooks][] = [
   [tronLink, tronLinkHooks],
   [phantom, phantomHooks],
   [solflare, solflareHooks],
-  [yoroi, yoroiHooks]
+  [yoroi, yoroiHooks],
 ]
 
 export const evmConnectors: [Connector, Web3ReactHooks][] = [
@@ -119,17 +119,17 @@ export const evmConnectors: [Connector, Web3ReactHooks][] = [
   [bscWallet, bscWalletHooks],
   [portisWallet, portisWalletHooks],
   [gnosisSafe, gnosisSafeHooks],
-  [network, networkHooks]
+  [network, networkHooks],
 ]
 
 export const solanaConnectors: [Connector, Web3ReactHooks][] = [
   [phantom, phantomHooks],
-  [solflare, solflareHooks]
+  [solflare, solflareHooks],
 ]
 
 export const cardanoConnectors: [Connector, Web3ReactHooks][] = [
   [nami, namiHooks],
-  [yoroi, yoroiHooks]
+  [yoroi, yoroiHooks],
 ]
 
 export const tronConnectors: [Connector, Web3ReactHooks][] = [[tronLink, tronLinkHooks]]
@@ -146,7 +146,7 @@ export const connectorInstance = {
   tronLink,
   phantom,
   solflare,
-  yoroi
+  yoroi,
 }
 
 export const connectorHooks = {
@@ -161,5 +161,5 @@ export const connectorHooks = {
   tronLink: tronLinkHooks,
   phantom: phantomHooks,
   solflare: solflareHooks,
-  yoroi: yoroiHooks
+  yoroi: yoroiHooks,
 }

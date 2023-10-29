@@ -47,7 +47,7 @@ describe('MetaMask', () => {
       activating: false,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined
+      watchingAsset: undefined,
     })
   })
 
@@ -71,7 +71,7 @@ describe('MetaMask', () => {
       activating: false,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined
+      watchingAsset: undefined,
     })
   })
 })

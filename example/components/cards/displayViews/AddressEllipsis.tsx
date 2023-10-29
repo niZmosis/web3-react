@@ -7,7 +7,7 @@ export default function AddressEllipsis({
   connector,
   account,
   ensName,
-  cardanoWallplate = true
+  cardanoWallplate = true,
 }: {
   connector: Connector
   account?: string
@@ -27,14 +27,14 @@ export default function AddressEllipsis({
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           display: 'inline-block',
-          textOverflow: 'ellipsis'
+          textOverflow: 'ellipsis',
         }}
       >
         {account?.substring(0, account.length - 4) || ''}
       </b>
       <b
         style={{
-          flexShrink: 0
+          flexShrink: 0,
         }}
       >
         {account?.substr(account.length - 4, 4) || ''}

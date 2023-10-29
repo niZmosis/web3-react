@@ -9,7 +9,7 @@ export const [portisWallet, hooks]: [PortisWallet, Web3ReactHooks, Web3ReactStor
       actions,
       options: {
         dappId: 'a5f43357-0729-4dc5-8a06-3a69dea1f351',
-        network: 'mainnet'
-      }
+        network: 'mainnet',
+      },
     })
 )

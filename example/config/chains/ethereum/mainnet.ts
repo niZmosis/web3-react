@@ -7,25 +7,25 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Ethers',
     symbol: 'ETH',
-    decimals: 18
+    decimals: 18,
   },
   nativeWrappedToken: {
     address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
     decimals: 18,
     symbol: 'WETH',
-    name: 'Wrapped ETH'
+    name: 'Wrapped ETH',
   },
   rpcUrls: [
     process.env.infuraKey ? `https://mainnet.infura.io/v3/${process.env.infuraKey}` : '',
     process.env.alchemyKey ? `https://eth-mainnet.alchemyapi.io/v2/${process.env.alchemyKey}` : '',
-    'https://cloudflare-eth.com'
+    'https://cloudflare-eth.com',
   ].filter((url) => url !== ''),
   walletConfig: {
     chainName: 'Ethereum',
     iconUrls: [],
     rpcUrls: [],
-    blockExplorerUrls: []
-  }
+    blockExplorerUrls: [],
+  },
 }
 
 export default chainConfig

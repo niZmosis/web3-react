@@ -8,20 +8,20 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Binance Coin',
     symbol: 'tBNB',
-    decimals: 18
+    decimals: 18,
   },
   nativeWrappedToken: {
     address: '0xae13d989dac2f0debff460ac112a837c89baa7cd',
     decimals: 18,
     symbol: 'WBNB',
-    name: 'Wrapped BNB'
+    name: 'Wrapped BNB',
   },
   rpcUrls: [
     'https://data-seed-prebsc-1-s1.binance.org:8545/',
     'https://data-seed-prebsc-1-s3.binance.org:8545/',
     'https://data-seed-prebsc-2-s1.binance.org:8545/',
     'https://bsc-dataseed1.defibit.io/',
-    'https://bsc-dataseed1.ninicoin.io/'
+    'https://bsc-dataseed1.ninicoin.io/',
   ],
   walletConfig: {
     chainName: 'Binance Smart Chain Testnet',
@@ -31,10 +31,10 @@ const chainConfig: ChainConfig = {
       'https://data-seed-prebsc-1-s3.binance.org:8545/',
       'https://data-seed-prebsc-2-s1.binance.org:8545/',
       'https://bsc-dataseed1.defibit.io/',
-      'https://bsc-dataseed1.ninicoin.io/'
+      'https://bsc-dataseed1.ninicoin.io/',
     ],
-    blockExplorerUrls: ['https://testnet.bscscan.com/']
-  }
+    blockExplorerUrls: ['https://testnet.bscscan.com/'],
+  },
 }
 
 export default chainConfig

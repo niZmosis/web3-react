@@ -8,13 +8,13 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Fantom',
     symbol: 'FTM',
-    decimals: 18
+    decimals: 18,
   },
   nativeWrappedToken: {
     address: '0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83',
     decimals: 18,
     symbol: 'WFTM',
-    name: 'Wrapped Fantom'
+    name: 'Wrapped Fantom',
   },
   rpcUrls: [
     'https://rpc.fantom.network',
@@ -23,7 +23,7 @@ const chainConfig: ChainConfig = {
     'https://1rpc.io/ftm',
     'https://rpc.ankr.com/fantom',
     'https://rpcapi.fantom.network',
-    'https://fantom-mainnet.gateway.pokt.network/v1/lb/62759259ea1b320039c9e7ac'
+    'https://fantom-mainnet.gateway.pokt.network/v1/lb/62759259ea1b320039c9e7ac',
   ],
   walletConfig: {
     chainName: 'Fantom Opera',
@@ -35,10 +35,10 @@ const chainConfig: ChainConfig = {
       'https://1rpc.io/ftm',
       'https://rpc.ankr.com/fantom',
       'https://rpcapi.fantom.network',
-      'https://fantom-mainnet.gateway.pokt.network/v1/lb/62759259ea1b320039c9e7ac'
+      'https://fantom-mainnet.gateway.pokt.network/v1/lb/62759259ea1b320039c9e7ac',
     ],
-    blockExplorerUrls: ['https://ftmscan.com/', 'https://explorer.fantom.network/']
-  }
+    blockExplorerUrls: ['https://ftmscan.com/', 'https://explorer.fantom.network/'],
+  },
 }
 
 export default chainConfig

@@ -5,7 +5,7 @@ import { CHAINS } from '../../../utils/chains'
 export default function NetworkView({
   chainId,
   addingChain,
-  switchingChain
+  switchingChain,
 }: {
   chainId?: ReturnType<Web3ReactHooks['useChainId']>
   addingChain?: ReturnType<Web3ReactHooks['useAddingChain']>

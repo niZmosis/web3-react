@@ -193,7 +193,7 @@ export function getSelectedConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset
+    useSelectedWatchingAsset,
   }
 }
 
@@ -222,7 +222,7 @@ export function getPriorityConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset
+    useSelectedWatchingAsset,
   } = getSelectedConnectorHooks(...initializedConnectors)
 
   function usePriorityConnector() {
@@ -328,7 +328,7 @@ export function getPriorityConnectorHooks(
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset
+    usePriorityWatchingAsset,
   }
 }
 
@@ -381,7 +381,7 @@ function getStateHooks(store: Web3ReactStore) {
     useAccountIndex,
     useAddingChain,
     useSwitchingChain,
-    useWatchingAsset
+    useWatchingAsset,
   }
 }
 
@@ -389,7 +389,7 @@ function getDerivedHooks({
   useChainId,
   useAccounts,
   useAccountIndex,
-  useIsActivating
+  useIsActivating,
 }: ReturnType<typeof getStateHooks>) {
   function useAccount(): string | undefined {
     const accounts = useAccounts()
@@ -407,7 +407,7 @@ function getDerivedHooks({
     return computeIsActive({
       chainId,
       accounts,
-      activating
+      activating,
     })
   }
 

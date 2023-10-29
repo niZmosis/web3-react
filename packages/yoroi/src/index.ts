@@ -55,7 +55,7 @@ export type InitialAPI = {
   name: string
   enable: ({
     requestIdentification,
-    onlySilent
+    onlySilent,
   }: {
     requestIdentification: boolean
     onlySilent: boolean
@@ -127,7 +127,7 @@ export class YoroiWallet extends Connector {
   constructor({ actions, options, onError, connectorOptions }: YoroiConstructorArgs) {
     super(actions, onError, {
       ...connectorOptions,
-      supportedChainIds: connectorOptions?.supportedChainIds ?? []
+      supportedChainIds: connectorOptions?.supportedChainIds ?? [],
     })
     this.options = { ...options, returnType: options?.returnType ?? 'cbor' }
   }
@@ -172,7 +172,7 @@ export class YoroiWallet extends Connector {
               {
                 chainId: this.parseChainId(getChainIdForNetworkId(networkId)),
                 accounts: [walletId],
-                accountIndex: walletId ? 0 : undefined
+                accountIndex: walletId ? 0 : undefined,
               },
               true
             )
@@ -215,7 +215,7 @@ export class YoroiWallet extends Connector {
               {
                 chainId: this.parseChainId(getChainIdForNetworkId(networkId)),
                 accounts: [walletId],
-                accountIndex: walletId ? 0 : undefined
+                accountIndex: walletId ? 0 : undefined,
               },
               true
             )

@@ -10,7 +10,7 @@ export default function SignerButton({
   connector,
   provider,
   account,
-  disabled
+  disabled,
 }: {
   connector?: Connector
   provider?: Web3Provider
@@ -19,14 +19,14 @@ export default function SignerButton({
 }) {
   const { start, isTimedOut } = useTimeout({
     startOnMount: false,
-    timeout: 1_000
+    timeout: 1_000,
   })
 
   const { signMessage, isLoading } = useSignMessage({
     connector,
     provider,
     account,
-    onSigned: start
+    onSigned: start,
   })
 
   return (

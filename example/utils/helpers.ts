@@ -19,7 +19,7 @@ import {
   solChains,
   thunderChains,
   tronChains,
-  ubiqChains
+  ubiqChains,
 } from './../config/chains/chainIds'
 
 export function getImageUrlFromTrust(chainId: number, tokenAddress?: string) {

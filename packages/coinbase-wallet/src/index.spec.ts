@@ -30,8 +30,8 @@ describe('Coinbase Wallet', () => {
         actions,
         options: {
           appName: 'test',
-          url: 'https://mock.url'
-        }
+          url: 'https://mock.url',
+        },
       })
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       await connector.connectEagerly().catch(() => {})
@@ -58,7 +58,7 @@ describe('Coinbase Wallet', () => {
         activating: false,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined
+        watchingAsset: undefined,
       })
     })
   })

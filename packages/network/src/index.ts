@@ -42,7 +42,7 @@ export class Network extends Connector {
     urlMap,
     defaultChainId = Number(Object.keys(urlMap)[0]),
     timeout = 5000,
-    connectorOptions
+    connectorOptions,
   }: NetworkConstructorArgs) {
     super(actions, undefined, connectorOptions)
 

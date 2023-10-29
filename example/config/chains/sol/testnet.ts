@@ -8,21 +8,21 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'SOL',
     symbol: 'SOL',
-    decimals: 9
+    decimals: 9,
   },
   nativeWrappedToken: {
     address: 'So11111111111111111111111111111111111111112',
     decimals: 9,
     symbol: 'WSOL',
-    name: 'Wrapped SOL'
+    name: 'Wrapped SOL',
   },
   rpcUrls: ['https://api.testnet.solana.com'],
   walletConfig: {
     chainName: 'Solana Testnet',
     iconUrls: [getImageUrlFromTrust(solMainChainId)],
     rpcUrls: ['https://api.testnet.solana.com'],
-    blockExplorerUrls: ['https://explorer.solana.com/?cluster=testnet']
-  }
+    blockExplorerUrls: ['https://explorer.solana.com/?cluster=testnet'],
+  },
 }
 
 export default chainConfig

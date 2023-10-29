@@ -26,7 +26,7 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
     setSelectedConnector,
     addingChain,
     switchingChain,
-    hooks: { usePriorityConnector }
+    hooks: { usePriorityConnector },
   } = useWeb3React()
 
   const isReadOnly = accounts?.length ? isReadOnlyConnector(connector, accounts[accountIndex ?? 0]) : false
@@ -49,7 +49,7 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
         border: '2px solid',
         borderRadius: '1rem',
         borderColor: 'rgba(168, 56, 253, 0.4)',
-        backgroundColor: 'rgba(168, 56, 253, 0.15)'
+        backgroundColor: 'rgba(168, 56, 253, 0.15)',
       }}
     >
       <div
@@ -60,7 +60,7 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
           boxSizing: 'border-box',
           display: hide ? 'none' : 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         <b>{`${getName(connector)} (Selected)`}</b>
@@ -94,7 +94,7 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
           boxSizing: 'border-box',
           display: hide ? 'none' : 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         {isActive && connector !== network && (

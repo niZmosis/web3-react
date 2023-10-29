@@ -103,19 +103,19 @@ Here is how we used to setup the connectors.
 const supportedChainIds = [1, 5, 10, 56, 137, 43114, 42161, 42220]
 
 export const injected = new InjectedConnector({
-  supportedChainIds
+  supportedChainIds,
 })
 
 export const walletlink = new WalletLinkConnector({
   url,
   appName,
   supportedChainIds,
-  appLogoUrl
+  appLogoUrl,
 })
 
 export const connectorsByName = {
   Injected: injected,
-  WalletLink: walletlink
+  WalletLink: walletlink,
 }
 ```
 
@@ -163,8 +163,8 @@ export const [coinbaseWallet, hooks] = initializeConnector<CoinbaseWallet>(
       options: {
         url,
         appName,
-        appLogoUrl
-      }
+        appLogoUrl,
+      },
     })
 )
 ```
@@ -177,7 +177,7 @@ import { coinbaseWallet } from './connectors/coinbaseWallet'
 
 export const connectorsByName = {
   MetaMask: metaMask,
-  CoinbaseWallet: coinbaseWallet
+  CoinbaseWallet: coinbaseWallet,
 }
 ```
 
@@ -216,7 +216,7 @@ import { coinbaseWallet, hooks as coinbaseWalletHooks } from './connectors/coinb
 
 const connectors = [
   [metaMask, metaMaskHooks],
-  [coinbaseWallet, coinbaseWalletHooks]
+  [coinbaseWallet, coinbaseWalletHooks],
 ]
 
 root.render(
@@ -267,7 +267,7 @@ const {
   activate,
   deactivate,
   setError,
-  error
+  error,
 } = useWeb3React()
 
 // v8
@@ -335,8 +335,8 @@ const {
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset
-  }
+    usePriorityWatchingAsset,
+  },
 } = useWeb3React()
 ```
 
@@ -361,8 +361,8 @@ const {
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset
-  }
+    useSelectedWatchingAsset,
+  },
 } = useWeb3React()
 
 const chainId = useSelectedChainId(metaMask)
@@ -389,8 +389,8 @@ const {
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset
-  }
+    usePriorityWatchingAsset,
+  },
 } = useWeb3React()
 
 const chainId = usePriorityChainId()
@@ -417,7 +417,7 @@ const {
   useProvider,
   useAddingChain,
   useSwitchingChain,
-  useWatchingAsset
+  useWatchingAsset,
 } = hooks
 
 const [
@@ -434,7 +434,7 @@ const [
   provider,
   addingChain,
   switchingChain,
-  watchingAsset
+  watchingAsset,
 ] = [
   useAccount(), // Derived hook
   useAccounts(), // State hook
@@ -449,7 +449,7 @@ const [
   useProvider(), // Augmented hook
   useAddingChain(), // State hook
   useSwitchingChain(), // State hook
-  useWatchingAsset() // State hook
+  useWatchingAsset(), // State hook
 ]
 ```
 
@@ -549,13 +549,13 @@ function getPropsFromConnectorHooks(hooks: Web3ReactHooks) {
 
 ```ts
 const {
-  hooks: { useSelectedAddingChain, useSelectedSwitchingChain, useSelectedWatchingAsset }
+  hooks: { useSelectedAddingChain, useSelectedSwitchingChain, useSelectedWatchingAsset },
 } = useWeb3React()
 
 const [addingChain, switchingChain, watchingAsset] = [
   useSelectedAddingChain(),
   useSelectedSwitchingChain(),
-  useSelectedWatchingAsset()
+  useSelectedWatchingAsset(),
 ]
 
 const { chainId } = addingChain ?? {}
@@ -651,7 +651,7 @@ const assetToWatch: WatchAssetParameters = {
   symbol: 'WMATIC',
   decimals: 18,
   image:
-    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png'
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png',
 }
 
 // Adding WMATIC to the connector on chainId 137.

@@ -51,7 +51,7 @@ import {
   tronMainChainId,
   tronNileChainId,
   tronShastaChainId,
-  ubiqMainChainId
+  ubiqMainChainId,
 } from '../config/chains/chainIds'
 import { ChainConfig } from '../config/chains/chains.interface'
 import etcKottiTestnet from '../config/chains/classic/kotti'
@@ -91,131 +91,131 @@ import ubiqMainnet from '../config/chains/ubiq/mainnet'
 
 export const CHAINS: { [chainId: number]: ChainConfig } = {
   [arbitrumMainChainId]: {
-    ...arbitrumMainnet
+    ...arbitrumMainnet,
   },
   [arbitrumTestChainId]: {
-    ...arbitrumTestnet
+    ...arbitrumTestnet,
   },
   [avaxMainChainId]: {
-    ...avaxMainnet
+    ...avaxMainnet,
   },
   [avaxTestChainId]: {
-    ...avaxTestnet
+    ...avaxTestnet,
   },
   [bscMainChainId]: {
-    ...bscMainnet
+    ...bscMainnet,
   },
   [bscTestChainId]: {
-    ...bscTestnet
+    ...bscTestnet,
   },
   [cardanoMainChainId]: {
-    ...cardanoMainnet
+    ...cardanoMainnet,
   },
   [cardanoPreProdChainId]: {
-    ...cardanoPreProd
+    ...cardanoPreProd,
   },
   [celoMainChainId]: {
-    ...celoMainnet
+    ...celoMainnet,
   },
   [celoTestChainId]: {
-    ...celoTestnet
+    ...celoTestnet,
   },
   [ethMainChainId]: {
-    ...ethMainnet
+    ...ethMainnet,
   },
   [ethGoerliChainId]: {
-    ...ethGoerliTestnet
+    ...ethGoerliTestnet,
   },
   [ethSepoliaChainId]: {
-    ...ethSepoliaTestnet
+    ...ethSepoliaTestnet,
   },
   [etcMainChainId]: {
-    ...etcMainnet
+    ...etcMainnet,
   },
   [etcKottiChainId]: {
-    ...etcKottiTestnet
+    ...etcKottiTestnet,
   },
   [etcMordorChainId]: {
-    ...etcMordorTestnet
+    ...etcMordorTestnet,
   },
   [fantomMainChainId]: {
-    ...fantomMainnet
+    ...fantomMainnet,
   },
   [fantomTestChainId]: {
-    ...fantomTestnet
+    ...fantomTestnet,
   },
   [fuseMainChainId]: {
-    ...fuseMainnet
+    ...fuseMainnet,
   },
   [fuseTestChainId]: {
-    ...fuseTestnet
+    ...fuseTestnet,
   },
   [gnosisMainChainId]: {
-    ...gnosisMainnet
+    ...gnosisMainnet,
   },
   [lightstreamsMainChainId]: {
-    ...lightstreamsMainnet
+    ...lightstreamsMainnet,
   },
   [lightstreamsTestChainId]: {
-    ...lightstreamsTestnet
+    ...lightstreamsTestnet,
   },
   [optimismMainChainId]: {
-    ...optimismMainnet
+    ...optimismMainnet,
   },
   [optimismTestChainId]: {
-    ...optimismTestnet
+    ...optimismTestnet,
   },
   [poaMainChainId]: {
-    ...poaMainnet
+    ...poaMainnet,
   },
   [poaTestChainId]: {
-    ...poaTestnet
+    ...poaTestnet,
   },
   [polygonMainChainId]: {
-    ...polygonMainnet
+    ...polygonMainnet,
   },
   [polygonTestChainId]: {
-    ...polygonTestnet
+    ...polygonTestnet,
   },
   [plsMainChainId]: {
-    ...plsMainnet
+    ...plsMainnet,
   },
   [plsTestChainId]: {
-    ...plsTestnet
+    ...plsTestnet,
   },
   [rskMainChainId]: {
-    ...rskMainnet
+    ...rskMainnet,
   },
   [rskTestChainId]: {
-    ...rskTestnet
+    ...rskTestnet,
   },
   [solMainChainId]: {
-    ...solMainnet
+    ...solMainnet,
   },
   [solDevChainId]: {
-    ...solDevnet
+    ...solDevnet,
   },
   [solTestChainId]: {
-    ...solTestnet
+    ...solTestnet,
   },
   [tronMainChainId]: {
-    ...tronMainnet
+    ...tronMainnet,
   },
   [tronShastaChainId]: {
-    ...tronShastaTestnet
+    ...tronShastaTestnet,
   },
   [tronNileChainId]: {
-    ...tronNileTestnet
+    ...tronNileTestnet,
   },
   [thunderMainChainId]: {
-    ...thunderMainnet
+    ...thunderMainnet,
   },
   [thunderTestChainId]: {
-    ...thunderTestnet
+    ...thunderTestnet,
   },
   [ubiqMainChainId]: {
-    ...ubiqMainnet
-  }
+    ...ubiqMainnet,
+  },
 }
 
 export const URLS: { [chainId: number]: string[] } = Object.keys(CHAINS).reduce<{
@@ -238,7 +238,7 @@ export function getAddChainParameters(chainId: number): AddEthereumChainParamete
   const {
     chainId: chain,
     nativeCurrency: { name, symbol, decimals },
-    walletConfig: { chainName, rpcUrls, blockExplorerUrls, iconUrls }
+    walletConfig: { chainName, rpcUrls, blockExplorerUrls, iconUrls },
   } = CHAINS[chainId]
 
   return {
@@ -247,7 +247,7 @@ export function getAddChainParameters(chainId: number): AddEthereumChainParamete
     nativeCurrency: { name, symbol, decimals },
     rpcUrls,
     blockExplorerUrls,
-    iconUrls
+    iconUrls,
   }
 }
 

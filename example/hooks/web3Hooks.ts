@@ -134,7 +134,7 @@ export function useBlockNumber(
     skip,
     getBlock,
     connector,
-    chainId // Forces fetch on chain change
+    chainId, // Forces fetch on chain change
   ])
 
   return { blockNumber, isLoading, error, fetch }
@@ -258,7 +258,7 @@ export function useBalances(
   }, [
     getBalances,
     blockNumber, // Used to trigger on every block, if subscribed.
-    chainId // Forces fetch on chain change.
+    chainId, // Forces fetch on chain change.
   ])
 
   return { balances, isLoading, error, fetch }
@@ -287,7 +287,7 @@ export function useSignMessage({
   provider,
   account,
   onSigned,
-  onRejected
+  onRejected,
 }: {
   connector?: Connector
   provider?: Web3Provider
@@ -346,7 +346,7 @@ export function useSignMessage({
 export function useTransactionCount({
   provider,
   account,
-  fetchOnMount
+  fetchOnMount,
 }: {
   provider?: Web3Provider
   account?: string
@@ -389,6 +389,6 @@ export function useTransactionCount({
   return {
     transactionCount,
     isLoading,
-    fetch
+    fetch,
   }
 }

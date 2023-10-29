@@ -54,7 +54,7 @@ describe('WalletConnect', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined
+        watchingAsset: undefined,
       })
     })
   })

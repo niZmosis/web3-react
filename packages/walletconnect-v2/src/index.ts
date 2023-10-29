@@ -113,7 +113,7 @@ export class WalletConnect extends Connector {
     this.provider = await ethProviderModule.default.init({
       ...this.options,
       ...chainProps,
-      rpcMap: await rpcMap
+      rpcMap: await rpcMap,
     })
 
     return this.provider
@@ -162,7 +162,7 @@ export class WalletConnect extends Connector {
       }
       this.actions.update({
         accounts: provider.accounts,
-        chainId: provider.chainId
+        chainId: provider.chainId,
       })
     } catch (error) {
       await this.deactivate()
@@ -195,7 +195,7 @@ export class WalletConnect extends Connector {
       }
       return provider.request<void>({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: `0x${desiredChainId.toString(16)}` }]
+        params: [{ chainId: `0x${desiredChainId.toString(16)}` }],
       })
     }
 
@@ -205,7 +205,7 @@ export class WalletConnect extends Connector {
       await provider.enable()
       this.actions.update({
         chainId: provider.chainId,
-        accounts: provider.accounts
+        accounts: provider.accounts,
       })
     } catch (error) {
       await this.deactivate()

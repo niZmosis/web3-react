@@ -9,7 +9,7 @@ import SpacerView from './SpacerView'
 export default function TransactionCountButton({
   provider,
   account,
-  disabled
+  disabled,
 }: {
   provider?: Web3Provider
   account?: string
@@ -17,12 +17,12 @@ export default function TransactionCountButton({
 }) {
   const { start, isTimedOut, reset } = useTimeout({
     startOnMount: false,
-    timeout: 3_000
+    timeout: 3_000,
   })
 
   const { transactionCount, isLoading, fetch } = useTransactionCount({
     provider,
-    account
+    account,
   })
 
   const count = isTimedOut ? transactionCount : null

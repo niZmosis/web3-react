@@ -8,18 +8,18 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'ThunderCore',
     symbol: 'TT',
-    decimals: 18
+    decimals: 18,
   },
   nativeWrappedToken: {
     address: '0x413cefea29f2d07b8f2acfa69d92466b9535f717',
     decimals: 18,
     symbol: 'WTT',
-    name: 'Wrapped Thunder Token'
+    name: 'Wrapped Thunder Token',
   },
   rpcUrls: [
     'https://mainnet-rpc.thundercore.com',
     'https://mainnet-rpc.thundercore.io',
-    'https://mainnet-rpc.thundertoken.net'
+    'https://mainnet-rpc.thundertoken.net',
   ],
   walletConfig: {
     chainName: 'ThunderCore Mainnet',
@@ -27,10 +27,10 @@ const chainConfig: ChainConfig = {
     rpcUrls: [
       'https://mainnet-rpc.thundercore.com',
       'https://mainnet-rpc.thundercore.io',
-      'https://mainnet-rpc.thundertoken.net'
+      'https://mainnet-rpc.thundertoken.net',
     ],
-    blockExplorerUrls: ['https://scan.thundercore.com/', 'https://viewblock.io/thundercore']
-  }
+    blockExplorerUrls: ['https://scan.thundercore.com/', 'https://viewblock.io/thundercore'],
+  },
 }
 
 export default chainConfig

@@ -13,7 +13,7 @@ export default function NavBar() {
         alignItems: 'center',
         paddingLeft: 12,
         paddingRight: 12,
-        marginBottom: 16
+        marginBottom: 16,
       }}
     >
       <div
@@ -21,7 +21,7 @@ export default function NavBar() {
           display: 'inline-flex',
           flexWrap: 'nowrap',
           justifyContent: 'flex-start',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <b style={{ fontSize: '2em', fontFamily: 'sans-serif', color: 'white' }}>Web3React</b>
@@ -31,7 +31,7 @@ export default function NavBar() {
             fontFamily: 'sans-serif',
             color: 'white',
             marginTop: 12,
-            marginLeft: 8
+            marginLeft: 8,
           }}
         >
           v8

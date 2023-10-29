@@ -52,7 +52,7 @@ export function Card({
   watchingAsset,
   walletLogoUrl,
   hide,
-  children
+  children,
 }: Props) {
   const isReadOnly = accounts?.length ? isReadOnlyConnector(connector, accounts[accountIndex ?? 0]) : false
 
@@ -70,7 +70,7 @@ export function Card({
         borderRadius: '1rem',
         borderColor: '#30363d',
         backgroundColor: 'rgb(14,16,22)',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       }}
     >
       <div
@@ -81,7 +81,7 @@ export function Card({
           boxSizing: 'border-box',
           display: hide ? 'none' : 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         <ConnectorTitleView connector={connector} walletLogoUrl={walletLogoUrl} />
@@ -116,7 +116,7 @@ export function Card({
           boxSizing: 'border-box',
           display: hide ? 'none' : 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         <ConnectWithSelectView

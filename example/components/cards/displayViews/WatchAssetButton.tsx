@@ -8,7 +8,7 @@ export function WatchAssetButton({
   watchingAsset,
   connector,
   assetParams,
-  disabled
+  disabled,
 }: {
   watchingAsset?: ReturnType<Web3ReactHooks['useWatchingAsset']>
   connector: Connector

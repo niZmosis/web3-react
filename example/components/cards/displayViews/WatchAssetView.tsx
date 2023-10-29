@@ -13,7 +13,7 @@ export default function WatchAssetView({
   connector,
   chainId,
   watchingAsset,
-  isReadOnly
+  isReadOnly,
 }: {
   connector: Connector
   chainId: ReturnType<Web3ReactHooks['useChainId']>
@@ -38,7 +38,7 @@ export default function WatchAssetView({
               assetParams={{
                 desiredChainIdOrChainParameters: getAddChainParameters(chainConfig?.chainId),
                 image: getImageUrlFromTrust(chainId, chainConfig?.nativeWrappedToken?.address),
-                ...chainConfig?.nativeWrappedToken
+                ...chainConfig?.nativeWrappedToken,
               }}
             />
           )}
@@ -50,7 +50,7 @@ export default function WatchAssetView({
             assetParams={{
               desiredChainIdOrChainParameters: getAddChainParameters(polygonMainChainId),
               image: getImageUrlFromTrust(polygonMainChainId, wrappedMatic.address),
-              ...wrappedMatic
+              ...wrappedMatic,
             }}
           />
         )}

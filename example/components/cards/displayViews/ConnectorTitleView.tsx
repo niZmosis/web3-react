@@ -6,7 +6,7 @@ import { getName } from '../../../utils/connectors'
 
 export default function ConnectorTitleView({
   connector,
-  walletLogoUrl
+  walletLogoUrl,
 }: {
   connector: Connector
   walletLogoUrl?: string | StaticImageData
@@ -20,7 +20,7 @@ export default function ConnectorTitleView({
         justifyContent: 'flex-start',
         alignItems: 'center',
         overflow: 'hidden',
-        maxWidth: '100%'
+        maxWidth: '100%',
       }}
     >
       {walletLogoUrl && (
@@ -34,7 +34,7 @@ export default function ConnectorTitleView({
             minWidth: 24,
             marginRight: '0.5em',
             borderRadius: '50%',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         />
       )}

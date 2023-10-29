@@ -40,7 +40,7 @@ describe('BscWallet', () => {
       activating: false,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined
+      watchingAsset: undefined,
     })
   })
 })

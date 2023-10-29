@@ -8,21 +8,21 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Tron',
     symbol: 'TRX',
-    decimals: 6
+    decimals: 6,
   },
   nativeWrappedToken: {
     address: 'TSsj3nsEWiYm81MGzCByjEtGVygh5sRBqd',
     decimals: 6,
     symbol: 'WTRX',
-    name: 'Wrapped TRX'
+    name: 'Wrapped TRX',
   },
   rpcUrls: ['https://api.shasta.trongrid.io'],
   walletConfig: {
     chainName: 'Shasta',
     iconUrls: [getImageUrlFromTrust(tronMainChainId)],
     rpcUrls: ['https://api.shasta.trongrid.io'],
-    blockExplorerUrls: ['https://shasta.tronscan.io/']
-  }
+    blockExplorerUrls: ['https://shasta.tronscan.io/'],
+  },
 }
 
 export default chainConfig

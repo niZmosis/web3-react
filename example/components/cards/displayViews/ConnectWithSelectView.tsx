@@ -20,7 +20,7 @@ function ChainSelect({
   displayDefault,
   chainIds,
   isPendingChainAdd,
-  isPendingChainSwitch
+  isPendingChainSwitch,
 }: {
   chainId: number
   switchChain: (chainId: number) => void | undefined
@@ -41,7 +41,7 @@ function ChainSelect({
         paddingLeft: '8px',
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderColor: 'black',
-        marginBottom: '1rem'
+        marginBottom: '1rem',
       }}
       value={chainId}
       onChange={(event) => {
@@ -67,7 +67,7 @@ export default function ConnectWithSelectView({
   error,
   setError,
   addingChain,
-  switchingChain
+  switchingChain,
 }: {
   connector: Connector
   chainId: ReturnType<Web3ReactHooks['useChainId']>
@@ -156,7 +156,7 @@ export default function ConnectWithSelectView({
         style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
         }}
       >
         {isSwitchableNetwork && (
@@ -175,7 +175,7 @@ export default function ConnectWithSelectView({
             style={{
               marginBottom: '1rem',
               borderColor: 'rgba(253, 246, 56, 0.4)',
-              backgroundColor: 'rgba(253, 246, 56, 0.15)'
+              backgroundColor: 'rgba(253, 246, 56, 0.15)',
             }}
             disabled={isActivating || !!addingChain || !!switchingChain}
             onClick={handleTryAgain}
@@ -187,7 +187,7 @@ export default function ConnectWithSelectView({
             style={{
               marginBottom: '1rem',
               borderColor: 'rgba(253, 56, 56, 0.4)',
-              backgroundColor: 'rgba(253, 56, 56, 0.15)'
+              backgroundColor: 'rgba(253, 56, 56, 0.15)',
             }}
             onClick={() => {
               if (connector?.deactivate) {
@@ -204,7 +204,7 @@ export default function ConnectWithSelectView({
             style={{
               marginBottom: '1rem',
               borderColor: 'rgba(56, 253, 72, 0.4)',
-              backgroundColor: 'rgba(56, 253, 72, 0.15)'
+              backgroundColor: 'rgba(56, 253, 72, 0.15)',
             }}
             onClick={() => void handleConnect()}
             disabled={isActivating}
@@ -216,7 +216,7 @@ export default function ConnectWithSelectView({
         <Button
           style={{
             borderColor: 'rgba(168, 56, 253, 0.4)',
-            backgroundColor: 'rgba(168, 56, 253, 0.15)'
+            backgroundColor: 'rgba(168, 56, 253, 0.15)',
           }}
           onClick={() => setSelectedConnector(connector)}
           disabled={isSelected}

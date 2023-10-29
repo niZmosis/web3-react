@@ -7,7 +7,7 @@ import type {
   Web3PrioritySelectors,
   Web3ReactReduxStore,
   Web3ReactState,
-  Web3SelectedSelectors
+  Web3SelectedSelectors,
 } from '@web3-react/types'
 import { useEffect, useMemo, useState } from 'react'
 import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/with-selector'
@@ -201,7 +201,7 @@ export function getSelectedConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset
+    useSelectedWatchingAsset,
   }
 }
 
@@ -230,7 +230,7 @@ export function getPriorityConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset
+    useSelectedWatchingAsset,
   } = getSelectedConnectorHooks(...initializedConnectors)
 
   const usePriorityConnector = () => {
@@ -336,7 +336,7 @@ export function getPriorityConnectorHooks(
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset
+    usePriorityWatchingAsset,
   }
 }
 
@@ -398,7 +398,7 @@ function getStateHooks(store: Web3ReactReduxStore) {
     useIsActivating,
     useAddingChain,
     useSwitchingChain,
-    useWatchingAsset
+    useWatchingAsset,
   }
 }
 
@@ -406,7 +406,7 @@ function getDerivedHooks({
   useChainId,
   useAccounts,
   useAccountIndex,
-  useIsActivating
+  useIsActivating,
 }: ReturnType<typeof getStateHooks>) {
   function useAccount(): string | undefined {
     const accounts = useAccounts()
@@ -424,7 +424,7 @@ function getDerivedHooks({
     return computeIsActive({
       chainId,
       accounts,
-      activating
+      activating,
     })
   }
 

@@ -9,7 +9,7 @@ export const [metaMask, hooks, store]: [MetaMask, Web3ReactHooks, Web3ReactRedux
   (actions) =>
     new MetaMask({
       actions,
-      connectorOptions: { chainParameters: allAddChainParameters }
+      connectorOptions: { chainParameters: allAddChainParameters },
     }),
   'metaMask'
 )

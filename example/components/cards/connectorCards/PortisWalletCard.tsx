@@ -15,7 +15,7 @@ const {
   useENSAvatars,
   useAddingChain,
   useSwitchingChain,
-  useWatchingAsset
+  useWatchingAsset,
 } = hooks
 
 function useShowPortis(showBitcoin?: boolean) {

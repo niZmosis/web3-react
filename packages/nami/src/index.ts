@@ -114,7 +114,7 @@ export class NamiWallet extends Connector {
   constructor({ actions, options, onError, connectorOptions }: NamiConstructorArgs) {
     super(actions, onError, {
       ...connectorOptions,
-      supportedChainIds: connectorOptions?.supportedChainIds ?? []
+      supportedChainIds: connectorOptions?.supportedChainIds ?? [],
     })
     this.options = options
   }
@@ -171,7 +171,7 @@ export class NamiWallet extends Connector {
               {
                 chainId: this.parseChainId(getChainIdForNetworkId(networkId)),
                 accounts: [walletId],
-                accountIndex: walletId ? 0 : undefined
+                accountIndex: walletId ? 0 : undefined,
               },
               true
             )
@@ -212,7 +212,7 @@ export class NamiWallet extends Connector {
               {
                 chainId: this.parseChainId(getChainIdForNetworkId(networkId)),
                 accounts: [walletId],
-                accountIndex: walletId ? 0 : undefined
+                accountIndex: walletId ? 0 : undefined,
               },
               true
             )

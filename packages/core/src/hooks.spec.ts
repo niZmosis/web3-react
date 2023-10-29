@@ -58,7 +58,7 @@ describe('#initializeConnector', () => {
 
       act(() =>
         connector.update({
-          accounts: ['0x0000000000000000000000000000000000000000']
+          accounts: ['0x0000000000000000000000000000000000000000'],
         })
       )
       expect(result.current).toEqual(['0x0000000000000000000000000000000000000000'])
@@ -70,12 +70,12 @@ describe('#initializeConnector', () => {
 
       act(() =>
         connector.update({
-          accounts: ['0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000001']
+          accounts: ['0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000001'],
         })
       )
       expect(result.current).toEqual([
         '0x0000000000000000000000000000000000000000',
-        '0x0000000000000000000000000000000000000001'
+        '0x0000000000000000000000000000000000000001',
       ])
     })
   })
@@ -126,7 +126,7 @@ describe('#getSelectedConnectorHooks', () => {
 
   test('isActive is false for connector', () => {
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector))
 
     expect(isActive).toBe(false)
@@ -134,7 +134,7 @@ describe('#getSelectedConnectorHooks', () => {
 
   test('isActive is false for connector2', () => {
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector2))
 
     expect(isActive).toBe(false)
@@ -143,11 +143,11 @@ describe('#getSelectedConnectorHooks', () => {
   test('connector active', () => {
     act(() => connector.update({ chainId: 1, accounts: [] }))
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector))
 
     const {
-      result: { current: isActive2 }
+      result: { current: isActive2 },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector2))
 
     expect(isActive).toBe(true)
@@ -157,11 +157,11 @@ describe('#getSelectedConnectorHooks', () => {
   test('connector2 active', () => {
     act(() => connector2.update({ chainId: 1, accounts: [] }))
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector))
 
     const {
-      result: { current: isActive2 }
+      result: { current: isActive2 },
     } = renderHook(() => selectedConnectorHooks.useSelectedIsActive(connector2))
 
     expect(isActive).toBe(false)
@@ -187,7 +187,7 @@ describe('#getPriorityConnectorHooks', () => {
 
   test('returns first connector if both are uninitialized', () => {
     const {
-      result: { current: priorityConnector }
+      result: { current: priorityConnector },
     } = renderHook(() => priorityConnectorHooks.usePriorityConnector())
 
     expect(priorityConnector).toBeInstanceOf(MockConnector)
@@ -197,11 +197,11 @@ describe('#getPriorityConnectorHooks', () => {
   test('returns first connector if it is initialized', () => {
     act(() => connector.update({ chainId: 1, accounts: [] }))
     const {
-      result: { current: priorityConnector }
+      result: { current: priorityConnector },
     } = renderHook(() => priorityConnectorHooks.usePriorityConnector())
 
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => priorityConnectorHooks.usePriorityIsActive())
     expect(isActive).toBe(true)
 
@@ -212,11 +212,11 @@ describe('#getPriorityConnectorHooks', () => {
   test('returns second connector if it is initialized', () => {
     act(() => connector2.update({ chainId: 1, accounts: [] }))
     const {
-      result: { current: priorityConnector }
+      result: { current: priorityConnector },
     } = renderHook(() => priorityConnectorHooks.usePriorityConnector())
 
     const {
-      result: { current: isActive }
+      result: { current: isActive },
     } = renderHook(() => priorityConnectorHooks.usePriorityIsActive())
     expect(isActive).toBe(true)
 

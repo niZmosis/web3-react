@@ -24,7 +24,7 @@ function Blockies({ account, diameter, alt }: { account: string; diameter: numbe
         overflow: 'hidden',
         height: diameter,
         minWidth: diameter,
-        marginRight: '0.5em'
+        marginRight: '0.5em',
       }}
     >
       <canvas ref={canvasRef} style={{ display: 'none' }} />

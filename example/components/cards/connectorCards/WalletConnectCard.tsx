@@ -12,7 +12,7 @@ const {
   useIsActive,
   useProvider,
   useENSNames,
-  useENSAvatars
+  useENSAvatars,
 } = hooks
 
 export default function WalletConnectCard({ hide }: { hide: boolean }) {

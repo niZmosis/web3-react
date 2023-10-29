@@ -9,6 +9,7 @@
     "clean": "lerna clean --yes",
     "lint": "yarn run eslint --ext .ts,.tsx .",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "prettier": "prettier --write .",
     "test": "jest",
     "build": "lerna run build",
     "prestart": "yarn build",

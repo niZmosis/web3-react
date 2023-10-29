@@ -11,7 +11,7 @@ export default function StatusView({
   isActivating,
   isActive,
   error,
-  isReadOnly
+  isReadOnly,
 }: {
   connector?: Connector
   accountIndex?: ReturnType<Web3ReactHooks['useAccountIndex']>
@@ -33,7 +33,7 @@ export default function StatusView({
           alignItems: 'flex-start',
           justifyContent: 'flex-start',
           whiteSpace: 'pre',
-          wordWrap: 'break-word'
+          wordWrap: 'break-word',
         }}
       >
         {error ? (
@@ -43,14 +43,14 @@ export default function StatusView({
               flexDirection: 'column',
               justifyContent: 'flex-start',
               alignItems: 'flex-start',
-              width: '100%'
+              width: '100%',
             }}
           >
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                width: '100%'
+                width: '100%',
               }}
             >
               <p
@@ -58,7 +58,7 @@ export default function StatusView({
                   fontSize: '0.7em',
                   lineHeight: '1em',
                   marginTop: '0.5em',
-                  marginBottom: '0.5em'
+                  marginBottom: '0.5em',
                 }}
               >{`🔴 `}</p>
               {error?.name ? ` ${error.name}` : ' Error'}
@@ -68,7 +68,7 @@ export default function StatusView({
                 width: '100%',
                 whiteSpace: 'normal',
                 marginTop: '0.5em',
-                marginBottom: '0.5em'
+                marginBottom: '0.5em',
               }}
             >
               {error.message ? `- ${error.message}` : null}
@@ -81,14 +81,14 @@ export default function StatusView({
               flexDirection: 'column',
               justifyContent: 'flex-start',
               alignItems: 'flex-start',
-              width: '100%'
+              width: '100%',
             }}
           >
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                width: '100%'
+                width: '100%',
               }}
             >
               <p style={{ fontSize: '0.7em', lineHeight: '0.95em' }}>🟡</p>
@@ -102,14 +102,14 @@ export default function StatusView({
               flexDirection: 'column',
               justifyContent: 'flex-start',
               alignItems: 'flex-start',
-              width: '100%'
+              width: '100%',
             }}
           >
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                width: '100%'
+                width: '100%',
               }}
             >
               <p style={{ fontSize: '0.7em', lineHeight: '0.95em' }}>🟢</p>
@@ -122,7 +122,7 @@ export default function StatusView({
                   whiteSpace: 'pre',
                   marginTop: '0.5em',
                   marginBottom: '0.5em',
-                  marginLeft: -1
+                  marginLeft: -1,
                 }}
               >
                 ⚠️ Unlock wallet
@@ -136,14 +136,14 @@ export default function StatusView({
               flexDirection: 'column',
               justifyContent: 'flex-start',
               alignItems: 'flex-start',
-              width: '100%'
+              width: '100%',
             }}
           >
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                width: '100%'
+                width: '100%',
               }}
             >
               <p style={{ fontSize: '0.7em', lineHeight: '0.95em' }}>⚪️</p>
@@ -159,7 +159,7 @@ export default function StatusView({
             alignItems: 'center',
             width: '100%',
             whiteSpace: 'pre',
-            wordWrap: 'break-word'
+            wordWrap: 'break-word',
           }}
         >
           <p style={{ fontSize: '0.7em', lineHeight: '0.95em' }}>🟠</p>

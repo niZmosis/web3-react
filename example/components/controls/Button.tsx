@@ -28,7 +28,7 @@ export default function Button({
         borderRadius: '17px',
         borderColor: disabled ? 'black' : borderColor ?? 'rgba(56, 139, 253, 0.4)',
         backgroundColor: disabled ? 'rgba( 100, 100, 100, 0.5)' : color ?? 'rgba(56, 139, 253, 0.15)',
-        ...style
+        ...style,
       }}
       {...rest}
     >

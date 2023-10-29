@@ -19,7 +19,7 @@ const createTestEnvironment = (
   const connector = new WalletConnect({
     actions,
     defaultChainId,
-    options: { ...opts, projectId: '', showQrModal: false }
+    options: { ...opts, projectId: '', showQrModal: false },
   })
   return { connector, store }
 }
@@ -82,9 +82,9 @@ class MockWalletConnectProvider extends MockEIP1193Provider<number> {
           // We read `accounts` to check what chains from `optionalChains` did we connect to
           namespaces: {
             eip155: {
-              accounts: this.getConnectedChains().map((chainId) => `eip155:${chainId}:0x1`)
-            }
-          }
+              accounts: this.getConnectedChains().map((chainId) => `eip155:${chainId}:0x1`),
+            },
+          },
         }
       : undefined
   }
@@ -126,7 +126,7 @@ describe('WalletConnect', () => {
     test('should be able to initialize with only optionalChains', async () => {
       const { connector } = createTestEnvironment({
         chains: undefined,
-        optionalChains: chains
+        optionalChains: chains,
       })
       connector.activate()
       connector.activate()
@@ -168,7 +168,7 @@ describe('WalletConnect', () => {
     test('should switch to an optional chain', async () => {
       const { connector, store } = createTestEnvironment({
         chains,
-        optionalChains: [8]
+        optionalChains: [8],
       })
       await connector.activate()
       await connector.activate(8)
@@ -179,7 +179,7 @@ describe('WalletConnect', () => {
       jest.spyOn(MockWalletConnectProvider.prototype, 'getConnectedChains').mockReturnValue(chains)
       const { connector } = createTestEnvironment({
         chains,
-        optionalChains: [8]
+        optionalChains: [8],
       })
       await connector.activate()
       await expect(connector.activate(8)).rejects.toThrow()

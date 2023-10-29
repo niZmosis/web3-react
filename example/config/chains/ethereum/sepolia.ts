@@ -7,13 +7,13 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Ethers',
     symbol: 'ETH',
-    decimals: 18
+    decimals: 18,
   },
   nativeWrappedToken: {
     address: '0xb16F35c0Ae2912430DAc15764477E179D9B9EbEa',
     decimals: 18,
     symbol: 'WETH',
-    name: 'Wrapped ETH'
+    name: 'Wrapped ETH',
   },
   rpcUrls: [process.env.infuraKey ? `https://sepolia.infura.io/v3/${process.env.infuraKey}` : ''].filter(
     (url) => url !== ''
@@ -22,8 +22,8 @@ const chainConfig: ChainConfig = {
     chainName: 'Sepolia',
     iconUrls: [],
     rpcUrls: [],
-    blockExplorerUrls: []
-  }
+    blockExplorerUrls: [],
+  },
 }
 
 export default chainConfig
