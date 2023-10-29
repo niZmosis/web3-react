@@ -5,7 +5,7 @@ import { MockJsonRpcProvider } from '../../network/src/index.spec'
 import { Url } from '.'
 
 jest.mock('@ethersproject/providers', () => ({
-  JsonRpcProvider: MockJsonRpcProvider,
+  JsonRpcProvider: MockJsonRpcProvider
 }))
 
 const chainId = '0x1'
@@ -31,7 +31,7 @@ describe('Url', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -54,7 +54,7 @@ describe('Url', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
     })

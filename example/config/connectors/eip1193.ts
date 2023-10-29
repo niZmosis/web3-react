@@ -19,5 +19,5 @@ const ethersProvider = new JsonRpcProvider(URLS[1][0], 1)
 const eip1193Provider = new Eip1193BridgeWithoutAccounts(ethersProvider.getSigner(), ethersProvider)
 
 export const [eip1193, hooks]: [EIP1193, Web3ReactHooks, Web3ReactStore] = initializeConnector<EIP1193>(
-  (actions) => new EIP1193({ actions, provider: eip1193Provider }),
+  (actions) => new EIP1193({ actions, provider: eip1193Provider })
 )

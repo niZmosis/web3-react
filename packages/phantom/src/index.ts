@@ -35,7 +35,7 @@ export type PhantomProvider = Provider & {
   openBridge?: () => void
   signAndSendTransaction: (
     transaction: Transaction,
-    opts?: SendOptions,
+    opts?: SendOptions
   ) => Promise<{ signature: string; publicKey: PublicKey }>
   signTransaction: (transaction: Transaction) => Promise<Transaction>
   signAllTransactions: (transactions: Transaction[]) => Promise<Transaction[]>
@@ -93,7 +93,7 @@ export class PhantomWallet extends Connector {
   constructor({ actions, options, onError, connectorOptions }: PhantomConstructorArgs) {
     super(actions, onError, {
       ...connectorOptions,
-      supportedChainIds: connectorOptions?.supportedChainIds ?? [mainChainId, devChainId, testChainId],
+      supportedChainIds: connectorOptions?.supportedChainIds ?? [mainChainId, devChainId, testChainId]
     })
     this.options = options
     this.connection = new Connection(getEndpointForChain(this?.options?.defaultChain ?? 'devnet'))
@@ -168,7 +168,7 @@ export class PhantomWallet extends Connector {
         } else {
           this.actions.update(
             { accounts: [account], accountIndex: account ? 0 : undefined },
-            true, // Skip validation checks
+            true // Skip validation checks
           )
         }
       })
@@ -196,9 +196,9 @@ export class PhantomWallet extends Connector {
             {
               chainId: this.getChainId(),
               accounts: [account],
-              accountIndex: account ? 0 : undefined,
+              accountIndex: account ? 0 : undefined
             },
-            true, // Skip validation checks
+            true // Skip validation checks
           )
         } else {
           throw new Error('No accounts returned')
@@ -239,9 +239,9 @@ export class PhantomWallet extends Connector {
             {
               chainId: this.getChainId(),
               accounts: [account],
-              accountIndex: account ? 0 : undefined,
+              accountIndex: account ? 0 : undefined
             },
-            true, // Skip validation checks
+            true // Skip validation checks
           )
         } else {
           throw new Error('No accounts returned')

@@ -44,12 +44,12 @@ export class EIP1193 extends Connector {
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
       const accounts = await requestAccounts()
       const chainId = (await this.provider.request({
-        method: 'eth_chainId',
+        method: 'eth_chainId'
       })) as string
       return this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
-        accountIndex: 0,
+        accountIndex: 0
       })
     } catch (error) {
       cancelActivation()
@@ -68,7 +68,7 @@ export class EIP1193 extends Connector {
       () =>
         this.provider
           .request({ method: 'eth_requestAccounts' })
-          .catch(() => this.provider.request({ method: 'eth_accounts' })) as Promise<string[]>,
+          .catch(() => this.provider.request({ method: 'eth_accounts' })) as Promise<string[]>
     )
   }
 }

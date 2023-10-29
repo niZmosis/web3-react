@@ -8,7 +8,7 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Lightstreams',
     symbol: 'PHT',
-    decimals: 18,
+    decimals: 18
   },
   nativeWrappedToken: undefined,
   rpcUrls: ['https://node.mainnet.lightstreams.io'],
@@ -16,8 +16,8 @@ const chainConfig: ChainConfig = {
     chainName: 'Lightstreams Mainnet',
     iconUrls: [getImageUrlFromTrust(lightstreamsMainChainId)],
     rpcUrls: ['https://node.mainnet.lightstreams.io'],
-    blockExplorerUrls: ['https://explorer.mainnet.lightstreams.io/'],
-  },
+    blockExplorerUrls: ['https://explorer.mainnet.lightstreams.io/']
+  }
 }
 
 export default chainConfig

@@ -7,7 +7,7 @@ import CircleLoader from '../../feedback/CircleLoader'
 export default function BlockNumberView({
   connector,
   provider,
-  chainId,
+  chainId
 }: {
   connector: Connector
   provider?: ReturnType<Web3ReactHooks['useProvider']>
@@ -19,7 +19,13 @@ export default function BlockNumberView({
 
   return (
     <div
-      style={{ height: 18, marginTop: 4, display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-start' }}
+      style={{
+        height: 18,
+        marginTop: 4,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+      }}
     >
       <p style={{ marginRight: 8 }}>Block:</p>
       {blockNumber && !isLoading ? <b>{blockNumber}</b> : <CircleLoader />}

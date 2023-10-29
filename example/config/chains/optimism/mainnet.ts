@@ -8,24 +8,24 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Ether',
     symbol: 'ETH',
-    decimals: 18,
+    decimals: 18
   },
   nativeWrappedToken: {
     address: '0x4200000000000000000000000000000000000006',
     decimals: 18,
     symbol: 'WETH',
-    name: 'Wrapped ETH',
+    name: 'Wrapped ETH'
   },
   rpcUrls: [
     process.env.infuraKey ? `https://optimism-mainnet.infura.io/v3/${process.env.infuraKey}` : '',
-    'https://forno.optimism.org',
+    'https://forno.optimism.org'
   ].filter((url) => url !== ''),
   walletConfig: {
     chainName: 'Optimism Mainnet',
     iconUrls: [getImageUrlFromTrust(optimismMainChainId)],
     rpcUrls: ['https://forno.optimism.org'],
-    blockExplorerUrls: ['https://optimistic.etherscan.io/'],
-  },
+    blockExplorerUrls: ['https://optimistic.etherscan.io/']
+  }
 }
 
 export default chainConfig

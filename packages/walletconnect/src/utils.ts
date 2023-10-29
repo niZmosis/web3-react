@@ -8,7 +8,7 @@ export async function getBestUrl(urls: string[], timeout: number): Promise<strin
 
   const [HttpConnection, JsonRpcProvider] = await Promise.all([
     import('@walletconnect/jsonrpc-http-connection').then(({ HttpConnection }) => HttpConnection),
-    import('@walletconnect/jsonrpc-provider').then(({ JsonRpcProvider }) => JsonRpcProvider),
+    import('@walletconnect/jsonrpc-provider').then(({ JsonRpcProvider }) => JsonRpcProvider)
   ])
 
   // the below returns the first url for which there's been a successful call, prioritized by index

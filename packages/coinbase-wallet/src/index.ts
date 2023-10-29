@@ -4,7 +4,7 @@ import type {
   ConnectorArgs,
   ProviderConnectInfo,
   ProviderRpcError,
-  WatchAssetParameters,
+  WatchAssetParameters
 } from '@web3-react/types'
 import { Connector, Web3ReactState } from '@web3-react/types'
 
@@ -80,7 +80,7 @@ export class CoinbaseWallet extends Connector {
         } else {
           this.actions.update({
             accounts,
-            accountIndex: accounts?.length ? 0 : undefined,
+            accountIndex: accounts?.length ? 0 : undefined
           })
         }
       })
@@ -98,15 +98,15 @@ export class CoinbaseWallet extends Connector {
       // Wallets may resolve eth_chainId and hang on eth_accounts pending user interaction, which may include changing
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
       const accounts = await this.provider.request<string[]>({
-        method: 'eth_accounts',
+        method: 'eth_accounts'
       })
       if (!accounts.length) throw new Error('No accounts returned')
       const chainId = await this.provider.request<string>({
-        method: 'eth_chainId',
+        method: 'eth_chainId'
       })
       return this.actions.update({
         chainId: this.parseChainId(chainId),
-        accounts,
+        accounts
       })
     } catch (error) {
       return cancelActivation()
@@ -131,7 +131,7 @@ export class CoinbaseWallet extends Connector {
       if (!this.provider) throw new NoCoinbaseWalletError()
 
       const accounts: string[] = await this.provider.request({
-        method: 'eth_requestAccounts',
+        method: 'eth_requestAccounts'
       })
 
       const index = accounts.indexOf(this?.selectedAddress ?? '')
@@ -148,7 +148,7 @@ export class CoinbaseWallet extends Connector {
         return this.actions.update({
           chainId: currentChainId,
           accounts,
-          accountIndex: index < 0 ? undefined : index,
+          accountIndex: index < 0 ? undefined : index
         })
       }
 
@@ -191,7 +191,7 @@ export class CoinbaseWallet extends Connector {
       if (typeof desiredChainIdOrChainParameters !== 'number') {
         await this.provider.request({
           method: 'wallet_addEthereumChain',
-          params: [{ ...desiredChainIdOrChainParameters, chainId: desiredChainIdHex }],
+          params: [{ ...desiredChainIdOrChainParameters, chainId: desiredChainIdHex }]
         })
       }
       // Check if the params were given to the connectors options
@@ -201,9 +201,9 @@ export class CoinbaseWallet extends Connector {
           params: [
             {
               ...this.chainParameters[desiredChainId],
-              chainId: desiredChainIdHex,
-            },
-          ],
+              chainId: desiredChainIdHex
+            }
+          ]
         })
       }
 
@@ -221,7 +221,7 @@ export class CoinbaseWallet extends Connector {
    */
   public async switchChain(
     desiredChainIdOrChainParameters: number | AddEthereumChainParameter,
-    currentChainId?: number,
+    currentChainId?: number
   ) {
     const desiredChainId =
       typeof desiredChainIdOrChainParameters === 'number'
@@ -232,8 +232,8 @@ export class CoinbaseWallet extends Connector {
     this.actions.update({
       switchingChain: {
         fromChainId: currentChainId,
-        toChainId: desiredChainId,
-      },
+        toChainId: desiredChainId
+      }
     })
 
     try {
@@ -241,7 +241,7 @@ export class CoinbaseWallet extends Connector {
 
       await this.provider.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: desiredChainIdHex }],
+        params: [{ chainId: desiredChainIdHex }]
       })
 
       this.actions.update({ addingChain: undefined, switchingChain: undefined })
@@ -259,7 +259,7 @@ export class CoinbaseWallet extends Connector {
     address,
     symbol,
     decimals,
-    image,
+    image
   }: Pick<WatchAssetParameters, 'address'> & Partial<Omit<WatchAssetParameters, 'address'>>): Promise<true> {
     if (!this.provider) throw new Error('No provider')
 
@@ -268,8 +268,8 @@ export class CoinbaseWallet extends Connector {
         address,
         symbol: symbol ?? '',
         decimals: decimals ?? 0,
-        image: image ?? '',
-      },
+        image: image ?? ''
+      }
     })
 
     // Switch to the correct chain to watch the asset
@@ -305,9 +305,9 @@ export class CoinbaseWallet extends Connector {
             address, // The address that the token is at.
             symbol, // A ticker symbol or shorthand, up to 5 chars.
             decimals, // The number of decimals in the token
-            image, // A string url of the token logo
-          },
-        },
+            image // A string url of the token logo
+          }
+        }
       })
       .catch(() => {
         this.actions.update({ watchingAsset: undefined })

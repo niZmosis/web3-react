@@ -11,7 +11,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
       error: undefined,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined,
+      watchingAsset: undefined
     })
   })
 
@@ -27,7 +27,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -45,7 +45,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
   })
@@ -62,8 +62,8 @@ describe('#createWeb3ReactStoreAndActions', () => {
       const [, actions] = createWeb3ReactStoreAndActions()
       expect(() =>
         actions.update({
-          accounts: ['0x000000000000000000000000000000000000000'],
-        }),
+          accounts: ['0x000000000000000000000000000000000000000']
+        })
       ).toThrow()
     })
 
@@ -79,7 +79,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -96,7 +96,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
 
@@ -112,7 +112,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
 
@@ -128,7 +128,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
     })
@@ -146,7 +146,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -163,7 +163,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -180,7 +180,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -198,7 +198,7 @@ describe('#createWeb3ReactStoreAndActions', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
   })

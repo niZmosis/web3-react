@@ -27,7 +27,7 @@ const DEFAULT_STATE = {
   activating: false,
   addingChain: undefined,
   switchingChain: undefined,
-  watchingAsset: undefined,
+  watchingAsset: undefined
 }
 
 export function createWeb3ReactStoreAndActions(): [Web3ReactStore, Actions] {
@@ -53,7 +53,7 @@ export function createWeb3ReactStoreAndActions(): [Web3ReactStore, Actions] {
         store.setState({
           activating: false,
           addingChain: undefined,
-          switchingChain: undefined,
+          switchingChain: undefined
         })
       }
 
@@ -122,7 +122,7 @@ export function createWeb3ReactStoreAndActions(): [Web3ReactStore, Actions] {
         activating,
         addingChain,
         switchingChain,
-        watchingAsset,
+        watchingAsset
       }
     })
 

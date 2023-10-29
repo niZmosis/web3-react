@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 export const useTimeout = ({
   callback,
   startOnMount = false,
-  timeout = 1_000,
+  timeout = 1_000
 }: {
   callback?: () => void
   startOnMount: boolean

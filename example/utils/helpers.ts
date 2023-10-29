@@ -19,7 +19,7 @@ import {
   solChains,
   thunderChains,
   tronChains,
-  ubiqChains,
+  ubiqChains
 } from './../config/chains/chainIds'
 
 export function getImageUrlFromTrust(chainId: number, tokenAddress?: string) {
@@ -103,7 +103,7 @@ export function getImageUrlFromTrust(chainId: number, tokenAddress?: string) {
 
   if (isAddress(tokenAddress)) {
     return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${blockChainName}/assets/${getAddress(
-      tokenAddress,
+      tokenAddress
     )}/logo.png`
   }
 

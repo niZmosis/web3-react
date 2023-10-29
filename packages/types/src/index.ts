@@ -37,19 +37,19 @@ export type Web3SelectedSelectors = {
   useSelectedIsActive: (connector: Connector) => boolean | undefined
   useSelectedProvider: <T extends BaseProvider = Web3Provider>(
     connector: Connector,
-    network?: Networkish,
+    network?: Networkish
   ) => T | undefined
   useSelectedENSNames: (connector: Connector, provider?: BaseProvider) => (string | null)[] | undefined
   useSelectedENSName: (connector: Connector, provider?: BaseProvider) => undefined | string | null
   useSelectedENSAvatars: (
     connector: Connector,
     provider?: BaseProvider,
-    ensNames?: (string | null)[],
+    ensNames?: (string | null)[]
   ) => (string | null)[] | undefined
   useSelectedENSAvatar: (
     connector: Connector,
     provider?: BaseProvider,
-    ensName?: undefined | string | null,
+    ensName?: undefined | string | null
   ) => undefined | string | null
   useSelectedAddingChain: (connector: Connector) => AddingChainInfo | undefined
   useSelectedSwitchingChain: (connector: Connector) => SwitchingChainInfo | undefined

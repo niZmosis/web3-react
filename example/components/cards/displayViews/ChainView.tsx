@@ -7,7 +7,7 @@ export default function ChainView({
   connector,
   chainId,
   addingChain,
-  switchingChain,
+  switchingChain
 }: {
   connector: Connector
   chainId?: ReturnType<Web3ReactHooks['useChainId']>

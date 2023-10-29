@@ -31,10 +31,10 @@ class MockJsonRpcProvider {
 }
 
 jest.mock('@walletconnect/jsonrpc-http-connection', () => ({
-  HttpConnection: MockHttpConnection,
+  HttpConnection: MockHttpConnection
 }))
 jest.mock('@walletconnect/jsonrpc-provider', () => ({
-  JsonRpcProvider: MockJsonRpcProvider,
+  JsonRpcProvider: MockJsonRpcProvider
 }))
 
 describe('getBestUrl', () => {

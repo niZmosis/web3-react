@@ -11,7 +11,7 @@ jest.mock(
       makeWeb3Provider() {
         return new MockEIP1193Provider()
       }
-    },
+    }
 )
 
 const chainId = '0x1'
@@ -30,8 +30,8 @@ describe('Coinbase Wallet', () => {
         actions,
         options: {
           appName: 'test',
-          url: 'https://mock.url',
-        },
+          url: 'https://mock.url'
+        }
       })
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       await connector.connectEagerly().catch(() => {})
@@ -48,7 +48,7 @@ describe('Coinbase Wallet', () => {
       expect(mockProvider.eth_accounts).not.toHaveBeenCalled()
       expect(mockProvider.eth_chainId).toHaveBeenCalled()
       expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-        mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
+        mockProvider.eth_requestAccounts.mock.invocationCallOrder[0]
       )
 
       expect(store.getState()).toEqual({
@@ -58,7 +58,7 @@ describe('Coinbase Wallet', () => {
         activating: false,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
   })

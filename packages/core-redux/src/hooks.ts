@@ -7,7 +7,7 @@ import type {
   Web3PrioritySelectors,
   Web3ReactReduxStore,
   Web3ReactState,
-  Web3SelectedSelectors,
+  Web3SelectedSelectors
 } from '@web3-react/types'
 import { useEffect, useMemo, useState } from 'react'
 import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/with-selector'
@@ -43,7 +43,7 @@ export type Web3ReactPriorityHooks = ReturnType<typeof getPriorityConnectorHooks
  */
 export function initializeConnector<T extends Connector>(
   f: (actions: Actions) => T,
-  connectorName?: string,
+  connectorName?: string
 ): [T, Web3ReactHooks, Web3ReactReduxStore] {
   const [store, actions] = createWeb3ReactStoreAndActions(connectorName)
 
@@ -126,7 +126,7 @@ export function getSelectedConnectorHooks(
    */
   const useSelectedProvider = <T extends BaseProvider = Web3Provider>(
     connector: Connector,
-    network?: Networkish,
+    network?: Networkish
   ): T | undefined => {
     const index = getIndex(connector)
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -138,7 +138,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSNames }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSNames(i === index ? provider : undefined),
+      useENSNames(i === index ? provider : undefined)
     )
     return values[index]
   }
@@ -154,7 +154,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatars }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatars(i === index ? provider : undefined, ensNames),
+      useENSAvatars(i === index ? provider : undefined, ensNames)
     )
     return values[index]
   }
@@ -163,7 +163,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatar }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatar(i === index ? provider : undefined, ensName),
+      useENSAvatar(i === index ? provider : undefined, ensName)
     )
     return values[index]
   }
@@ -201,7 +201,7 @@ export function getSelectedConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset,
+    useSelectedWatchingAsset
   }
 }
 
@@ -230,7 +230,7 @@ export function getPriorityConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset,
+    useSelectedWatchingAsset
   } = getSelectedConnectorHooks(...initializedConnectors)
 
   const usePriorityConnector = () => {
@@ -336,7 +336,7 @@ export function getPriorityConnectorHooks(
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset,
+    usePriorityWatchingAsset
   }
 }
 
@@ -356,7 +356,7 @@ const WATCHING = ({ watchingAsset }: Web3ReactState) => watchingAsset
 function useStore<U>(
   store: Web3ReactReduxStore,
   selector: (state: Web3ReactState) => U,
-  equalityFn?: (a: U, b: U) => boolean,
+  equalityFn?: (a: U, b: U) => boolean
 ): U {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   return useSyncExternalStoreWithSelector(store.subscribe, store.getState, store.getState, selector, equalityFn)
@@ -398,7 +398,7 @@ function getStateHooks(store: Web3ReactReduxStore) {
     useIsActivating,
     useAddingChain,
     useSwitchingChain,
-    useWatchingAsset,
+    useWatchingAsset
   }
 }
 
@@ -406,7 +406,7 @@ function getDerivedHooks({
   useChainId,
   useAccounts,
   useAccountIndex,
-  useIsActivating,
+  useIsActivating
 }: ReturnType<typeof getStateHooks>) {
   function useAccount(): string | undefined {
     const accounts = useAccounts()
@@ -424,7 +424,7 @@ function getDerivedHooks({
     return computeIsActive({
       chainId,
       accounts,
-      activating,
+      activating
     })
   }
 
@@ -497,7 +497,7 @@ function useAvatar(provider?: BaseProvider, ensNames?: (string | null)[]): (stri
 function getAugmentedHooks<T extends Connector>(
   connector: T,
   { useAccounts, useChainId }: ReturnType<typeof getStateHooks>,
-  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>,
+  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>
 ) {
   /**
    * Avoid type erasure by returning the most qualified type if not otherwise set.

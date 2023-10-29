@@ -4,5 +4,5 @@ import { initializeConnector } from '@web3-react/core'
 import type { Web3ReactStore } from '@web3-react/types'
 
 export const [bscWallet, hooks]: [BscWallet, Web3ReactHooks, Web3ReactStore] = initializeConnector<BscWallet>(
-  (actions) => new BscWallet({ actions }),
+  (actions) => new BscWallet({ actions })
 )

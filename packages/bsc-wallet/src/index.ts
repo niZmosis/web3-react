@@ -48,7 +48,7 @@ export class BscWallet extends Connector {
   constructor({ actions, options, onError, connectorOptions }: BscConstructorArgs) {
     super(actions, onError, {
       ...connectorOptions,
-      supportedChainIds: connectorOptions?.supportedChainIds ?? [1, 56, 97],
+      supportedChainIds: connectorOptions?.supportedChainIds ?? [1, 56, 97]
     })
     this.options = options
   }
@@ -83,7 +83,7 @@ export class BscWallet extends Connector {
           } else {
             this.actions.update({
               accounts,
-              accountIndex: accounts?.length ? 0 : undefined,
+              accountIndex: accounts?.length ? 0 : undefined
             })
           }
         }
@@ -107,7 +107,7 @@ export class BscWallet extends Connector {
 
     return Promise.all([
       this.provider.request({ method: 'eth_chainId' }) as Promise<string>,
-      this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>,
+      this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>
     ])
       .then(([chainId, accounts]) => {
         if (accounts?.length) {
@@ -118,7 +118,7 @@ export class BscWallet extends Connector {
           return this.actions.update({
             chainId: this.parseChainId(chainId),
             accounts,
-            accountIndex: accounts?.length ? 0 : undefined,
+            accountIndex: accounts?.length ? 0 : undefined
           })
         } else {
           throw new Error('No accounts returned')
@@ -146,13 +146,13 @@ export class BscWallet extends Connector {
 
     return Promise.all([
       this.provider.request({ method: 'eth_chainId' }) as Promise<string>,
-      this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>,
+      this.provider.request({ method: 'eth_requestAccounts' }) as Promise<string[]>
     ])
       .then(([chainId, accounts]) => {
         return this.actions.update({
           chainId: this.parseChainId(chainId),
           accounts,
-          accountIndex: accounts?.length ? 0 : undefined,
+          accountIndex: accounts?.length ? 0 : undefined
         })
       })
       .catch((error: ProviderRpcError) => {

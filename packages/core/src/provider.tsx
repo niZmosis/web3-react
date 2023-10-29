@@ -59,7 +59,7 @@ export function Web3ReactProvider({
   connectors,
   defaultSelectedConnector,
   network,
-  lookupENS = true,
+  lookupENS = true
 }: Web3ReactProviderProps) {
   const cachedConnectors: MutableRefObject<Web3ReactProviderProps['connectors']> = useRef(connectors)
   // because we're calling `getPriorityConnectorHooks` with these connectors, we need to ensure that they're not changing in place
@@ -73,7 +73,7 @@ export function Web3ReactProvider({
     })
   )
     throw new Error(
-      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.',
+      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.'
     )
 
   const hooks = getPriorityConnectorHooks(...connectors)
@@ -92,7 +92,7 @@ export function Web3ReactProvider({
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset,
+    useSelectedWatchingAsset
   } = hooks
 
   const firstActiveConnector = usePriorityConnector()
@@ -109,7 +109,7 @@ export function Web3ReactProvider({
         setConnector(fallbackConnector)
       }
     },
-    [connector, fallbackConnector],
+    [connector, fallbackConnector]
   )
 
   const chainId = useSelectedChainId(connector)
@@ -125,7 +125,7 @@ export function Web3ReactProvider({
         connector.setAccountIndex(index)
       }
     },
-    [connector],
+    [connector]
   )
 
   // note that we've omitted a <T extends BaseProvider = Web3Provider> generic type
@@ -170,7 +170,7 @@ export function Web3ReactProvider({
 
         addingChain,
         switchingChain,
-        watchingAsset,
+        watchingAsset
       }}
     >
       {children}

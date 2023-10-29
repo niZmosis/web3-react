@@ -104,7 +104,7 @@ export class WalletConnect extends Connector {
   }
 
   private async initializeProvider(
-    desiredChainId: number | undefined = this.defaultChainId,
+    desiredChainId: number | undefined = this.defaultChainId
   ): Promise<WalletConnectProvider> {
     const rpcMap = this.rpcMap ? getBestUrlMap(this.rpcMap, this.timeout) : undefined
     const chainProps = this.getChainProps(this.chains, this.optionalChains, desiredChainId)
@@ -113,7 +113,7 @@ export class WalletConnect extends Connector {
     this.provider = await ethProviderModule.default.init({
       ...this.options,
       ...chainProps,
-      rpcMap: await rpcMap,
+      rpcMap: await rpcMap
     })
 
     return this.provider
@@ -126,7 +126,7 @@ export class WalletConnect extends Connector {
   private getChainProps(
     chains: number[] | ArrayOneOrMore<number> | undefined,
     optionalChains: number[] | ArrayOneOrMore<number> | undefined,
-    desiredChainId: number | undefined = this.defaultChainId,
+    desiredChainId: number | undefined = this.defaultChainId
   ): ChainsProps {
     // Reorder chains and optionalChains if necessary
     const orderedChains = getChainsWithDefault(chains, desiredChainId)
@@ -144,7 +144,7 @@ export class WalletConnect extends Connector {
   }
 
   private isomorphicInitialize(
-    desiredChainId: number | undefined = this.defaultChainId,
+    desiredChainId: number | undefined = this.defaultChainId
   ): Promise<WalletConnectProvider> {
     if (this.eagerConnection) return this.eagerConnection
     return (this.eagerConnection = this.initializeProvider(desiredChainId))
@@ -162,7 +162,7 @@ export class WalletConnect extends Connector {
       }
       this.actions.update({
         accounts: provider.accounts,
-        chainId: provider.chainId,
+        chainId: provider.chainId
       })
     } catch (error) {
       await this.deactivate()
@@ -181,21 +181,21 @@ export class WalletConnect extends Connector {
       if (!desiredChainId || desiredChainId === provider.chainId) return
       // WalletConnect exposes connected accounts, not chains: `eip155:${chainId}:${address}`
       const isConnectedToDesiredChain = provider.session.namespaces.eip155.accounts.some((account) =>
-        account.startsWith(`eip155:${desiredChainId}:`),
+        account.startsWith(`eip155:${desiredChainId}:`)
       )
       if (!isConnectedToDesiredChain) {
         if (this.options.optionalChains?.includes(desiredChainId)) {
           throw new Error(
-            `Cannot activate an optional chain (${desiredChainId}), as the wallet is not connected to it.\n\tYou should handle this error in application code, as there is no guarantee that a wallet is connected to a chain configured in "optionalChains".`,
+            `Cannot activate an optional chain (${desiredChainId}), as the wallet is not connected to it.\n\tYou should handle this error in application code, as there is no guarantee that a wallet is connected to a chain configured in "optionalChains".`
           )
         }
         throw new Error(
-          `Unknown chain (${desiredChainId}). Make sure to include any chains you might connect to in the "chains" or "optionalChains" parameters when initializing WalletConnect.`,
+          `Unknown chain (${desiredChainId}). Make sure to include any chains you might connect to in the "chains" or "optionalChains" parameters when initializing WalletConnect.`
         )
       }
       return provider.request<void>({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: `0x${desiredChainId.toString(16)}` }],
+        params: [{ chainId: `0x${desiredChainId.toString(16)}` }]
       })
     }
 
@@ -205,7 +205,7 @@ export class WalletConnect extends Connector {
       await provider.enable()
       this.actions.update({
         chainId: provider.chainId,
-        accounts: provider.accounts,
+        accounts: provider.accounts
       })
     } catch (error) {
       await this.deactivate()

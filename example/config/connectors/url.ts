@@ -6,5 +6,5 @@ import { Url } from '@web3-react/url'
 import { URLS } from '../../utils/chains'
 
 export const [url, hooks]: [Url, Web3ReactHooks, Web3ReactStore] = initializeConnector<Url>(
-  (actions) => new Url({ actions, url: URLS[1][0] }),
+  (actions) => new Url({ actions, url: URLS[1][0] })
 )

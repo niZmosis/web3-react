@@ -8,7 +8,7 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'Lightstreams',
     symbol: 'PHT',
-    decimals: 18,
+    decimals: 18
   },
   nativeWrappedToken: undefined,
   rpcUrls: ['https://node.sirius.lightstreams.io'],
@@ -16,8 +16,8 @@ const chainConfig: ChainConfig = {
     chainName: 'Sirius',
     iconUrls: [getImageUrlFromTrust(lightstreamsMainChainId)],
     rpcUrls: ['https://node.sirius.lightstreams.io'],
-    blockExplorerUrls: ['https://explorer.sirius.lightstreams.io/home'],
-  },
+    blockExplorerUrls: ['https://explorer.sirius.lightstreams.io/home']
+  }
 }
 
 export default chainConfig

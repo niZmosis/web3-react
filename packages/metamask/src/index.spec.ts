@@ -37,7 +37,7 @@ describe('MetaMask', () => {
     expect(mockProvider.eth_accounts).toHaveBeenCalled()
     expect(mockProvider.eth_chainId).toHaveBeenCalled()
     expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-      mockProvider.eth_accounts.mock.invocationCallOrder[0],
+      mockProvider.eth_accounts.mock.invocationCallOrder[0]
     )
 
     expect(store.getState()).toEqual({
@@ -47,7 +47,7 @@ describe('MetaMask', () => {
       activating: false,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined,
+      watchingAsset: undefined
     })
   })
 
@@ -61,7 +61,7 @@ describe('MetaMask', () => {
     expect(mockProvider.eth_accounts).not.toHaveBeenCalled()
     expect(mockProvider.eth_chainId).toHaveBeenCalled()
     expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-      mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
+      mockProvider.eth_requestAccounts.mock.invocationCallOrder[0]
     )
 
     expect(store.getState()).toEqual({
@@ -71,7 +71,7 @@ describe('MetaMask', () => {
       activating: false,
       addingChain: undefined,
       switchingChain: undefined,
-      watchingAsset: undefined,
+      watchingAsset: undefined
     })
   })
 })

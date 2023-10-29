@@ -23,13 +23,13 @@ jobs:
         with:
           command: test
           # include devDependencies to deps list for Snyk dep-graph
-          args: --dev --severity-threshold=medium 
+          args: --dev --severity-threshold=medium
 
-      - name: Run Snyk monitor to upload the latest snapshot 
+      - name: Run Snyk monitor to upload the latest snapshot
         uses: snyk/actions/node@0e928f3e9ae859e2b95ac2b89af55d7b6434244d
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
         with:
           command: monitor
           # include devDependencies to deps list for Snyk dep-graph
-          args: --dev --severity-threshold=medium 
+          args: --dev --severity-threshold=medium

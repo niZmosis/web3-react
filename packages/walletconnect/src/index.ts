@@ -54,7 +54,7 @@ export class WalletConnect extends Connector {
     defaultChainId,
     timeout = 5000,
     onError,
-    connectorOptions,
+    connectorOptions
   }: WalletConnectConstructorArgs) {
     super(actions, onError, connectorOptions)
 
@@ -81,7 +81,7 @@ export class WalletConnect extends Connector {
   private accountsChangedListener = (accounts: string[]): void => {
     this.actions.update({
       accounts,
-      accountIndex: accounts?.length ? 0 : undefined,
+      accountIndex: accounts?.length ? 0 : undefined
     })
   }
 
@@ -100,21 +100,21 @@ export class WalletConnect extends Connector {
       Object.keys(this.rpc).map(
         async (chainId): Promise<[number, string]> => [
           Number(chainId),
-          await getBestUrl(this.rpc[Number(chainId)], this.timeout),
-        ],
-      ),
+          await getBestUrl(this.rpc[Number(chainId)], this.timeout)
+        ]
+      )
     ).then((results) =>
       results.reduce<{ [chainId: number]: string }>((accumulator, [chainId, url]) => {
         accumulator[chainId] = url
         return accumulator
-      }, {}),
+      }, {})
     )
 
     return (this.eagerConnection = import('@walletconnect/ethereum-provider').then(async (m) => {
       this.provider = new m.default({
         ...this.options,
         chainId,
-        rpc: await rpc,
+        rpc: await rpc
       }) as unknown as MockWalletConnectProvider
 
       this.provider.on('disconnect', this.disconnectListener)
@@ -135,17 +135,17 @@ export class WalletConnect extends Connector {
       // Wallets may resolve eth_chainId and hang on eth_accounts pending user interaction, which may include changing
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
       const accounts = await this.provider.request<string[]>({
-        method: 'eth_accounts',
+        method: 'eth_accounts'
       })
       if (!accounts.length) throw new Error('No accounts returned')
 
       const chainId = await this.provider.request<string>({
-        method: 'eth_chainId',
+        method: 'eth_chainId'
       })
       this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
-        accountIndex: accounts?.length ? 0 : undefined,
+        accountIndex: accounts?.length ? 0 : undefined
       })
     } catch (error) {
       cancelActivation()
@@ -163,7 +163,7 @@ export class WalletConnect extends Connector {
       // because the provider is already connected, we can ignore the suppressUserPrompts
       return this.provider.request<void>({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: `0x${desiredChainId.toString(16)}` }],
+        params: [{ chainId: `0x${desiredChainId.toString(16)}` }]
       })
     }
 
@@ -203,7 +203,7 @@ export class WalletConnect extends Connector {
       this.actions.update({
         chainId,
         accounts,
-        accountIndex: accounts?.length ? 0 : undefined,
+        accountIndex: accounts?.length ? 0 : undefined
       })
     } catch (error) {
       cancelActivation()

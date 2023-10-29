@@ -8,21 +8,21 @@ const chainConfig: ChainConfig = {
   nativeCurrency: {
     name: 'ADA',
     symbol: 'ADA',
-    decimals: 6,
+    decimals: 6
   },
   nativeWrappedToken: {
     address: '',
     decimals: 6,
     symbol: 'WADA',
-    name: 'Wrapped ADA',
+    name: 'Wrapped ADA'
   },
   rpcUrls: [''],
   walletConfig: {
     chainName: 'Cardano Mainnet',
     iconUrls: [getImageUrlFromTrust(cardanoMainChainId)],
     rpcUrls: [''],
-    blockExplorerUrls: ['https://cardanoscan.io/', 'https://explorer.cardano.org/'],
-  },
+    blockExplorerUrls: ['https://cardanoscan.io/', 'https://explorer.cardano.org/']
+  }
 }
 
 export default chainConfig

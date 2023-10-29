@@ -10,34 +10,34 @@ This is a hosted version of [example](/example).
 
 ## Packages
 
-| Package                                                   | Version                                                                                                                                       | Size                                                                                                                                                             | Link                                                                      |
-|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| [`@web3-react/types`](packages/types)                     | [![npm](https://img.shields.io/npm/v/@web3-react/types/beta.svg)](https://www.npmjs.com/package/@web3-react/types/v/beta)                     | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/types/beta.svg)](https://bundlephobia.com/result?p=@web3-react/types@beta)                     |                                                                           |
-| [`@web3-react/store`](packages/store)                     | [![npm](https://img.shields.io/npm/v/@web3-react/store/beta.svg)](https://www.npmjs.com/package/@web3-react/store/v/beta)                     | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/store/beta.svg)](https://bundlephobia.com/result?p=@web3-react/store@beta)                     |                                                                           |
-| [`@web3-react/core`](packages/core)                       | [![npm](https://img.shields.io/npm/v/@web3-react/core/beta.svg)](https://www.npmjs.com/package/@web3-react/core/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/core/beta.svg)](https://bundlephobia.com/result?p=@web3-react/core@beta)                       |                                                                           |
-| [`@web3-react/store-redux`](packages/store-redux)                     | [![npm](https://img.shields.io/npm/v/@web3-react/store-redux/beta.svg)](https://www.npmjs.com/package/@web3-react/store-redux/v/beta)                     | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/store-redux/beta.svg)](https://bundlephobia.com/result?p=@web3-react/store-redux@beta)                     |                                                                           |
-| [`@web3-react/core-redux`](packages/core-redux)                       | [![npm](https://img.shields.io/npm/v/@web3-react/core-redux/beta.svg)](https://www.npmjs.com/package/@web3-react/core-redux/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/core-redux/beta.svg)](https://bundlephobia.com/result?p=@web3-react/core-redux@beta)                       |                                                                           |
-| **EVM Connectors**                                            |                                                                                                                                               |                                                                                                                                                                  |                                                                           |
-| [`@web3-react/eip1193`](packages/eip1193)                 | [![npm](https://img.shields.io/npm/v/@web3-react/eip1193/beta.svg)](https://www.npmjs.com/package/@web3-react/eip1193/v/beta)                 | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/eip1193/beta.svg)](https://bundlephobia.com/result?p=@web3-react/eip1193@beta)                 | [EIP-1193](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md) |
-| [`@web3-react/empty`](packages/empty)                     | [![npm](https://img.shields.io/npm/v/@web3-react/empty/beta.svg)](https://www.npmjs.com/package/@web3-react/empty/v/beta)                     | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/empty/beta.svg)](https://bundlephobia.com/result?p=@web3-react/empty@beta)                     |                                                                           |
-| [`@web3-react/gnosis-safe`](packages/gnosis-safe)         | [![npm](https://img.shields.io/npm/v/@web3-react/gnosis-safe/beta.svg)](https://www.npmjs.com/package/@web3-react/gnosis-safe/v/beta)         | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/gnosis-safe/beta.svg)](https://bundlephobia.com/result?p=@web3-react/gnosis-safe@beta)         | [Gnosis Safe](https://gnosis-safe.io/)                                    |
-| [`@web3-react/metamask`](packages/metamask)               | [![npm](https://img.shields.io/npm/v/@web3-react/metamask/beta.svg)](https://www.npmjs.com/package/@web3-react/metamask/v/beta)               | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/metamask/beta.svg)](https://bundlephobia.com/result?p=@web3-react/metamask@beta)               | [MetaMask](https://metamask.io/)                                          |
-| [`@web3-react/network`](packages/network)                 | [![npm](https://img.shields.io/npm/v/@web3-react/network/beta.svg)](https://www.npmjs.com/package/@web3-react/network/v/beta)                 | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/network/beta.svg)](https://bundlephobia.com/result?p=@web3-react/network@beta)                 |                                                                           |
-| [`@web3-react/url`](packages/url)                         | [![npm](https://img.shields.io/npm/v/@web3-react/url/beta.svg)](https://www.npmjs.com/package/@web3-react/url/v/beta)                         | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/url/beta.svg)](https://bundlephobia.com/result?p=@web3-react/url@beta)                         |                                                                           |
-| [`@web3-react/walletconnect-v2`](packages/walletconnect-v2)     | [![npm](https://img.shields.io/npm/v/@web3-react/walletconnect-v2/beta.svg)](https://www.npmjs.com/package/@web3-react/walletconnect-v2/v/beta)     | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/walletconnect-v2/beta.svg)](https://bundlephobia.com/result?p=@web3-react/walletconnect-v2@beta)     | [WalletConnect](https://walletconnect.org/)                               |
-| [`@web3-react/coinbase-wallet`](packages/coinbase-wallet) | [![npm](https://img.shields.io/npm/v/@web3-react/coinbase-wallet/beta.svg)](https://www.npmjs.com/package/@web3-react/coinbase-wallet/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/coinbase-wallet/beta.svg)](https://bundlephobia.com/result?p=@web3-react/coinbase-wallet@beta) | [Coinbase Wallet](https://docs.cloud.coinbase.com/wallet-sdk/docs)        |
-| [`@web3-react/bsc-wallet`](packages/bsc-wallet) | [![npm](https://img.shields.io/npm/v/@web3-react/bsc-wallet/beta.svg)](https://www.npmjs.com/package/@web3-react/bsc-wallet/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/bsc-wallet/beta.svg)](https://bundlephobia.com/result?p=@web3-react/bsc-wallet@beta) | [BSC Wallet](https://binance-wallet.gitbook.io/binance-chain-wallet/dev/get-started)        |
-| [`@web3-react-trust-wallet`](https://github.com/trustwallet/web3-react-trust-wallet) | [![npm](https://img.shields.io/npm/v/@trustwallet/web3-react-trust-wallet)](https://www.npmjs.com/package/@trustwallet/web3-react-trust-wallet) | [![minzip](https://img.shields.io/bundlephobia/minzip/@trustwallet/web3-react-trust-wallet)](https://bundlephobia.com/package/@trustwallet/web3-react-trust-wallet) | [Trust Wallet](https://trustwallet.com/)        |
-| [`@avalabs/web3-react-core-connector`](https://github.com/ava-labs/avalanche-dapp-sdks/tree/alpha-release/packages/web3-react-core-connector) | [![npm](https://img.shields.io/npm/v/@avalabs/web3-react-core-connector)](https://www.npmjs.com/package/@avalabs/web3-react-core-connector) | [![minzip](https://img.shields.io/bundlephobia/minzip/@avalabs/web3-react-core-connector)](https://bundlephobia.com/package/@avalabs/web3-react-core-connector) | [Core Wallet](https://extension.core.app/)        |
-| [`@venly/web3-react-venly`](https://github.com/ArkaneNetwork/web3-react-venly) | [![npm](https://img.shields.io/npm/v/@venly/web3-react-venly)](https://www.npmjs.com/package/@venly/web3-react-venly) | [![minzip](https://img.shields.io/bundlephobia/minzip/@venly/web3-react-venly)](https://bundlephobia.com/package/@venly/web3-react-venly) | [Venly](https://www.venly.io/)        |
-**Cardano Connectors**                                            |   
-| [`@web3-react/nami`](packages/nami) | [![npm](https://img.shields.io/npm/v/@web3-react/nami/beta.svg)](https://www.npmjs.com/package/@web3-react/nami/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/nami/beta.svg)](https://bundlephobia.com/result?p=@web3-react/nami@beta)  | [Nami](https://namiwallet.io/) |
-| [`@web3-react/yoroi`](packages/yoroi) | [![npm](https://img.shields.io/npm/v/@web3-react/yoroi/beta.svg)](https://www.npmjs.com/package/@web3-react/yoroi/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/yoroi/beta.svg)](https://bundlephobia.com/result?p=@web3-react/yoroi@beta) | [Yoroi](https://yoroi-wallet.com/) |
-**Solana Connectors**                                            |   
-| [`@web3-react/phantom`](packages/phantom) | [![npm](https://img.shields.io/npm/v/@web3-react/phantom/beta.svg)](https://www.npmjs.com/package/@web3-react/phantom/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/phantom/beta.svg)](https://bundlephobia.com/result?p=@web3-react/phantom@beta) | [Phantom](https://phantom.app/) |
-| [`@web3-react/solflare`](packages/solflare) | [![npm](https://img.shields.io/npm/v/@web3-react/solflare/beta.svg)](https://www.npmjs.com/package/@web3-react/solflare/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/solflare/beta.svg)](https://bundlephobia.com/result?p=@web3-react/solflare@beta) | [Solflare](https://solflare.com/) |
-**Tron Connectors**                                            |   
-| [`@web3-react/tronLink`](packages/tronLink) | [![npm](https://img.shields.io/npm/v/@web3-react/tronLink/beta.svg)](https://www.npmjs.com/package/@web3-react/tronLink/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/tronLink/beta.svg)](https://bundlephobia.com/result?p=@web3-react/tronLink@beta) | [TronLink](https://www.tronlink.org/) |
+| Package                                                                                                                                       | Version                                                                                                                                         | Size                                                                                                                                                                | Link                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`@web3-react/types`](packages/types)                                                                                                         | [![npm](https://img.shields.io/npm/v/@web3-react/types/beta.svg)](https://www.npmjs.com/package/@web3-react/types/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/types/beta.svg)](https://bundlephobia.com/result?p=@web3-react/types@beta)                        |                                                                                      |
+| [`@web3-react/store`](packages/store)                                                                                                         | [![npm](https://img.shields.io/npm/v/@web3-react/store/beta.svg)](https://www.npmjs.com/package/@web3-react/store/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/store/beta.svg)](https://bundlephobia.com/result?p=@web3-react/store@beta)                        |                                                                                      |
+| [`@web3-react/core`](packages/core)                                                                                                           | [![npm](https://img.shields.io/npm/v/@web3-react/core/beta.svg)](https://www.npmjs.com/package/@web3-react/core/v/beta)                         | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/core/beta.svg)](https://bundlephobia.com/result?p=@web3-react/core@beta)                          |                                                                                      |
+| [`@web3-react/store-redux`](packages/store-redux)                                                                                             | [![npm](https://img.shields.io/npm/v/@web3-react/store-redux/beta.svg)](https://www.npmjs.com/package/@web3-react/store-redux/v/beta)           | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/store-redux/beta.svg)](https://bundlephobia.com/result?p=@web3-react/store-redux@beta)            |                                                                                      |
+| [`@web3-react/core-redux`](packages/core-redux)                                                                                               | [![npm](https://img.shields.io/npm/v/@web3-react/core-redux/beta.svg)](https://www.npmjs.com/package/@web3-react/core-redux/v/beta)             | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/core-redux/beta.svg)](https://bundlephobia.com/result?p=@web3-react/core-redux@beta)              |                                                                                      |
+| **EVM Connectors**                                                                                                                            |                                                                                                                                                 |                                                                                                                                                                     |                                                                                      |
+| [`@web3-react/eip1193`](packages/eip1193)                                                                                                     | [![npm](https://img.shields.io/npm/v/@web3-react/eip1193/beta.svg)](https://www.npmjs.com/package/@web3-react/eip1193/v/beta)                   | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/eip1193/beta.svg)](https://bundlephobia.com/result?p=@web3-react/eip1193@beta)                    | [EIP-1193](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md)            |
+| [`@web3-react/empty`](packages/empty)                                                                                                         | [![npm](https://img.shields.io/npm/v/@web3-react/empty/beta.svg)](https://www.npmjs.com/package/@web3-react/empty/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/empty/beta.svg)](https://bundlephobia.com/result?p=@web3-react/empty@beta)                        |                                                                                      |
+| [`@web3-react/gnosis-safe`](packages/gnosis-safe)                                                                                             | [![npm](https://img.shields.io/npm/v/@web3-react/gnosis-safe/beta.svg)](https://www.npmjs.com/package/@web3-react/gnosis-safe/v/beta)           | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/gnosis-safe/beta.svg)](https://bundlephobia.com/result?p=@web3-react/gnosis-safe@beta)            | [Gnosis Safe](https://gnosis-safe.io/)                                               |
+| [`@web3-react/metamask`](packages/metamask)                                                                                                   | [![npm](https://img.shields.io/npm/v/@web3-react/metamask/beta.svg)](https://www.npmjs.com/package/@web3-react/metamask/v/beta)                 | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/metamask/beta.svg)](https://bundlephobia.com/result?p=@web3-react/metamask@beta)                  | [MetaMask](https://metamask.io/)                                                     |
+| [`@web3-react/network`](packages/network)                                                                                                     | [![npm](https://img.shields.io/npm/v/@web3-react/network/beta.svg)](https://www.npmjs.com/package/@web3-react/network/v/beta)                   | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/network/beta.svg)](https://bundlephobia.com/result?p=@web3-react/network@beta)                    |                                                                                      |
+| [`@web3-react/url`](packages/url)                                                                                                             | [![npm](https://img.shields.io/npm/v/@web3-react/url/beta.svg)](https://www.npmjs.com/package/@web3-react/url/v/beta)                           | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/url/beta.svg)](https://bundlephobia.com/result?p=@web3-react/url@beta)                            |                                                                                      |
+| [`@web3-react/walletconnect-v2`](packages/walletconnect-v2)                                                                                   | [![npm](https://img.shields.io/npm/v/@web3-react/walletconnect-v2/beta.svg)](https://www.npmjs.com/package/@web3-react/walletconnect-v2/v/beta) | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/walletconnect-v2/beta.svg)](https://bundlephobia.com/result?p=@web3-react/walletconnect-v2@beta)  | [WalletConnect](https://walletconnect.org/)                                          |
+| [`@web3-react/coinbase-wallet`](packages/coinbase-wallet)                                                                                     | [![npm](https://img.shields.io/npm/v/@web3-react/coinbase-wallet/beta.svg)](https://www.npmjs.com/package/@web3-react/coinbase-wallet/v/beta)   | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/coinbase-wallet/beta.svg)](https://bundlephobia.com/result?p=@web3-react/coinbase-wallet@beta)    | [Coinbase Wallet](https://docs.cloud.coinbase.com/wallet-sdk/docs)                   |
+| [`@web3-react/bsc-wallet`](packages/bsc-wallet)                                                                                               | [![npm](https://img.shields.io/npm/v/@web3-react/bsc-wallet/beta.svg)](https://www.npmjs.com/package/@web3-react/bsc-wallet/v/beta)             | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/bsc-wallet/beta.svg)](https://bundlephobia.com/result?p=@web3-react/bsc-wallet@beta)              | [BSC Wallet](https://binance-wallet.gitbook.io/binance-chain-wallet/dev/get-started) |
+| [`@web3-react-trust-wallet`](https://github.com/trustwallet/web3-react-trust-wallet)                                                          | [![npm](https://img.shields.io/npm/v/@trustwallet/web3-react-trust-wallet)](https://www.npmjs.com/package/@trustwallet/web3-react-trust-wallet) | [![minzip](https://img.shields.io/bundlephobia/minzip/@trustwallet/web3-react-trust-wallet)](https://bundlephobia.com/package/@trustwallet/web3-react-trust-wallet) | [Trust Wallet](https://trustwallet.com/)                                             |
+| [`@avalabs/web3-react-core-connector`](https://github.com/ava-labs/avalanche-dapp-sdks/tree/alpha-release/packages/web3-react-core-connector) | [![npm](https://img.shields.io/npm/v/@avalabs/web3-react-core-connector)](https://www.npmjs.com/package/@avalabs/web3-react-core-connector)     | [![minzip](https://img.shields.io/bundlephobia/minzip/@avalabs/web3-react-core-connector)](https://bundlephobia.com/package/@avalabs/web3-react-core-connector)     | [Core Wallet](https://extension.core.app/)                                           |
+| [`@venly/web3-react-venly`](https://github.com/ArkaneNetwork/web3-react-venly)                                                                | [![npm](https://img.shields.io/npm/v/@venly/web3-react-venly)](https://www.npmjs.com/package/@venly/web3-react-venly)                           | [![minzip](https://img.shields.io/bundlephobia/minzip/@venly/web3-react-venly)](https://bundlephobia.com/package/@venly/web3-react-venly)                           | [Venly](https://www.venly.io/)                                                       |
+| **Cardano Connectors**                                                                                                                        |
+| [`@web3-react/nami`](packages/nami)                                                                                                           | [![npm](https://img.shields.io/npm/v/@web3-react/nami/beta.svg)](https://www.npmjs.com/package/@web3-react/nami/v/beta)                         | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/nami/beta.svg)](https://bundlephobia.com/result?p=@web3-react/nami@beta)                          | [Nami](https://namiwallet.io/)                                                       |
+| [`@web3-react/yoroi`](packages/yoroi)                                                                                                         | [![npm](https://img.shields.io/npm/v/@web3-react/yoroi/beta.svg)](https://www.npmjs.com/package/@web3-react/yoroi/v/beta)                       | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/yoroi/beta.svg)](https://bundlephobia.com/result?p=@web3-react/yoroi@beta)                        | [Yoroi](https://yoroi-wallet.com/)                                                   |
+| **Solana Connectors**                                                                                                                         |
+| [`@web3-react/phantom`](packages/phantom)                                                                                                     | [![npm](https://img.shields.io/npm/v/@web3-react/phantom/beta.svg)](https://www.npmjs.com/package/@web3-react/phantom/v/beta)                   | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/phantom/beta.svg)](https://bundlephobia.com/result?p=@web3-react/phantom@beta)                    | [Phantom](https://phantom.app/)                                                      |
+| [`@web3-react/solflare`](packages/solflare)                                                                                                   | [![npm](https://img.shields.io/npm/v/@web3-react/solflare/beta.svg)](https://www.npmjs.com/package/@web3-react/solflare/v/beta)                 | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/solflare/beta.svg)](https://bundlephobia.com/result?p=@web3-react/solflare@beta)                  | [Solflare](https://solflare.com/)                                                    |
+| **Tron Connectors**                                                                                                                           |
+| [`@web3-react/tronLink`](packages/tronLink)                                                                                                   | [![npm](https://img.shields.io/npm/v/@web3-react/tronLink/beta.svg)](https://www.npmjs.com/package/@web3-react/tronLink/v/beta)                 | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-react/tronLink/beta.svg)](https://bundlephobia.com/result?p=@web3-react/tronLink@beta)                  | [TronLink](https://www.tronlink.org/)                                                |
 
 ## Get Started
 
@@ -103,21 +103,20 @@ Here is how we used to setup the connectors.
 const supportedChainIds = [1, 5, 10, 56, 137, 43114, 42161, 42220]
 
 export const injected = new InjectedConnector({
-  supportedChainIds,
+  supportedChainIds
 })
 
 export const walletlink = new WalletLinkConnector({
   url,
   appName,
   supportedChainIds,
-  appLogoUrl,
+  appLogoUrl
 })
 
 export const connectorsByName = {
   Injected: injected,
-  WalletLink: walletlink,
+  WalletLink: walletlink
 }
-
 ```
 
 #### v8
@@ -125,6 +124,7 @@ export const connectorsByName = {
 These exports will allow you to interact with each connector individually. We will use these connector exports to setup our Web3ReactProvider, so we can select what connector we want our useWeb3React hook to use.
 
 #### Connector Constructor
+
 ```ts
 {
   // Methods bound to a zustand store that tracks the state of the connector.
@@ -140,6 +140,7 @@ These exports will allow you to interact with each connector individually. We wi
 ```
 
 #### File: metaMask.ts
+
 ```ts
 import { initializeConnector } from '@web3-react/core'
 import { MetaMask } from '@web3-react/metamask'
@@ -150,6 +151,7 @@ export const [metaMask, hooks] = initializeConnector<MetaMask>(
 ```
 
 #### File: coinbaseWallet.ts
+
 ```ts
 import { initializeConnector } from '@web3-react/core'
 import { CoinbaseWallet } from '@web3-react/coinbase-wallet'
@@ -161,8 +163,8 @@ export const [coinbaseWallet, hooks] = initializeConnector<CoinbaseWallet>(
       options: {
         url,
         appName,
-        appLogoUrl,
-      },
+        appLogoUrl
+      }
     })
 )
 ```
@@ -175,7 +177,7 @@ import { coinbaseWallet } from './connectors/coinbaseWallet'
 
 export const connectorsByName = {
   MetaMask: metaMask,
-  CoinbaseWallet: coinbaseWallet,
+  CoinbaseWallet: coinbaseWallet
 }
 ```
 
@@ -195,7 +197,7 @@ function getLibrary(provider) {
 root.render(
   <StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}>
-        <App />
+      <App />
     </Web3ReactProvider>
   </StrictMode>
 )
@@ -210,26 +212,22 @@ The optional defaultSelectedConnector prop will let you choose the default selec
 ```ts
 import { Web3ReactProvider } from '@web3-react/core'
 import { hooks as metaMaskHooks, metaMask } from './connectors/metaMask'
-import {
-  coinbaseWallet,
-  hooks as coinbaseWalletHooks,
-} from './connectors/coinbaseWallet'
+import { coinbaseWallet, hooks as coinbaseWalletHooks } from './connectors/coinbaseWallet'
 
 const connectors = [
   [metaMask, metaMaskHooks],
-  [coinbaseWallet, coinbaseWalletHooks],
+  [coinbaseWallet, coinbaseWalletHooks]
 ]
 
 root.render(
   <StrictMode>
-    <Web3ReactProvider 
-      connectors={connectors}
-      defaultSelectedConnector={coinbaseWallet}>
-        <App />
+    <Web3ReactProvider connectors={connectors} defaultSelectedConnector={coinbaseWallet}>
+      <App />
     </Web3ReactProvider>
   </StrictMode>
 )
 ```
+
 ### Switching the selectedConnector
 
 You can select what connector you want the Web3ReactProvider to use with a new prop called "setSelectedConnector". If you don't pass it a connector, it will reset to the defaultSelectedConnector if one was provided, or to the priorityConnector.
@@ -237,19 +235,13 @@ You can select what connector you want the Web3ReactProvider to use with a new p
 ```ts
 import { metaMask } from './connectors/metaMask'
 
-const {
-    setSelectedConnector,
-  } = useWeb3React()
+const { setSelectedConnector } = useWeb3React()
 
 return (
-    <>
-      <button onClick={() => setSelectedConnector(metaMask)}>
-          Select
-      </button>
-      <button onClick={() => setSelectedConnector()}>
-          Reset to default
-      </button>
-    </>
+  <>
+    <button onClick={() => setSelectedConnector(metaMask)}>Select</button>
+    <button onClick={() => setSelectedConnector()}>Reset to default</button>
+  </>
 )
 ```
 
@@ -264,141 +256,141 @@ v8 has added and removed some props from the useWeb3React hook. The error prop i
 ```ts
 // v6
 const {
-    // Still in v8
-    connector,
-    chainId,
-    account,
-    active, // Renamed to "isActive"
-    library, // Renamed to "provider"
+  // Still in v8
+  connector,
+  chainId,
+  account,
+  active, // Renamed to "isActive"
+  library, // Renamed to "provider"
 
-    // Removed: Now per "connector"
-    activate,
-    deactivate,
-    setError,
-    error,
+  // Removed: Now per "connector"
+  activate,
+  deactivate,
+  setError,
+  error
 } = useWeb3React()
 
 // v8
 const {
-    // In v8 these helper props are from the selectedConnector of the Web3Provider. 
-    // These are mapped from the selectedConnector within 
-    // the Web3Provider using the useSelected*() hooks.
-    connector,
-    chainId,
-    accountIndex, // New
-    accounts,
-    account,
-    isActivating, // New
-    isActive, // Formerly "active"
-    provider, // Formerly "library"
-    ENSNames, // New
-    ENSName, // New
-    ENSAvatars, // New
-    ENSAvatar, // New
-    addingChain, // New
-    switchingChain, // New
-    watchingAsset, // New
-    
-    // Used to select the connector to be used by the useWeb3React hook. 
-    // Passing no param will reset to the defaultSelectedConnector
-    // if one was provided, or to the priorityConnector.
-    setSelectedConnector,
+  // In v8 these helper props are from the selectedConnector of the Web3Provider.
+  // These are mapped from the selectedConnector within
+  // the Web3Provider using the useSelected*() hooks.
+  connector,
+  chainId,
+  accountIndex, // New
+  accounts,
+  account,
+  isActivating, // New
+  isActive, // Formerly "active"
+  provider, // Formerly "library"
+  ENSNames, // New
+  ENSName, // New
+  ENSAvatars, // New
+  ENSAvatar, // New
+  addingChain, // New
+  switchingChain, // New
+  watchingAsset, // New
 
-    hooks: { 
-        // Notice there is no useSelectedConnector hook,
-        // that's because these useSelected*() hooks take in a 
-        // connector to get the relevant hook from the connector.
-        // This is useful if you wanted to get a connectors hooks through
-        // the Web3Provider without setting it as the selectedConnector.
-        useSelectedStore, // Note: No helper prop above
-        useSelectedChainId,
-        useSelectedAccountIndex,
-        useSelectedAccounts,
-        useSelectedIsActivating,
-        useSelectedAccount,
-        useSelectedIsActive,
-        useSelectedProvider,
-        useSelectedENSNames,
-        useSelectedENSName,
-        useSelectedENSAvatars,
-        useSelectedENSAvatar,
-        useSelectedAddingChain,
-        useSelectedSwitchingChain,
-        useSelectedWatchingAsset,
+  // Used to select the connector to be used by the useWeb3React hook.
+  // Passing no param will reset to the defaultSelectedConnector
+  // if one was provided, or to the priorityConnector.
+  setSelectedConnector,
 
-        // These hooks are taken from the first "active" connector found
-        // in the "connectors" array that you passed into the Web3Provider.
-        usePriorityConnector,
-        usePriorityStore,
-        usePriorityChainId,
-        usePriorityAccountIndex,
-        usePriorityAccounts,
-        usePriorityIsActivating,
-        usePriorityAccount,
-        usePriorityIsActive,
-        usePriorityProvider,
-        usePriorityENSNames,
-        usePriorityENSName,
-        usePriorityENSAvatars,
-        usePriorityENSAvatar,
-        usePriorityAddingChain,
-        usePrioritySwitchingChain,
-        usePriorityWatchingAsset,
-     },
+  hooks: {
+    // Notice there is no useSelectedConnector hook,
+    // that's because these useSelected*() hooks take in a
+    // connector to get the relevant hook from the connector.
+    // This is useful if you wanted to get a connectors hooks through
+    // the Web3Provider without setting it as the selectedConnector.
+    useSelectedStore, // Note: No helper prop above
+    useSelectedChainId,
+    useSelectedAccountIndex,
+    useSelectedAccounts,
+    useSelectedIsActivating,
+    useSelectedAccount,
+    useSelectedIsActive,
+    useSelectedProvider,
+    useSelectedENSNames,
+    useSelectedENSName,
+    useSelectedENSAvatars,
+    useSelectedENSAvatar,
+    useSelectedAddingChain,
+    useSelectedSwitchingChain,
+    useSelectedWatchingAsset,
+
+    // These hooks are taken from the first "active" connector found
+    // in the "connectors" array that you passed into the Web3Provider.
+    usePriorityConnector,
+    usePriorityStore,
+    usePriorityChainId,
+    usePriorityAccountIndex,
+    usePriorityAccounts,
+    usePriorityIsActivating,
+    usePriorityAccount,
+    usePriorityIsActive,
+    usePriorityProvider,
+    usePriorityENSNames,
+    usePriorityENSName,
+    usePriorityENSAvatars,
+    usePriorityENSAvatar,
+    usePriorityAddingChain,
+    usePrioritySwitchingChain,
+    usePriorityWatchingAsset
+  }
 } = useWeb3React()
-
 ```
-### Using the useSelected*() hook
+
+### Using the useSelected\*() hook
 
 ```ts
 import { metaMask } from './connectors/metaMask'
 
 const {
-    hooks: { 
-        useSelectedStore,
-        useSelectedChainId,
-        useSelectedAccountIndex,
-        useSelectedAccounts,
-        useSelectedIsActivating,
-        useSelectedAccount,
-        useSelectedIsActive,
-        useSelectedProvider,
-        useSelectedENSNames,
-        useSelectedENSName,
-        useSelectedENSAvatars,
-        useSelectedENSAvatar,
-        useSelectedAddingChain,
-        useSelectedSwitchingChain,
-        useSelectedWatchingAsset,
-    }
+  hooks: {
+    useSelectedStore,
+    useSelectedChainId,
+    useSelectedAccountIndex,
+    useSelectedAccounts,
+    useSelectedIsActivating,
+    useSelectedAccount,
+    useSelectedIsActive,
+    useSelectedProvider,
+    useSelectedENSNames,
+    useSelectedENSName,
+    useSelectedENSAvatars,
+    useSelectedENSAvatar,
+    useSelectedAddingChain,
+    useSelectedSwitchingChain,
+    useSelectedWatchingAsset
+  }
 } = useWeb3React()
 
 const chainId = useSelectedChainId(metaMask)
 ```
 
-### Using the usePriority*() hook
+### Using the usePriority\*() hook
 
 The Priority connector is the first "active" connector found in the "connectors" array you passed into the Web3ReactProvider.
 
 ```ts
 const {
-    hooks: { 
-        usePriorityStore,
-        usePriorityChainId,
-        usePriorityAccountIndex,
-        usePriorityAccounts,
-        usePriorityIsActivating,
-        usePriorityAccount,
-        usePriorityIsActive,
-        usePriorityProvider,
-        usePriorityENSNames,
-        usePriorityENSName,
-        usePriorityENSAvatars,
-        usePriorityENSAvatar,
-        usePriorityAddingChain,
-        usePrioritySwitchingChain,
-        usePriorityWatchingAsset,
-    }
+  hooks: {
+    usePriorityStore,
+    usePriorityChainId,
+    usePriorityAccountIndex,
+    usePriorityAccounts,
+    usePriorityIsActivating,
+    usePriorityAccount,
+    usePriorityIsActive,
+    usePriorityProvider,
+    usePriorityENSNames,
+    usePriorityENSName,
+    usePriorityENSAvatars,
+    usePriorityENSAvatar,
+    usePriorityAddingChain,
+    usePrioritySwitchingChain,
+    usePriorityWatchingAsset
+  }
 } = useWeb3React()
 
 const chainId = usePriorityChainId()
@@ -411,53 +403,53 @@ With connectors being independent of each other, we can hook into them directly 
 ```ts
 import { hooks } from './connectors/metaMask'
 
-const { 
-    useAccount, 
-    useAccounts, 
-    useChainId, 
-    useAccountIndex,
-    useENSName, 
-    useENSNames, 
-    useENSAvatar, 
-    useENSAvatars, 
-    useIsActivating,
-    useIsActive, 
-    useProvider,
-    useAddingChain,
-    useSwitchingChain,
-    useWatchingAsset
+const {
+  useAccount,
+  useAccounts,
+  useChainId,
+  useAccountIndex,
+  useENSName,
+  useENSNames,
+  useENSAvatar,
+  useENSAvatars,
+  useIsActivating,
+  useIsActive,
+  useProvider,
+  useAddingChain,
+  useSwitchingChain,
+  useWatchingAsset
 } = hooks
 
 const [
-    account, 
-    accounts, 
-    chainId,
-    accountIndex,
-    ENSName,
-    ENSNames,
-    ENSAvatar,
-    ENSAvatars, 
-    isActivating, 
-    isActive, 
-    provider,
-    addingChain,
-    switchingChain,
-    watchingAsset
+  account,
+  accounts,
+  chainId,
+  accountIndex,
+  ENSName,
+  ENSNames,
+  ENSAvatar,
+  ENSAvatars,
+  isActivating,
+  isActive,
+  provider,
+  addingChain,
+  switchingChain,
+  watchingAsset
 ] = [
-    useAccount(), // Derived hook
-    useAccounts(), // State hook
-    useChainId(), // State hook
-    useAccountIndex(), // State hook
-    useENSName(), // Augmented hook
-    useENSNames(), // Augmented hook
-    useENSAvatar(), // Augmented hook
-    useENSAvatars(), // Augmented hook
-    useIsActivating(), // State hook
-    useIsActive(), // Derived hook
-    useProvider(), // Augmented hook
-    useAddingChain(), // State hook
-    useSwitchingChain(), // State hook
-    useWatchingAsset(), // State hook
+  useAccount(), // Derived hook
+  useAccounts(), // State hook
+  useChainId(), // State hook
+  useAccountIndex(), // State hook
+  useENSName(), // Augmented hook
+  useENSNames(), // Augmented hook
+  useENSAvatar(), // Augmented hook
+  useENSAvatars(), // Augmented hook
+  useIsActivating(), // State hook
+  useIsActive(), // Derived hook
+  useProvider(), // Augmented hook
+  useAddingChain(), // State hook
+  useSwitchingChain(), // State hook
+  useWatchingAsset() // State hook
 ]
 ```
 
@@ -467,16 +459,16 @@ You can make exposing per connector hooks easier by putting the above code into 
 import { hooks: metaMaskHooks } from './connectors/metaMask'
 
 const {
-    account, 
-    accounts, 
+    account,
+    accounts,
     chainId,
     accountIndex,
-    ENSName, 
-    ENSNames, 
+    ENSName,
+    ENSNames,
     ENSAvatar,
-    ENSAvatars, 
-    isActivating, 
-    isActive, 
+    ENSAvatars,
+    isActivating,
+    isActive,
     provider,
     addingChain,
     switchingChain,
@@ -485,17 +477,17 @@ const {
 
 // Helper
 function getPropsFromConnectorHooks(hooks: Web3ReactHooks) {
-    const { 
-        useAccount, 
-        useAccounts, 
-        useChainId, 
+    const {
+        useAccount,
+        useAccounts,
+        useChainId,
         useAccountIndex,
-        useENSName, 
+        useENSName,
         useENSNames,
-        useENSAvatar, 
-        useENSAvatars, 
+        useENSAvatar,
+        useENSAvatars,
         useIsActivating,
-        useIsActive, 
+        useIsActive,
         useProvider,
         useAddingChain,
         useSwitchingChain,
@@ -503,16 +495,16 @@ function getPropsFromConnectorHooks(hooks: Web3ReactHooks) {
     } = hooks
 
     const [
-        account, 
-        accounts, 
+        account,
+        accounts,
         chainId,
         accountIndex,
-        ENSName, 
-        ENSNames, 
+        ENSName,
+        ENSNames,
         ENSAvatar,
-        ENSAvatars, 
-        isActivating, 
-        isActive, 
+        ENSAvatars,
+        isActivating,
+        isActive,
         provider,
         addingChain,
         switchingChain,
@@ -535,16 +527,16 @@ function getPropsFromConnectorHooks(hooks: Web3ReactHooks) {
     ]
 
     return {
-        account, 
-        accounts, 
-        chainId, 
+        account,
+        accounts,
+        chainId,
         accountIndex,
-        ENSName, 
-        ENSNames, 
+        ENSName,
+        ENSNames,
         ENSAvatar,
-        ENSAvatars, 
-        isActivating, 
-        isActive, 
+        ENSAvatars,
+        isActivating,
+        isActive,
         provider,
         addingChain,
         switchingChain,
@@ -552,25 +544,18 @@ function getPropsFromConnectorHooks(hooks: Web3ReactHooks) {
     }
 }
 ```
+
 ### Using the AddingChain, SwitchingChain, and WatchingAsset Hooks
 
 ```ts
 const {
-    hooks: {
-        useSelectedAddingChain,
-        useSelectedSwitchingChain,
-        useSelectedWatchingAsset,
-    }
+  hooks: { useSelectedAddingChain, useSelectedSwitchingChain, useSelectedWatchingAsset }
 } = useWeb3React()
 
-const [
-    addingChain,
-    switchingChain,
-    watchingAsset
-] = [
-    useSelectedAddingChain(),
-    useSelectedSwitchingChain(),
-    useSelectedWatchingAsset(),
+const [addingChain, switchingChain, watchingAsset] = [
+  useSelectedAddingChain(),
+  useSelectedSwitchingChain(),
+  useSelectedWatchingAsset()
 ]
 
 const { chainId } = addingChain ?? {}
@@ -580,7 +565,6 @@ const { address, name, decimals, image } = watchingAsset ?? {}
 const isPendingChainAdd = !!addingChain
 const isPendingChainSwitch = !!switchingChain
 const isPendingAssetWatch = !!watchingAsset
-
 ```
 
 ## Connectors
@@ -613,7 +597,7 @@ connector.activate()
 // If the connector is already active, it will still change the chain.
 connector.activate(137)
 
-// You may also provide the chains configuration instead of the chainId. 
+// You may also provide the chains configuration instead of the chainId.
 // This will allow the connector to add the chain if the connector isn't configured for the given chain.
 // If the chain already exists, it will simply change to the chain.
 // If you passed "chainParameters" to the connectors constructor, you may pass only chainId, as above.
@@ -658,15 +642,16 @@ You can easily add a token (ERC20 compliant) to the connector.
 // of the token info, if you so choose to.
 
 const assetToWatch: WatchAssetParameters = {
-    // If chainId is provided the connector will switch to the correct chainId before adding the token
-    // You may also pass the AddEthereumChainParameter config to the chainId prop incase the user
-    // doesn't have the chain configured in their wallet. 
-    // It will will add the chain, switch to the chain, then add the asset the user wants to watch.
-    desiredChainIdOrChainParameters: 137, // Optional
-    address: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
-    symbol: 'WMATIC',
-    decimals: 18, 
-    image: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png'
+  // If chainId is provided the connector will switch to the correct chainId before adding the token
+  // You may also pass the AddEthereumChainParameter config to the chainId prop incase the user
+  // doesn't have the chain configured in their wallet.
+  // It will will add the chain, switch to the chain, then add the asset the user wants to watch.
+  desiredChainIdOrChainParameters: 137, // Optional
+  address: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+  symbol: 'WMATIC',
+  decimals: 18,
+  image:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png'
 }
 
 // Adding WMATIC to the connector on chainId 137.

@@ -58,7 +58,7 @@ export class GnosisSafe extends Connector {
 
     // kick off import early to minimize waterfalls
     const SafeAppProviderPromise = import('@safe-global/safe-apps-provider').then(
-      ({ SafeAppProvider }) => SafeAppProvider,
+      ({ SafeAppProvider }) => SafeAppProvider
     )
 
     await (this.eagerConnection = import('@safe-global/safe-apps-sdk').then(async (m) => {
@@ -66,7 +66,7 @@ export class GnosisSafe extends Connector {
 
       const safe = await Promise.race([
         this.sdk.safe.getInfo(),
-        new Promise<undefined>((resolve) => setTimeout(resolve, 500)),
+        new Promise<undefined>((resolve) => setTimeout(resolve, 500))
       ])
 
       if (safe) {
@@ -89,7 +89,7 @@ export class GnosisSafe extends Connector {
       this.actions.update({
         chainId: this.provider.chainId,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)],
+        accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)]
       })
     } catch (error) {
       cancelActivation()
@@ -111,7 +111,7 @@ export class GnosisSafe extends Connector {
         this.actions.update({
           chainId: this.provider.chainId,
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)],
+          accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)]
         })
       })
       .catch((error) => {

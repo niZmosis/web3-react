@@ -19,7 +19,13 @@ function Blockies({ account, diameter, alt }: { account: string; diameter: numbe
 
   return (
     <div
-      style={{ borderRadius: diameter, overflow: 'hidden', height: diameter, minWidth: diameter, marginRight: '0.5em' }}
+      style={{
+        borderRadius: diameter,
+        overflow: 'hidden',
+        height: diameter,
+        minWidth: diameter,
+        marginRight: '0.5em'
+      }}
     >
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {dataUrl ? <Image height={diameter} width={diameter} src={dataUrl} alt={alt || ''} /> : null}

@@ -36,7 +36,7 @@ export type Web3ReactPriorityHooks = ReturnType<typeof getPriorityConnectorHooks
  * @returns [connector, hooks, store] - The initialized connector, a variety of hooks, and a zustand store.
  */
 export function initializeConnector<T extends Connector>(
-  f: (actions: Actions) => T,
+  f: (actions: Actions) => T
 ): [T, Web3ReactHooks, Web3ReactStore] {
   const [store, actions] = createWeb3ReactStoreAndActions()
 
@@ -118,7 +118,7 @@ export function getSelectedConnectorHooks(
    */
   function useSelectedProvider<T extends BaseProvider = Web3Provider>(
     connector: Connector,
-    network?: Networkish,
+    network?: Networkish
   ): T | undefined {
     const index = getIndex(connector)
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -130,7 +130,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSNames }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSNames(i === index ? provider : undefined),
+      useENSNames(i === index ? provider : undefined)
     )
     return values[index]
   }
@@ -146,7 +146,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatars }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatars(i === index ? provider : undefined, ensNames),
+      useENSAvatars(i === index ? provider : undefined, ensNames)
     )
     return values[index]
   }
@@ -155,7 +155,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatar }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatar(i === index ? provider : undefined, ensName),
+      useENSAvatar(i === index ? provider : undefined, ensName)
     )
     return values[index]
   }
@@ -193,7 +193,7 @@ export function getSelectedConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset,
+    useSelectedWatchingAsset
   }
 }
 
@@ -222,7 +222,7 @@ export function getPriorityConnectorHooks(
     useSelectedENSAvatar,
     useSelectedAddingChain,
     useSelectedSwitchingChain,
-    useSelectedWatchingAsset,
+    useSelectedWatchingAsset
   } = getSelectedConnectorHooks(...initializedConnectors)
 
   function usePriorityConnector() {
@@ -328,7 +328,7 @@ export function getPriorityConnectorHooks(
     usePriorityENSAvatar,
     usePriorityAddingChain,
     usePrioritySwitchingChain,
-    usePriorityWatchingAsset,
+    usePriorityWatchingAsset
   }
 }
 
@@ -338,7 +338,7 @@ const ACTIVATING = ({ activating }: Web3ReactState) => activating
 
 const ACCOUNTS_EQUALITY_CHECKER: <T extends Web3ReactState['accounts']>(a: T, b: T) => boolean = (
   oldAccounts,
-  newAccounts,
+  newAccounts
 ) =>
   (oldAccounts === undefined && newAccounts === undefined) ||
   (oldAccounts !== undefined &&
@@ -381,7 +381,7 @@ function getStateHooks(store: Web3ReactStore) {
     useAccountIndex,
     useAddingChain,
     useSwitchingChain,
-    useWatchingAsset,
+    useWatchingAsset
   }
 }
 
@@ -389,7 +389,7 @@ function getDerivedHooks({
   useChainId,
   useAccounts,
   useAccountIndex,
-  useIsActivating,
+  useIsActivating
 }: ReturnType<typeof getStateHooks>) {
   function useAccount(): string | undefined {
     const accounts = useAccounts()
@@ -407,7 +407,7 @@ function getDerivedHooks({
     return computeIsActive({
       chainId,
       accounts,
-      activating,
+      activating
     })
   }
 
@@ -480,7 +480,7 @@ function useAvatar(provider?: BaseProvider, ensNames?: (string | null)[]): (stri
 function getAugmentedHooks<T extends Connector>(
   connector: T,
   { useAccounts, useChainId }: ReturnType<typeof getStateHooks>,
-  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>,
+  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>
 ) {
   /**
    * Avoid type erasure by returning the most qualified type if not otherwise set.

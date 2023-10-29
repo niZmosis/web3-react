@@ -44,7 +44,7 @@ describe('WalletConnect', () => {
       expect(mockProvider.eth_accounts).not.toHaveBeenCalled()
       expect(mockProvider.eth_chainId).toHaveBeenCalled()
       expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-        mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
+        mockProvider.eth_requestAccounts.mock.invocationCallOrder[0]
       )
 
       expect(store.getState()).toEqual({
@@ -54,7 +54,7 @@ describe('WalletConnect', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
   })

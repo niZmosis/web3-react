@@ -18,10 +18,10 @@ export function isArrayOneOrMore<T>(input: T[] = []): input is ArrayOneOrMore<T>
  */
 export async function getBestUrlMap(
   rpcMap: Record<string, string | string[]>,
-  timeout: number,
+  timeout: number
 ): Promise<{ [chainId: string]: string }> {
   return Object.fromEntries(
-    await Promise.all(Object.entries(rpcMap).map(async ([chainId, map]) => [chainId, await getBestUrl(map, timeout)])),
+    await Promise.all(Object.entries(rpcMap).map(async ([chainId, map]) => [chainId, await getBestUrl(map, timeout)]))
   )
 }
 
@@ -36,7 +36,7 @@ async function getBestUrl(urls: string | string[], timeout: number): Promise<str
 
   const [HttpConnection, JsonRpcProvider] = await Promise.all([
     import('@walletconnect/jsonrpc-http-connection').then(({ HttpConnection }) => HttpConnection),
-    import('@walletconnect/jsonrpc-provider').then(({ JsonRpcProvider }) => JsonRpcProvider),
+    import('@walletconnect/jsonrpc-provider').then(({ JsonRpcProvider }) => JsonRpcProvider)
   ])
 
   // the below returns the first url for which there's been a successful call, prioritized by index
@@ -101,7 +101,7 @@ async function getBestUrl(urls: string | string[], timeout: number): Promise<str
  */
 export function getChainsWithDefault(
   chains: number[] | ArrayOneOrMore<number> | undefined,
-  defaultChainId: number | undefined,
+  defaultChainId: number | undefined
 ) {
   if (!chains || !defaultChainId || chains.length === 0) {
     return chains
@@ -109,7 +109,7 @@ export function getChainsWithDefault(
   const idx = chains.indexOf(defaultChainId)
   if (idx === -1) {
     throw new Error(
-      `Invalid chainId ${defaultChainId}. Make sure default chain is included in "chains" - chains specified in "optionalChains" may not be selected as the default, as they may not be supported by the wallet.`,
+      `Invalid chainId ${defaultChainId}. Make sure default chain is included in "chains" - chains specified in "optionalChains" may not be selected as the default, as they may not be supported by the wallet.`
     )
   }
 

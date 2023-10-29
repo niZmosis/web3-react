@@ -14,7 +14,7 @@ const {
   useENSAvatars,
   useAddingChain,
   useSwitchingChain,
-  useWatchingAsset,
+  useWatchingAsset
 } = hooks
 
 export default function MetaMaskCard({ hide }: { hide: boolean }) {

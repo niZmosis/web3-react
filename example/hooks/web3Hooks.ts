@@ -21,8 +21,13 @@ export function useBlockNumber(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   subscribe?: boolean,
-  skip?: boolean,
-): { blockNumber: number; isLoading: boolean; error: Error; fetch: () => Promise<void> } {
+  skip?: boolean
+): {
+  blockNumber: number
+  isLoading: boolean
+  error: Error
+  fetch: () => Promise<void>
+} {
   const [error, setError] = useState<Error>(undefined)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [blockNumber, setBlockNumber] = useState<number>(0)
@@ -129,7 +134,7 @@ export function useBlockNumber(
     skip,
     getBlock,
     connector,
-    chainId, // Forces fetch on chain change
+    chainId // Forces fetch on chain change
   ])
 
   return { blockNumber, isLoading, error, fetch }
@@ -140,12 +145,17 @@ export function useBalances(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   accounts?: string[],
-  subscribe?: boolean,
-): { balances: BigNumber[]; isLoading: boolean; error: Error; fetch: () => Promise<void> } {
+  subscribe?: boolean
+): {
+  balances: BigNumber[]
+  isLoading: boolean
+  error: Error
+  fetch: () => Promise<void>
+} {
   const [error, setError] = useState<Error>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [balances, setBalances] = useState<BigNumber[]>(
-    new Array<BigNumber>(accounts?.length ?? 0).fill(BigNumber.from(0)),
+    new Array<BigNumber>(accounts?.length ?? 0).fill(BigNumber.from(0))
   )
 
   // Used to update balance on every block update, if subscribed
@@ -199,8 +209,8 @@ export function useBalances(
       const balances = (
         await Promise.all(
           accounts.map((account: string) =>
-            connector.customProvider.trx.getBalance(connector.convertAddressTo41(account)),
-          ),
+            connector.customProvider.trx.getBalance(connector.convertAddressTo41(account))
+          )
         )
       ).map((amountSun) => BigNumber.from(amountSun))
 
@@ -248,7 +258,7 @@ export function useBalances(
   }, [
     getBalances,
     blockNumber, // Used to trigger on every block, if subscribed.
-    chainId, // Forces fetch on chain change.
+    chainId // Forces fetch on chain change.
   ])
 
   return { balances, isLoading, error, fetch }
@@ -262,7 +272,7 @@ export function useBalance(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   account?: string,
-  subscribe?: boolean,
+  subscribe?: boolean
 ): { balance: BigNumber; isLoading: boolean; fetch: () => Promise<void> } {
   const { balances, isLoading, fetch } = useBalances(connector, provider, chainId, [account], subscribe)
 
@@ -277,7 +287,7 @@ export function useSignMessage({
   provider,
   account,
   onSigned,
-  onRejected,
+  onRejected
 }: {
   connector?: Connector
   provider?: Web3Provider
@@ -336,7 +346,7 @@ export function useSignMessage({
 export function useTransactionCount({
   provider,
   account,
-  fetchOnMount,
+  fetchOnMount
 }: {
   provider?: Web3Provider
   account?: string
@@ -379,6 +389,6 @@ export function useTransactionCount({
   return {
     transactionCount,
     isLoading,
-    fetch,
+    fetch
   }
 }

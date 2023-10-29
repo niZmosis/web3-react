@@ -24,7 +24,7 @@ const tabIndex = {
   EVM: 1,
   Cardano: 2,
   Solana: 3,
-  Tron: 4,
+  Tron: 4
 }
 
 export default function CardContainer() {
@@ -70,12 +70,12 @@ export default function CardContainer() {
           border: '1px solid',
           borderRadius: '1rem',
           borderColor: '#30363d',
-          backgroundColor: 'rgb(14,16,22)',
+          backgroundColor: 'rgb(14,16,22)'
         }}
       >
         <Tabs
           data={tabTitles.map((title) => ({
-            title,
+            title
           }))}
           selectedIndex={selectedIndex}
           setSelectedIndex={handleSelectedIndex}
@@ -87,7 +87,7 @@ export default function CardContainer() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(20em, 1fr))',
           fontFamily: 'sans-serif',
-          color: 'rgb(201, 209, 217',
+          color: 'rgb(201, 209, 217'
         }}
       >
         <SelectedConnectorCard hide={false} />

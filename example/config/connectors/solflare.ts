@@ -4,5 +4,5 @@ import { SolflareWallet } from '@web3-react/solflare'
 import type { Web3ReactStore } from '@web3-react/types'
 
 export const [solflare, hooks]: [SolflareWallet, Web3ReactHooks, Web3ReactStore] = initializeConnector<SolflareWallet>(
-  (actions) => new SolflareWallet({ actions }),
+  (actions) => new SolflareWallet({ actions })
 )

@@ -9,14 +9,14 @@ export class MockJsonRpcProvider {
 
   public getNetwork() {
     return Promise.resolve({
-      chainId: this.chainId === undefined ? undefined : Number.parseInt(this.chainId, 16),
+      chainId: this.chainId === undefined ? undefined : Number.parseInt(this.chainId, 16)
     })
   }
 }
 
 jest.mock('@ethersproject/providers', () => ({
   JsonRpcProvider: MockJsonRpcProvider,
-  FallbackProvider: class MockFallbackProvider extends MockJsonRpcProvider {},
+  FallbackProvider: class MockFallbackProvider extends MockJsonRpcProvider {}
 }))
 
 const chainId = '0x1'
@@ -43,7 +43,7 @@ describe('Network', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
 
@@ -66,7 +66,7 @@ describe('Network', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
     })
@@ -78,7 +78,7 @@ describe('Network', () => {
       ;[store, actions] = createWeb3ReactStoreAndActions()
       connector = new Network({
         actions,
-        urlMap: { 1: ['https://1.mock.url', 'https://2.mock.url'] },
+        urlMap: { 1: ['https://1.mock.url', 'https://2.mock.url'] }
       })
     })
 
@@ -100,7 +100,7 @@ describe('Network', () => {
         error: undefined,
         addingChain: undefined,
         switchingChain: undefined,
-        watchingAsset: undefined,
+        watchingAsset: undefined
       })
     })
   })
@@ -113,8 +113,8 @@ describe('Network', () => {
         actions,
         urlMap: {
           1: 'https://mainnet.mock.url',
-          2: 'https://testnet.mock.url',
-        },
+          2: 'https://testnet.mock.url'
+        }
       })
     })
 
@@ -134,7 +134,7 @@ describe('Network', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
 
@@ -153,7 +153,7 @@ describe('Network', () => {
           error: undefined,
           addingChain: undefined,
           switchingChain: undefined,
-          watchingAsset: undefined,
+          watchingAsset: undefined
         })
       })
     })

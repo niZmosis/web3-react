@@ -13,13 +13,13 @@ type EthereumProviderOptions = Parameters<typeof EthereumProvider.init>[0]
 
 const createTestEnvironment = (
   opts: Omit<WalletConnectOptions, 'projectId' | 'showQrModal'>,
-  defaultChainId?: number,
+  defaultChainId?: number
 ) => {
   const [store, actions] = createWeb3ReactStoreAndActions()
   const connector = new WalletConnect({
     actions,
     defaultChainId,
-    options: { ...opts, projectId: '', showQrModal: false },
+    options: { ...opts, projectId: '', showQrModal: false }
   })
   return { connector, store }
 }
@@ -50,7 +50,7 @@ class MockWalletConnectProvider extends MockEIP1193Provider<number> {
 
   /** per {@link https://eips.ethereum.org/EIPS/eip-3326#specification EIP-3326} */
   public eth_switchEthereumChain = jest.fn(
-    (/* eslint-disable-line @typescript-eslint/no-unused-vars */ _args: string) => null,
+    (/* eslint-disable-line @typescript-eslint/no-unused-vars */ _args: string) => null
   )
 
   public request(x: RequestArguments | SwitchEthereumChainRequestArguments): Promise<unknown> {
@@ -82,9 +82,9 @@ class MockWalletConnectProvider extends MockEIP1193Provider<number> {
           // We read `accounts` to check what chains from `optionalChains` did we connect to
           namespaces: {
             eip155: {
-              accounts: this.getConnectedChains().map((chainId) => `eip155:${chainId}:0x1`),
-            },
-          },
+              accounts: this.getConnectedChains().map((chainId) => `eip155:${chainId}:0x1`)
+            }
+          }
         }
       : undefined
   }
@@ -126,7 +126,7 @@ describe('WalletConnect', () => {
     test('should be able to initialize with only optionalChains', async () => {
       const { connector } = createTestEnvironment({
         chains: undefined,
-        optionalChains: chains,
+        optionalChains: chains
       })
       connector.activate()
       connector.activate()
@@ -161,14 +161,14 @@ describe('WalletConnect', () => {
 
     test('should throw an error when using optional chain as default', () => {
       expect(() => createTestEnvironment({ chains, optionalChains: [8] }, 8)).toThrow(
-        'Invalid chainId 8. Make sure default chain is included in "chains" - chains specified in "optionalChains" may not be selected as the default, as they may not be supported by the wallet.',
+        'Invalid chainId 8. Make sure default chain is included in "chains" - chains specified in "optionalChains" may not be selected as the default, as they may not be supported by the wallet.'
       )
     })
 
     test('should switch to an optional chain', async () => {
       const { connector, store } = createTestEnvironment({
         chains,
-        optionalChains: [8],
+        optionalChains: [8]
       })
       await connector.activate()
       await connector.activate(8)
@@ -179,7 +179,7 @@ describe('WalletConnect', () => {
       jest.spyOn(MockWalletConnectProvider.prototype, 'getConnectedChains').mockReturnValue(chains)
       const { connector } = createTestEnvironment({
         chains,
-        optionalChains: [8],
+        optionalChains: [8]
       })
       await connector.activate()
       await expect(connector.activate(8)).rejects.toThrow()
@@ -198,7 +198,7 @@ describe('WalletConnect', () => {
       await connector.activate(2)
       await connector.activate(2)
       expect(
-        (connector.provider as unknown as MockWalletConnectProvider).eth_switchEthereumChain,
+        (connector.provider as unknown as MockWalletConnectProvider).eth_switchEthereumChain
       ).toHaveBeenCalledTimes(0)
     })
   })

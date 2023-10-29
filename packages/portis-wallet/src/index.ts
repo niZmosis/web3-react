@@ -19,7 +19,7 @@ const chainIdToNetwork: { [network: number]: string } = {
   122: 'fuse',
   163: 'lightstreams',
   137: 'matic',
-  80001: 'maticMumbai',
+  80001: 'maticMumbai'
 }
 
 interface PortisProvider extends Provider {
@@ -64,7 +64,7 @@ export class PortisWallet extends Connector {
     super(actions, onError, {
       ...connectorOptions,
       supportedChainIds:
-        connectorOptions?.supportedChainIds ?? Object.keys(chainIdToNetwork).map((chainId) => Number(chainId)),
+        connectorOptions?.supportedChainIds ?? Object.keys(chainIdToNetwork).map((chainId) => Number(chainId))
     })
 
     this.options = options
@@ -122,13 +122,13 @@ export class PortisWallet extends Connector {
     try {
       const [chainId, accounts] = (await Promise.all([
         this.provider.request({ method: 'eth_chainId' }),
-        this.provider.request({ method: 'eth_accounts' }),
+        this.provider.request({ method: 'eth_accounts' })
       ])) as [string, string[]]
 
       return this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
-        accountIndex: accounts?.length ? 0 : undefined,
+        accountIndex: accounts?.length ? 0 : undefined
       })
     } catch (error) {
       return cancelActivation()
@@ -151,7 +151,7 @@ export class PortisWallet extends Connector {
     try {
       const [chainId, accounts] = await Promise.all([
         this.provider.send('eth_chainId') as Promise<string>,
-        this.provider.send('eth_accounts') as Promise<string[]>,
+        this.provider.send('eth_accounts') as Promise<string[]>
       ])
 
       const receivedChainId = this.parseChainId(chainId)
@@ -161,7 +161,7 @@ export class PortisWallet extends Connector {
         return this.actions.update({
           chainId: receivedChainId,
           accounts,
-          accountIndex: accounts?.length ? 0 : undefined,
+          accountIndex: accounts?.length ? 0 : undefined
         })
       }
 
@@ -173,7 +173,7 @@ export class PortisWallet extends Connector {
         this.actions.update({
           chainId: desiredChainId,
           accounts,
-          accountIndex: accounts ? 0 : undefined,
+          accountIndex: accounts ? 0 : undefined
         })
 
         return this.activate(desiredChainId)

@@ -21,21 +21,24 @@ type ColorOptions = {
   outlineColor: string
 }
 
-const grayColors: ColorOptions = { backgroundColor: 'rgba(255, 255, 255, 0.1)', outlineColor: 'transparent' }
+const grayColors: ColorOptions = {
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  outlineColor: 'transparent'
+}
 const greenColors: ColorOptions = {
   backgroundColor: 'rgba(56, 253, 72, 0.15)',
-  outlineColor: 'rgba(56, 253, 72, 0.4)',
+  outlineColor: 'rgba(56, 253, 72, 0.4)'
 }
 const orangeColors: ColorOptions = {
   backgroundColor: 'rgba(160, 80, 0, 0.15)',
-  outlineColor: 'rgb(160, 80, 21)',
+  outlineColor: 'rgb(160, 80, 21)'
 }
 
 function getSelectionColorAndOutline({
   index,
   accounts,
   accountIndex,
-  connector,
+  connector
 }: {
   index: number
   accounts: string[]
@@ -88,7 +91,7 @@ export default function AccountsView({
   chainId,
   ENSNames,
   ENSAvatars,
-  showOnlySelected,
+  showOnlySelected
 }: {
   connector: Connector
   provider?: ReturnType<Web3ReactHooks['useProvider']>
@@ -108,7 +111,7 @@ export default function AccountsView({
       account: address,
       ensName: ENSNames?.[index] ?? '',
       ensAvatar: ENSAvatars?.[index] ?? '',
-      balance: balances?.[index] ?? '0',
+      balance: balances?.[index] ?? '0'
     }))
     .slice(showOnlySelected ? accountIndex : 0, showOnlySelected ? Number(accountIndex) + 1 : accounts.length)
 
@@ -121,7 +124,7 @@ export default function AccountsView({
             maxHeight: '394px',
             overflowY: 'auto',
             padding: '0 16px',
-            boxSizing: 'border-box',
+            boxSizing: 'border-box'
           }}
         >
           <div
@@ -129,7 +132,7 @@ export default function AccountsView({
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              justifyContent: 'center',
+              justifyContent: 'center'
             }}
           >
             {accountData.map((accountInfo, index) => {
@@ -141,7 +144,7 @@ export default function AccountsView({
                 index,
                 accounts,
                 accountIndex,
-                connector,
+                connector
               })
 
               return (
@@ -163,7 +166,7 @@ export default function AccountsView({
                     flexDirection: 'column',
                     justifyContent: 'space-around',
                     alignItems: 'flex-start',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                   }}
                   onClick={() => setAccountIndex(connector, index)}
                 >
@@ -174,7 +177,7 @@ export default function AccountsView({
                       alignItems: 'center',
                       overflow: 'hidden',
                       maxWidth: '100%',
-                      marginBottom: '0.5em',
+                      marginBottom: '0.5em'
                     }}
                   >
                     {ensAvatar ? (
@@ -183,7 +186,11 @@ export default function AccountsView({
                         src={ensAvatar}
                         width={24}
                         height={24}
-                        style={{ marginRight: '8px', borderRadius: '50%', overflow: 'hidden' }}
+                        style={{
+                          marginRight: '8px',
+                          borderRadius: '50%',
+                          overflow: 'hidden'
+                        }}
                       />
                     ) : (
                       <Blockies diameter={24} account={account} alt={account} />
@@ -194,16 +201,24 @@ export default function AccountsView({
                     style={{
                       display: 'inline-flex',
                       justifyContent: 'flex-start',
-                      alignItems: 'center',
+                      alignItems: 'center'
                     }}
                   >
-                    <p style={{ margin: 0, fontSize: '0.8em', marginRight: '0.5em' }}>Ξ</p>
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: '0.8em',
+                        marginRight: '0.5em'
+                      }}
+                    >
+                      Ξ
+                    </p>
                     {isLoading ? (
                       <CircleLoader />
                     ) : !!balance && !!chainId ? (
                       <p style={{ margin: 0, fontSize: '0.8em' }}>
                         {` ${new Intl.NumberFormat(undefined).format(
-                          Number(formatUnits(balance, CHAINS[chainId].nativeCurrency.decimals)),
+                          Number(formatUnits(balance, CHAINS[chainId].nativeCurrency.decimals))
                         )}
                     `}
                       </p>

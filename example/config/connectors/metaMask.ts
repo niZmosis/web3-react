@@ -6,6 +6,10 @@ import type { Web3ReactReduxStore } from '@web3-react/types'
 import { allAddChainParameters } from '../../utils/chains'
 
 export const [metaMask, hooks, store]: [MetaMask, Web3ReactHooks, Web3ReactReduxStore] = initializeConnector<MetaMask>(
-  (actions) => new MetaMask({ actions, connectorOptions: { chainParameters: allAddChainParameters } }),
-  'metaMask',
+  (actions) =>
+    new MetaMask({
+      actions,
+      connectorOptions: { chainParameters: allAddChainParameters }
+    }),
+  'metaMask'
 )

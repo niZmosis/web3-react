@@ -12,7 +12,7 @@ const {
   useProvider,
   useAddingChain,
   useSwitchingChain,
-  useWatchingAsset,
+  useWatchingAsset
 } = hooks
 
 export default function BscWalletCard({ hide }: { hide: boolean }) {

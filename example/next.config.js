@@ -5,26 +5,26 @@ const nextConfig = {
   env: {
     infuraKey: process.env.INFURA_KEY,
     alchemyKey: process.env.ALCHEMY_KEY,
-    walletConnectProjectId: process.env.WALLET_CONNECT_PROJECT_ID,
+    walletConnectProjectId: process.env.WALLET_CONNECT_PROJECT_ID
   },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.githubusercontent.com',
-      },
-    ],
+        hostname: '**.githubusercontent.com'
+      }
+    ]
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.externals.push({
       'utf-8-validate': 'commonjs utf-8-validate',
-      bufferutil: 'commonjs bufferutil',
+      bufferutil: 'commonjs bufferutil'
     })
 
     config.experiments = { ...config.experiments, asyncWebAssembly: true }
 
     return config
-  },
+  }
 }
 
 module.exports = nextConfig

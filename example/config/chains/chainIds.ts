@@ -82,7 +82,7 @@ export const mainChains = [
   solMainChainId,
   thunderMainChainId,
   tronMainChainId,
-  ubiqMainChainId,
+  ubiqMainChainId
 ]
 
 export const testChains = [
@@ -107,9 +107,9 @@ export const testChains = [
   solTestChainId,
   thunderTestChainId,
   tronShastaChainId,
-  tronNileChainId,
+  tronNileChainId
 ]
 
 export const allEvmChainIds = [...mainChains, ...testChains].filter(
-  (chainId) => ![...tronChains, ...solChains, ...cardanoChains].includes(chainId),
+  (chainId) => ![...tronChains, ...solChains, ...cardanoChains].includes(chainId)
 )
