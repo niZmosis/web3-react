@@ -1,7 +1,7 @@
 import { URI_AVAILABLE } from '@web3-react/walletconnect-v2'
 import { useEffect, useState } from 'react'
 
-import { hooks, walletConnectV2 } from '../../connectors/walletConnectV2'
+import { hooks, walletConnectV2 } from '../../../config/connectors/walletConnectV2'
 import { Card } from '../Card'
 
 const { useChainId, useAccounts, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
