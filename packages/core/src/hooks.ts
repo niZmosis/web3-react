@@ -4,6 +4,7 @@ import { createWeb3ReactStoreAndActions } from '@web3-react/store'
 import type { Actions, Connector, Web3ReactState, Web3ReactStore } from '@web3-react/types'
 import { useEffect, useMemo, useState } from 'react'
 import { useStore } from 'zustand'
+import { useStoreWithEqualityFn } from 'zustand/traditional'
 
 let DynamicProvider: typeof Web3Provider | null | undefined
 async function importProvider(): Promise<void> {
@@ -35,12 +36,11 @@ export type Web3ReactPriorityHooks = ReturnType<typeof getPriorityConnectorHooks
  * @returns [connector, hooks, store] - The initialized connector, a variety of hooks, and a zustand store.
  */
 export function initializeConnector<T extends Connector>(
-  f: (actions: Actions) => T
+  f: (actions: Actions) => T,
 ): [T, Web3ReactHooks, Web3ReactStore] {
   const [store, actions] = createWeb3ReactStoreAndActions()
 
   const connector = f(actions)
-
   const stateHooks = getStateHooks(store)
   const derivedHooks = getDerivedHooks(stateHooks)
   const augmentedHooks = getAugmentedHooks<T>(connector, stateHooks, derivedHooks)
@@ -118,7 +118,7 @@ export function getSelectedConnectorHooks(
    */
   function useSelectedProvider<T extends BaseProvider = Web3Provider>(
     connector: Connector,
-    network?: Networkish
+    network?: Networkish,
   ): T | undefined {
     const index = getIndex(connector)
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -130,7 +130,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSNames }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSNames(i === index ? provider : undefined)
+      useENSNames(i === index ? provider : undefined),
     )
     return values[index]
   }
@@ -146,7 +146,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatars }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatars(i === index ? provider : undefined, ensNames)
+      useENSAvatars(i === index ? provider : undefined, ensNames),
     )
     return values[index]
   }
@@ -155,7 +155,7 @@ export function getSelectedConnectorHooks(
     const index = getIndex(connector)
     const values = initializedConnectors.map(([, { useENSAvatar }], i) =>
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useENSAvatar(i === index ? provider : undefined, ensName)
+      useENSAvatar(i === index ? provider : undefined, ensName),
     )
     return values[index]
   }
@@ -332,30 +332,34 @@ export function getPriorityConnectorHooks(
   }
 }
 
+const CHAIN_ID = ({ chainId }: Web3ReactState) => chainId
+const ACCOUNTS = ({ accounts }: Web3ReactState) => accounts
+const ACTIVATING = ({ activating }: Web3ReactState) => activating
+
+const ACCOUNTS_EQUALITY_CHECKER: <T extends Web3ReactState['accounts']>(a: T, b: T) => boolean = (
+  oldAccounts,
+  newAccounts,
+) =>
+  (oldAccounts === undefined && newAccounts === undefined) ||
+  (oldAccounts !== undefined &&
+    oldAccounts.length === newAccounts?.length &&
+    oldAccounts.every((oldAccount, i) => oldAccount === newAccounts[i]))
+
 function getStateHooks(store: Web3ReactStore) {
   function useChainId(): Web3ReactState['chainId'] {
-    return useStore(store, ({ chainId }) => chainId)
+    return useStore(store, CHAIN_ID)
   }
 
   function useAccounts(): Web3ReactState['accounts'] {
-    return useStore(
-      store,
-      ({ accounts }) => accounts,
-      // Equality Checker
-      (oldAccounts?: string[], newAccounts?: string[]) =>
-        (oldAccounts === undefined && newAccounts === undefined) ||
-        (oldAccounts !== undefined &&
-          oldAccounts.length === newAccounts?.length &&
-          oldAccounts.every((oldAccount: string, i: number) => oldAccount === newAccounts[i]))
-    )
+    return useStoreWithEqualityFn(store, ACCOUNTS, ACCOUNTS_EQUALITY_CHECKER)
+  }
+
+  function useIsActivating(): Web3ReactState['activating'] {
+    return useStore(store, ACTIVATING)
   }
 
   function useAccountIndex(): Web3ReactState['accountIndex'] {
     return useStore(store, ({ accountIndex }) => accountIndex)
-  }
-
-  function useIsActivating(): Web3ReactState['activating'] {
-    return useStore(store, ({ activating }) => activating)
   }
 
   function useAddingChain(): Web3ReactState['addingChain'] {
@@ -373,8 +377,8 @@ function getStateHooks(store: Web3ReactStore) {
   return {
     useChainId,
     useAccounts,
-    useAccountIndex,
     useIsActivating,
+    useAccountIndex,
     useAddingChain,
     useSwitchingChain,
     useWatchingAsset,
@@ -476,7 +480,7 @@ function useAvatar(provider?: BaseProvider, ensNames?: (string | null)[]): (stri
 function getAugmentedHooks<T extends Connector>(
   connector: T,
   { useAccounts, useChainId }: ReturnType<typeof getStateHooks>,
-  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>
+  { useAccount, useIsActive }: ReturnType<typeof getDerivedHooks>,
 ) {
   /**
    * Avoid type erasure by returning the most qualified type if not otherwise set.

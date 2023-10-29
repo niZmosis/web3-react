@@ -1,7 +1,7 @@
-import type { SafeAppProvider } from '@gnosis.pm/safe-apps-provider'
-import type SafeAppsSDK from '@gnosis.pm/safe-apps-sdk'
-import type { Opts } from '@gnosis.pm/safe-apps-sdk'
-import type { ConnectorArgs, Web3ReactState } from '@web3-react/types'
+import type { SafeAppProvider } from '@safe-global/safe-apps-provider'
+import type SafeAppsSDK from '@safe-global/safe-apps-sdk'
+import type { Opts } from '@safe-global/safe-apps-sdk'
+import type { Actions } from '@web3-react/types'
 import { Connector } from '@web3-react/types'
 
 export class NoSafeContext extends Error {
@@ -13,9 +13,10 @@ export class NoSafeContext extends Error {
 }
 
 /**
- * @param options - Options to pass to `@gnosis.pm/safe-apps-sdk`.
+ * @param options - Options to pass to `@safe-global/safe-apps-sdk`.
  */
-export interface GnosisSafeConstructorArgs extends ConnectorArgs {
+export interface GnosisSafeConstructorArgs {
+  actions: Actions
   options?: Opts
 }
 
@@ -31,8 +32,8 @@ export class GnosisSafe extends Connector {
    */
   public sdk: SafeAppsSDK | undefined
 
-  constructor({ actions, options, connectorOptions }: GnosisSafeConstructorArgs) {
-    super(actions, undefined, connectorOptions)
+  constructor({ actions, options }: GnosisSafeConstructorArgs) {
+    super(actions)
     this.options = options
   }
 
@@ -52,18 +53,15 @@ export class GnosisSafe extends Connector {
     return false
   }
 
-  /**
-   * Setup the provider.
-   */
   private async isomorphicInitialize(): Promise<void> {
     if (this.eagerConnection) return
 
     // kick off import early to minimize waterfalls
-    const SafeAppProviderPromise = import('@gnosis.pm/safe-apps-provider').then(
-      ({ SafeAppProvider }) => SafeAppProvider
+    const SafeAppProviderPromise = import('@safe-global/safe-apps-provider').then(
+      ({ SafeAppProvider }) => SafeAppProvider,
     )
 
-    await (this.eagerConnection = import('@gnosis.pm/safe-apps-sdk').then(async (m) => {
+    await (this.eagerConnection = import('@safe-global/safe-apps-sdk').then(async (m) => {
       this.sdk = new m.default(this.options)
 
       const safe = await Promise.race([
@@ -79,8 +77,8 @@ export class GnosisSafe extends Connector {
   }
 
   /** {@inheritdoc Connector.connectEagerly} */
-  public async connectEagerly(): Promise<Web3ReactState> {
-    if (!this.inIframe) return this.actions.getState()
+  public async connectEagerly(): Promise<void> {
+    if (!this.inIframe) return
 
     const cancelActivation = this.actions.startActivation()
 
@@ -88,7 +86,7 @@ export class GnosisSafe extends Connector {
       await this.isomorphicInitialize()
       if (!this.provider) throw new NoSafeContext()
 
-      return this.actions.update({
+      this.actions.update({
         chainId: this.provider.chainId,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)],
@@ -99,7 +97,7 @@ export class GnosisSafe extends Connector {
     }
   }
 
-  public async activate(): Promise<Web3ReactState> {
+  public async activate(): Promise<void> {
     if (!this.inIframe) throw new NoSafeContext()
 
     // only show activation if this is a first-time connection
@@ -110,7 +108,7 @@ export class GnosisSafe extends Connector {
       .then(async () => {
         if (!this.provider) throw new NoSafeContext()
 
-        return this.actions.update({
+        this.actions.update({
           chainId: this.provider.chainId,
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           accounts: [await this.sdk!.safe.getInfo().then(({ safeAddress }) => safeAddress)],

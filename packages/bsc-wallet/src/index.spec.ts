@@ -1,7 +1,8 @@
-import type { Actions, Web3ReactStore } from '@web3-react/types'
+import { MockEIP1193Provider } from '@web3-react/core'
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
+import type { Actions, Web3ReactStore } from '@web3-react/types'
+
 import { BscWallet } from '.'
-import { MockEIP1193Provider } from '../../eip1193/src/mock'
 
 const chainId = '0x38'
 const accounts: string[] = []

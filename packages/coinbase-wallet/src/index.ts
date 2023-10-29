@@ -78,7 +78,10 @@ export class CoinbaseWallet extends Connector {
           // handle this edge case by disconnecting
           this.actions.resetState()
         } else {
-          this.actions.update({ accounts, accountIndex: accounts?.length ? 0 : undefined })
+          this.actions.update({
+            accounts,
+            accountIndex: accounts?.length ? 0 : undefined,
+          })
         }
       })
     }))
@@ -94,10 +97,17 @@ export class CoinbaseWallet extends Connector {
 
       // Wallets may resolve eth_chainId and hang on eth_accounts pending user interaction, which may include changing
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
-      const accounts = await this.provider.request<string[]>({ method: 'eth_accounts' })
+      const accounts = await this.provider.request<string[]>({
+        method: 'eth_accounts',
+      })
       if (!accounts.length) throw new Error('No accounts returned')
-      const chainId = await this.provider.request<string>({ method: 'eth_chainId' })
-      return this.actions.update({ chainId: this.parseChainId(chainId), accounts })
+      const chainId = await this.provider.request<string>({
+        method: 'eth_chainId',
+      })
+      return this.actions.update({
+        chainId: this.parseChainId(chainId),
+        accounts,
+      })
     } catch (error) {
       return cancelActivation()
     }
@@ -120,7 +130,9 @@ export class CoinbaseWallet extends Connector {
 
       if (!this.provider) throw new NoCoinbaseWalletError()
 
-      const accounts: string[] = await this.provider.request({ method: 'eth_requestAccounts' })
+      const accounts: string[] = await this.provider.request({
+        method: 'eth_requestAccounts',
+      })
 
       const index = accounts.indexOf(this?.selectedAddress ?? '')
 
@@ -186,7 +198,12 @@ export class CoinbaseWallet extends Connector {
       else if (this.chainParameters && Object.keys(this.chainParameters).includes(String(desiredChainId))) {
         await this.provider.request({
           method: 'wallet_addEthereumChain',
-          params: [{ ...this.chainParameters[desiredChainId], chainId: desiredChainIdHex }],
+          params: [
+            {
+              ...this.chainParameters[desiredChainId],
+              chainId: desiredChainIdHex,
+            },
+          ],
         })
       }
 
@@ -204,7 +221,7 @@ export class CoinbaseWallet extends Connector {
    */
   public async switchChain(
     desiredChainIdOrChainParameters: number | AddEthereumChainParameter,
-    currentChainId?: number
+    currentChainId?: number,
   ) {
     const desiredChainId =
       typeof desiredChainIdOrChainParameters === 'number'

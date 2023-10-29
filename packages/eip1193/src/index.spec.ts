@@ -1,11 +1,13 @@
-import type { Actions, Web3ReactStore } from '@web3-react/types'
+/* eslint-disable jest/no-standalone-expect */
 import { Eip1193Bridge } from '@ethersproject/experimental'
 import { Web3Provider } from '@ethersproject/providers'
+import { MockEIP1193Provider } from '@web3-react/core'
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
-import { EIP1193 } from '.'
-import { MockEIP1193Provider } from './mock'
+import type { Actions, ProviderRpcError, Web3ReactStore } from '@web3-react/types'
 
-class MockProviderRpcError extends Error {
+import { EIP1193 } from '.'
+
+class MockProviderRpcError extends Error implements ProviderRpcError {
   public code: number
   constructor() {
     super('Mock Provider RPC Error')
@@ -48,11 +50,11 @@ describe('EIP1193', () => {
       await connector.activate()
 
       expect(store.getState()).toEqual({
-        chainId: 1,
+        accountIndex: 0,
         accounts,
-        accountIndex: undefined,
         activating: false,
         addingChain: undefined,
+        chainId: 1,
         switchingChain: undefined,
         watchingAsset: undefined,
       })
@@ -69,6 +71,7 @@ describe('EIP1193', () => {
 
       // suppress console.debugs in this block
       beforeEach(() => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         jest.spyOn(console, 'debug').mockImplementation(() => {})
       })
       afterEach(() => {
@@ -77,14 +80,15 @@ describe('EIP1193', () => {
 
       test('fails silently', async () => {
         connector = new EIP1193({ actions, provider: mockProvider })
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         await connector.connectEagerly().catch(() => {})
 
         expect(store.getState()).toEqual({
-          chainId: undefined,
-          accounts: undefined,
           accountIndex: undefined,
+          accounts: undefined,
           activating: false,
           addingChain: undefined,
+          chainId: undefined,
           switchingChain: undefined,
           watchingAsset: undefined,
         })
@@ -102,11 +106,11 @@ describe('EIP1193', () => {
         await connector.connectEagerly()
 
         expect(store.getState()).toEqual({
-          chainId: 1,
+          accountIndex: 0,
           accounts,
-          accountIndex: undefined,
           activating: false,
           addingChain: undefined,
+          chainId: 1,
           switchingChain: undefined,
           watchingAsset: undefined,
         })
@@ -115,7 +119,7 @@ describe('EIP1193', () => {
         expect(mockProvider.eth_accounts.mock.calls.length).toBe(1)
         expect(mockProvider.eth_requestAccounts.mock.calls.length).toBe(0)
         expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-          mockProvider.eth_accounts.mock.invocationCallOrder[0]
+          mockProvider.eth_accounts.mock.invocationCallOrder[0],
         )
       })
     })
@@ -133,11 +137,11 @@ describe('EIP1193', () => {
 
       test('before', () => {
         expect(store.getState()).toEqual({
-          chainId: undefined,
-          accounts: undefined,
           accountIndex: undefined,
+          accounts: undefined,
           activating: false,
           addingChain: undefined,
+          chainId: undefined,
           switchingChain: undefined,
           watchingAsset: undefined,
         })
@@ -149,7 +153,7 @@ describe('EIP1193', () => {
           expect(mockProvider.eth_accounts.mock.calls.length).toBe(0)
           expect(mockProvider.eth_requestAccounts.mock.calls.length).toBe(1)
           expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-            mockProvider.eth_requestAccounts.mock.invocationCallOrder[0]
+            mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
           )
         })
 
@@ -160,11 +164,11 @@ describe('EIP1193', () => {
           await connector.activate()
 
           expect(store.getState()).toEqual({
-            chainId: 1,
+            accountIndex: 0,
             accounts,
-            accountIndex: undefined,
             activating: false,
             addingChain: undefined,
+            chainId: 1,
             switchingChain: undefined,
             watchingAsset: undefined,
           })
@@ -177,11 +181,11 @@ describe('EIP1193', () => {
           await connector.activate()
 
           expect(store.getState()).toEqual({
-            chainId: 1,
+            accountIndex: 0,
             accounts,
-            accountIndex: undefined,
             activating: false,
             addingChain: undefined,
+            chainId: 1,
             switchingChain: undefined,
             watchingAsset: undefined,
           })
@@ -197,11 +201,11 @@ describe('EIP1193', () => {
           await connector.activate()
 
           expect(store.getState()).toEqual({
-            chainId: 1,
-            accounts,
             accountIndex: 0,
+            accounts,
             activating: false,
             addingChain: undefined,
+            chainId: 1,
             switchingChain: undefined,
             watchingAsset: undefined,
           })
@@ -220,11 +224,11 @@ describe('EIP1193', () => {
           await connector.activate()
 
           expect(store.getState()).toEqual({
-            chainId: 1,
-            accounts,
             accountIndex: 0,
+            accounts,
             activating: false,
             addingChain: undefined,
+            chainId: 1,
             switchingChain: undefined,
             watchingAsset: undefined,
           })
@@ -252,14 +256,14 @@ describe('EIP1193', () => {
       mockProvider.emitConnect(chainId)
 
       expect(store.getState()).toEqual({
-        chainId: 1,
-        accounts: undefined,
         accountIndex: undefined,
+        accounts: undefined,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: 1,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
 
@@ -267,14 +271,14 @@ describe('EIP1193', () => {
       mockProvider.emitDisconnect(error)
 
       expect(store.getState()).toEqual({
-        chainId: undefined,
-        accounts: undefined,
         accountIndex: undefined,
+        accounts: undefined,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: undefined,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
 
@@ -282,14 +286,14 @@ describe('EIP1193', () => {
       mockProvider.emitChainChanged(chainId)
 
       expect(store.getState()).toEqual({
-        chainId: 1,
-        accounts: undefined,
         accountIndex: undefined,
+        accounts: undefined,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: 1,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
 
@@ -297,14 +301,14 @@ describe('EIP1193', () => {
       mockProvider.emitAccountsChanged(accounts)
 
       expect(store.getState()).toEqual({
-        chainId: undefined,
-        accounts,
         accountIndex: undefined,
+        accounts,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: undefined,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
 
@@ -313,14 +317,14 @@ describe('EIP1193', () => {
       mockProvider.emitAccountsChanged(accounts)
 
       expect(store.getState()).toEqual({
-        chainId: 1,
-        accounts,
         accountIndex: undefined,
+        accounts,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: 1,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
 
@@ -329,14 +333,14 @@ describe('EIP1193', () => {
       mockProvider.emitAccountsChanged(accounts)
 
       expect(store.getState()).toEqual({
-        chainId: 1,
-        accounts,
         accountIndex: undefined,
+        accounts,
         activating: false,
-        error: undefined,
         addingChain: undefined,
+        chainId: 1,
         switchingChain: undefined,
         watchingAsset: undefined,
+        error: undefined,
       })
     })
   })

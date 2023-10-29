@@ -61,7 +61,11 @@ describe('#createWeb3ReactStoreAndActions', () => {
 
     test('throws on bad accounts', () => {
       const [, actions] = createWeb3ReactStoreAndActions()
-      expect(() => actions.update({ accounts: ['0x000000000000000000000000000000000000000'] })).toThrow()
+      expect(() =>
+        actions.update({
+          accounts: ['0x000000000000000000000000000000000000000'],
+        }),
+      ).toThrow()
     })
 
     test('chainId', () => {

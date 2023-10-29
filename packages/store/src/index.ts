@@ -50,7 +50,11 @@ export function createWeb3ReactStoreAndActions(): [Web3ReactStore, Actions] {
     // return a function that cancels the activation if nothing else has happened
     return (): Web3ReactState => {
       if (nullifier === nullifierCached) {
-        store.setState({ activating: false, addingChain: undefined, switchingChain: undefined })
+        store.setState({
+          activating: false,
+          addingChain: undefined,
+          switchingChain: undefined,
+        })
       }
 
       return store.getState()

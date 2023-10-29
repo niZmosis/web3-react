@@ -16,7 +16,7 @@ const chainConfig: ChainConfig = {
     name: 'Wrapped ETH',
   },
   rpcUrls: [process.env.infuraKey ? `https://sepolia.infura.io/v3/${process.env.infuraKey}` : ''].filter(
-    (url) => url !== ''
+    (url) => url !== '',
   ),
   walletConfig: {
     chainName: 'Sepolia',

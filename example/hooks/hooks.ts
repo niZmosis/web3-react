@@ -9,7 +9,7 @@ export const useTimeout = ({
   startOnMount: boolean
   timeout: number
 }) => {
-  const timeoutIdRef = useRef(undefined)
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout>>(null)
   const [isTimedOut, setIsTimedOut] = useState(false)
 
   const onFinished = useCallback(() => {
@@ -19,24 +19,28 @@ export const useTimeout = ({
 
   const cancel = useCallback(() => {
     const timeoutId = timeoutIdRef.current
-    if (timeoutId) {
+    if (timeoutId !== null) {
       timeoutIdRef.current = null
       setIsTimedOut(false)
       clearTimeout(timeoutId)
     }
-  }, [timeoutIdRef])
+  }, [])
 
   const start = useCallback(() => {
-    // if (isTimedOut) clearTimeout(timeoutIdRef.current)
-
+    cancel() // Clear any existing timeout before starting a new one
     timeoutIdRef.current = setTimeout(onFinished, timeout)
     setIsTimedOut(true)
-  }, [onFinished, timeout])
+  }, [onFinished, timeout, cancel])
+
+  const reset = useCallback(() => {
+    cancel()
+    start()
+  }, [cancel, start])
 
   useEffect(() => {
     if (startOnMount) start()
     return cancel
   }, [callback, timeout, cancel, startOnMount, start])
 
-  return { start, cancel, isTimedOut }
+  return { start, cancel, reset, isTimedOut }
 }

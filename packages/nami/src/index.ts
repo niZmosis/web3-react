@@ -173,7 +173,7 @@ export class NamiWallet extends Connector {
                 accounts: [walletId],
                 accountIndex: walletId ? 0 : undefined,
               },
-              true
+              true,
             )
           } else {
             throw new Error('No accounts returned')
@@ -214,7 +214,7 @@ export class NamiWallet extends Connector {
                 accounts: [walletId],
                 accountIndex: walletId ? 0 : undefined,
               },
-              true
+              true,
             )
           } else {
             throw new Error('No accounts returned')

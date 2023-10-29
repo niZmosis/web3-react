@@ -23,7 +23,8 @@ export const lightstreamsMainChainId = 163
 export const lightstreamsTestChainId = 164
 export const optimismMainChainId = 10
 export const optimismTestChainId = 420
-export const plsTestChainId = 941
+export const plsMainChainId = 369
+export const plsTestChainId = 943
 export const poaMainChainId = 99
 export const poaTestChainId = 77
 export const polygonMainChainId = 137
@@ -52,7 +53,7 @@ export const fuseChains = [fuseMainChainId, fuseTestChainId]
 export const gnosisChains = [gnosisMainChainId]
 export const lightstreamsChains = [lightstreamsMainChainId, lightstreamsTestChainId]
 export const optimismChains = [optimismMainChainId, optimismTestChainId]
-export const plsChains = [plsTestChainId]
+export const plsChains = [plsMainChainId, plsTestChainId]
 export const rskChains = [rskMainChainId, rskTestChainId]
 export const solChains = [solMainChainId, solDevChainId, solTestChainId]
 export const poaChains = [poaMainChainId, poaTestChainId]
@@ -74,6 +75,7 @@ export const mainChains = [
   gnosisMainChainId,
   lightstreamsMainChainId,
   optimismMainChainId,
+  plsMainChainId,
   poaMainChainId,
   polygonMainChainId,
   rskMainChainId,
@@ -109,5 +111,5 @@ export const testChains = [
 ]
 
 export const allEvmChainIds = [...mainChains, ...testChains].filter(
-  (chainId) => ![...tronChains, ...solChains, ...cardanoChains].includes(chainId)
+  (chainId) => ![...tronChains, ...solChains, ...cardanoChains].includes(chainId),
 )

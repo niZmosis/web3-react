@@ -1,7 +1,8 @@
+import { MockEIP1193Provider } from '@web3-react/core'
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
 import type { Actions, Web3ReactStore } from '@web3-react/types'
+
 import { CoinbaseWallet } from '.'
-import { MockEIP1193Provider } from '../../eip1193/src/mock'
 
 jest.mock(
   '@coinbase/wallet-sdk',
@@ -10,7 +11,7 @@ jest.mock(
       makeWeb3Provider() {
         return new MockEIP1193Provider()
       }
-    }
+    },
 )
 
 const chainId = '0x1'
@@ -32,6 +33,7 @@ describe('Coinbase Wallet', () => {
           url: 'https://mock.url',
         },
       })
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       await connector.connectEagerly().catch(() => {})
 
       mockProvider = connector.provider as unknown as MockEIP1193Provider
@@ -45,8 +47,9 @@ describe('Coinbase Wallet', () => {
       expect(mockProvider.eth_requestAccounts).toHaveBeenCalled()
       expect(mockProvider.eth_accounts).not.toHaveBeenCalled()
       expect(mockProvider.eth_chainId).toHaveBeenCalled()
-      expect(mockProvider.eth_chainId.mock.invocationCallOrder[0])
-        .toBeGreaterThan(mockProvider.eth_requestAccounts.mock.invocationCallOrder[0])
+      expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
+        mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
+      )
 
       expect(store.getState()).toEqual({
         chainId: Number.parseInt(chainId, 16),

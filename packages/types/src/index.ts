@@ -1,5 +1,3 @@
-import type { EventEmitter } from 'node:events'
-
 import type { Networkish } from '@ethersproject/networks'
 import type { BaseProvider, Web3Provider } from '@ethersproject/providers'
 import type { EnhancedStore } from '@reduxjs/toolkit'
@@ -39,19 +37,19 @@ export type Web3SelectedSelectors = {
   useSelectedIsActive: (connector: Connector) => boolean | undefined
   useSelectedProvider: <T extends BaseProvider = Web3Provider>(
     connector: Connector,
-    network?: Networkish
+    network?: Networkish,
   ) => T | undefined
   useSelectedENSNames: (connector: Connector, provider?: BaseProvider) => (string | null)[] | undefined
   useSelectedENSName: (connector: Connector, provider?: BaseProvider) => undefined | string | null
   useSelectedENSAvatars: (
     connector: Connector,
     provider?: BaseProvider,
-    ensNames?: (string | null)[]
+    ensNames?: (string | null)[],
   ) => (string | null)[] | undefined
   useSelectedENSAvatar: (
     connector: Connector,
     provider?: BaseProvider,
-    ensName?: undefined | string | null
+    ensName?: undefined | string | null,
   ) => undefined | string | null
   useSelectedAddingChain: (connector: Connector) => AddingChainInfo | undefined
   useSelectedSwitchingChain: (connector: Connector) => SwitchingChainInfo | undefined
@@ -96,23 +94,25 @@ export interface ConnectorArgs {
   connectorOptions?: ConnectorOptions
 }
 
-// per EIP-1193
+/** per {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md#request EIP-1193} */
 export interface RequestArguments {
   readonly method: string
   readonly params?: readonly unknown[] | object
 }
 
-// per EIP-1193
-export interface Provider extends EventEmitter {
+/** per {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md#events EIP-1193} */
+export interface Provider {
   request(args: RequestArguments): Promise<unknown>
+  on(eventName: string | symbol, listener: (...args: any[]) => void): this
+  removeListener(eventName: string | symbol, listener: (...args: any[]) => void): this
 }
 
-// per EIP-1193
+/** per {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md#connect-1 EIP-1193} */
 export interface ProviderConnectInfo {
   readonly chainId: string
 }
 
-// per EIP-1193
+/** per {@link https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md#rpc-errors EIP-1193} */
 export interface ProviderRpcError extends Error {
   message: string
   code: number
@@ -145,7 +145,9 @@ export interface AddEthereumChainParameter {
   iconUrls?: string[]
 }
 
-export type AddEthereumChainParameters = { [chainId: number]: AddEthereumChainParameter }
+export type AddEthereumChainParameters = {
+  [chainId: number]: AddEthereumChainParameter
+}
 
 // per EIP-747
 export interface WatchAssetParameters {
@@ -222,6 +224,11 @@ export abstract class Connector {
   public getState(): Web3ReactState {
     return this.actions.getState()
   }
+
+  /**
+   * Set the account index to be used by the connector.
+   */
+  public abstract setAccountIndex?(index?: number): void
 
   /**
    * Initiate a connection.

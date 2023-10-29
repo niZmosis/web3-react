@@ -3,7 +3,13 @@
   "compilerOptions": {
     "module": "CommonJS",
     "declaration": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "jsx": "react",
+    // "noUncheckedIndexedAccess": true,
+    // "noImplicitOverride": true,
+    // "verbatimModuleSyntax": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
   },
   "exclude": ["**/*.spec.ts"]
 }

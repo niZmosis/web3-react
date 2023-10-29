@@ -18,7 +18,9 @@ function isUrl(url: url | JsonRpcProvider): url is url {
  * online providers.
  */
 export interface NetworkConstructorArgs extends ConnectorArgs {
-  urlMap: { [chainId: number]: url | url[] | JsonRpcProvider | JsonRpcProvider[] }
+  urlMap: {
+    [chainId: number]: url | url[] | JsonRpcProvider | JsonRpcProvider[]
+  }
   defaultChainId?: number
   timeout?: number
 }

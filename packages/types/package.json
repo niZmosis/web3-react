@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "8.0.20-beta.0",
+  "version": "8.2.2",
   "files": [
     "dist/*"
   ],
@@ -22,10 +22,10 @@
     "build": "tsc",
     "start": "tsc --watch"
   },
-  "devDependencies": {
+  "dependencies": {
     "@ethersproject/networks": "^5.7.1",
     "@ethersproject/providers": "^5.7.2",
     "@reduxjs/toolkit": "^1.9.2",
-    "zustand": "^4.3.2"
+    "zustand": "4.4.0"
   }
 }

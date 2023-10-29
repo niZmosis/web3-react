@@ -35,6 +35,7 @@ import {
   lightstreamsTestChainId,
   optimismMainChainId,
   optimismTestChainId,
+  plsMainChainId,
   plsTestChainId,
   poaMainChainId,
   poaTestChainId,
@@ -72,6 +73,7 @@ import poaMainnet from '../config/chains/poa/mainnet'
 import poaTestnet from '../config/chains/poa/sokol'
 import polygonMainnet from '../config/chains/polygon/mainnet'
 import polygonTestnet from '../config/chains/polygon/mumbai'
+import plsMainnet from '../config/chains/pulse/mainnet'
 import plsTestnet from '../config/chains/pulse/testnet'
 import rskMainnet from '../config/chains/rsk/mainnet'
 import rskTestnet from '../config/chains/rsk/testnet'
@@ -174,6 +176,9 @@ export const CHAINS: { [chainId: number]: ChainConfig } = {
   },
   [polygonTestChainId]: {
     ...polygonTestnet,
+  },
+  [plsMainChainId]: {
+    ...plsMainnet,
   },
   [plsTestChainId]: {
     ...plsTestnet,

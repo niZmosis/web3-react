@@ -1,12 +1,16 @@
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
 import type { Actions, Web3ReactStore } from '@web3-react/types'
+
 import { Network } from './'
 
+// eslint-disable-next-line jest/no-export
 export class MockJsonRpcProvider {
   public chainId?: string
 
   public getNetwork() {
-    return Promise.resolve({ chainId: this.chainId === undefined ? undefined : Number.parseInt(this.chainId, 16) })
+    return Promise.resolve({
+      chainId: this.chainId === undefined ? undefined : Number.parseInt(this.chainId, 16),
+    })
   }
 }
 
@@ -107,7 +111,10 @@ describe('Network', () => {
       ;[store, actions] = createWeb3ReactStoreAndActions()
       connector = new Network({
         actions,
-        urlMap: { 1: 'https://mainnet.mock.url', 2: 'https://testnet.mock.url' },
+        urlMap: {
+          1: 'https://mainnet.mock.url',
+          2: 'https://testnet.mock.url',
+        },
       })
     })
 

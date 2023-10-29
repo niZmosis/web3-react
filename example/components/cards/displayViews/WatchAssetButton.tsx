@@ -8,10 +8,12 @@ export function WatchAssetButton({
   watchingAsset,
   connector,
   assetParams,
+  disabled,
 }: {
   watchingAsset?: ReturnType<Web3ReactHooks['useWatchingAsset']>
   connector: Connector
   assetParams: WatchAssetParameters
+  disabled?: boolean
 }) {
   const desiredChainId = assetParams?.desiredChainIdOrChainParameters
     ? typeof assetParams.desiredChainIdOrChainParameters === 'number'
@@ -26,7 +28,7 @@ export function WatchAssetButton({
   const isWatching = !!watchingAsset && watchingAsset.address === assetParams.address
 
   return (
-    <Button disabled={isWatching} style={{ marginTop: '1em' }} onClick={() => void watchAsset()}>
+    <Button disabled={isWatching || disabled} style={{ marginTop: '1em' }} onClick={() => void watchAsset()}>
       {isWatching
         ? 'Pending watch...'
         : `Watch ${assetParams.symbol}${desiredChainId ? ` on ${CHAINS[desiredChainId]?.name}` : ''}`}

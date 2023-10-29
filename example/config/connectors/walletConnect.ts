@@ -13,5 +13,5 @@ export const [walletConnect, hooks]: [WalletConnect, Web3ReactHooks, Web3ReactSt
         options: {
           rpc: URLS,
         },
-      })
+      }),
   )

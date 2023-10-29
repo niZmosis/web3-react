@@ -17,6 +17,7 @@ export type Web3ContextType<T extends BaseProvider = Web3Provider> = {
   connector: Connector
   chainId: ReturnType<Web3ReactPriorityHooks['useSelectedChainId']>
   accountIndex: ReturnType<Web3ReactPriorityHooks['useSelectedAccountIndex']>
+  setAccountIndex: (index?: number) => void
   accounts: ReturnType<Web3ReactPriorityHooks['useSelectedAccounts']>
   account: ReturnType<Web3ReactPriorityHooks['useSelectedAccount']>
   isActivating: ReturnType<Web3ReactPriorityHooks['useSelectedIsActivating']>
@@ -72,7 +73,7 @@ export function Web3ReactProvider({
     })
   )
     throw new Error(
-      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.'
+      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.',
     )
 
   const hooks = getPriorityConnectorHooks(...connectors)
@@ -108,7 +109,7 @@ export function Web3ReactProvider({
         setConnector(fallbackConnector)
       }
     },
-    [connector, fallbackConnector]
+    [connector, fallbackConnector],
   )
 
   const chainId = useSelectedChainId(connector)
@@ -117,6 +118,15 @@ export function Web3ReactProvider({
   const account = useSelectedAccount(connector)
   const isActivating = useSelectedIsActivating(connector)
   const isActive = useSelectedIsActive(connector)
+
+  const setAccountIndex = useCallback(
+    (index?: number) => {
+      if (connector.setAccountIndex) {
+        connector.setAccountIndex(index)
+      }
+    },
+    [connector],
+  )
 
   // note that we've omitted a <T extends BaseProvider = Web3Provider> generic type
   // in Web3ReactProvider, and thus can't pass T through to useSelectedProvider below.
@@ -136,6 +146,7 @@ export function Web3ReactProvider({
   return (
     <Web3Context.Provider
       value={{
+        setAccountIndex,
         accountIndex,
         accounts,
         account,

@@ -35,7 +35,9 @@ export interface TronProvider extends Provider {
   trx: {
     sign: (hex: string) => Promise<void>
     getBalance: (address: string) => Promise<BigNumber>
-    getCurrentBlock: () => Promise<{ block_header: { raw_data: { number: number } } }>
+    getCurrentBlock: () => Promise<{
+      block_header: { raw_data: { number: number } }
+    }>
   }
   getBalance: (address: string) => Promise<BigNumber>
   getBlockNumber: () => Promise<number>
@@ -139,7 +141,10 @@ export class TronLink extends Connector {
 
     // Set options
     this.tronLink = tronLink
-    this.tronLink.tronLinkParams = { websiteName: this.options?.websiteName, websiteIcon: this.options?.websiteIcon }
+    this.tronLink.tronLinkParams = {
+      websiteName: this.options?.websiteName,
+      websiteIcon: this.options?.websiteIcon,
+    }
 
     if (!tronLink.ready) return
 
@@ -157,7 +162,12 @@ export class TronLink extends Connector {
             address: string // Base58
             name: string
             node: { chain: string; chainId: string }
-            data: { address: string; name: string; chainId: string; node: { chain: string; chainId: string } }
+            data: {
+              address: string
+              name: string
+              chainId: string
+              node: { chain: string; chainId: string }
+            }
           }
         }
         isTronLink: boolean
@@ -256,7 +266,9 @@ export class TronLink extends Connector {
       throw new Error('Unlock Wallet')
     }
 
-    const requestAccounts = this.customProvider.request({ method: 'tron_requestAccounts' }) as Promise<{
+    const requestAccounts = this.customProvider.request({
+      method: 'tron_requestAccounts',
+    }) as Promise<{
       code: number
       message: string
     }>

@@ -13,10 +13,12 @@ export default function WatchAssetView({
   connector,
   chainId,
   watchingAsset,
+  isReadOnly,
 }: {
   connector: Connector
   chainId: ReturnType<Web3ReactHooks['useChainId']>
   watchingAsset?: ReturnType<Web3ReactHooks['useWatchingAsset']>
+  isReadOnly?: boolean
 }) {
   const chainConfig = chainId ? CHAINS[chainId] : undefined
   const { nativeWrappedToken: wrappedMatic } = CHAINS[polygonMainChainId]
@@ -30,6 +32,7 @@ export default function WatchAssetView({
           CHAINS[chainId] &&
           !!(CHAINS[chainId] as ChainConfig)?.nativeWrappedToken && (
             <WatchAssetButton
+              disabled={isReadOnly}
               watchingAsset={watchingAsset}
               connector={connector}
               assetParams={{
@@ -41,6 +44,7 @@ export default function WatchAssetView({
           )}
         {isEVMConnector(connector) && (
           <WatchAssetButton
+            disabled={isReadOnly}
             watchingAsset={watchingAsset}
             connector={connector}
             assetParams={{

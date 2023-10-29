@@ -27,7 +27,7 @@ export type SolflareProvider = Provider & {
   openBridge?: () => void
   signAndSendTransaction: (
     transaction: Transaction,
-    opts?: SendOptions
+    opts?: SendOptions,
   ) => Promise<{ signature: string; publicKey: PublicKey }>
   signTransaction: (transaction: Transaction) => Promise<Transaction>
   signAllTransactions: (transactions: Transaction[]) => Promise<Transaction[]>
@@ -129,7 +129,7 @@ export class SolflareWallet extends Connector {
               accounts: [account],
               accountIndex: account ? 0 : undefined,
             },
-            true // Skip validation checks
+            true, // Skip validation checks
           )
         } else {
           throw new Error('No accounts returned')
@@ -154,7 +154,7 @@ export class SolflareWallet extends Connector {
         } else {
           this.actions.update(
             { accounts: [account], accountIndex: account ? 0 : undefined },
-            true // Skip validation checks
+            true, // Skip validation checks
           )
         }
       })

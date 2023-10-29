@@ -18,5 +18,5 @@ export const [coinbaseWallet, hooks, store]: [CoinbaseWallet, Web3ReactHooks, We
         },
         connectorOptions: { chainParameters: allAddChainParameters },
       }),
-    'Coinbase'
+    'Coinbase',
   )

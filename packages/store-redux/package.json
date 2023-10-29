@@ -4,13 +4,13 @@
     "web3-react",
     "redux"
   ],
-  "author": "Noah Zinsmeister <noahwz@gmail.com>",
+  "author": "niZmosis",
   "license": "GPL-3.0-or-later",
   "repository": "github:Uniswap/web3-react",
   "publishConfig": {
     "access": "public"
   },
-  "version": "8.0.25-beta.0",
+  "version": "8.2.2",
   "files": [
     "dist/*"
   ],
@@ -26,6 +26,6 @@
   "dependencies": {
     "@ethersproject/address": "^5",
     "@reduxjs/toolkit": "^1.9.2",
-    "@web3-react/types": "^8.0.20-beta.0"
+    "@web3-react/types": "^8.2.2"
   }
 }

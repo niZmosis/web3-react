@@ -10,10 +10,12 @@ export default function SignerButton({
   connector,
   provider,
   account,
+  disabled,
 }: {
   connector?: Connector
   provider?: Web3Provider
   account?: string
+  disabled?: boolean
 }) {
   const { start, isTimedOut } = useTimeout({
     startOnMount: false,
@@ -25,7 +27,8 @@ export default function SignerButton({
   return (
     <>
       <SpacerView />
-      <Button disabled={isLoading || isTimedOut} onClick={() => void signMessage()}>
+      <b style={{ marginBottom: '1rem' }}>Write</b>
+      <Button disabled={isLoading || isTimedOut || disabled} onClick={() => void signMessage()}>
         {isLoading ? 'Pending Signature...' : isTimedOut ? 'Message Signed!' : 'Sign Message'}
       </Button>
     </>

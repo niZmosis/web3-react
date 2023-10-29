@@ -1,10 +1,8 @@
-import type { EventEmitter } from 'node:events'
-
 import type WalletConnectProvider from '@walletconnect/ethereum-provider'
 import type { IWCEthRpcConnectionOptions } from '@walletconnect/types'
 import type { ConnectorArgs, ProviderRpcError } from '@web3-react/types'
 import { Connector } from '@web3-react/types'
-import EventEmitter3 from 'eventemitter3'
+import EventEmitter from 'eventemitter3'
 
 import { getBestUrl } from './utils'
 
@@ -41,7 +39,7 @@ export interface ActivateOptions {
 export class WalletConnect extends Connector {
   /** {@inheritdoc Connector.provider} */
   public provider?: MockWalletConnectProvider
-  public readonly events = new EventEmitter3()
+  public readonly events = new EventEmitter()
 
   private readonly options: Omit<WalletConnectOptions, 'rpc'>
   private readonly rpc: { [chainId: number]: string[] }
@@ -81,7 +79,10 @@ export class WalletConnect extends Connector {
   }
 
   private accountsChangedListener = (accounts: string[]): void => {
-    this.actions.update({ accounts, accountIndex: accounts?.length ? 0 : undefined })
+    this.actions.update({
+      accounts,
+      accountIndex: accounts?.length ? 0 : undefined,
+    })
   }
 
   private URIListener = (_: Error | null, payload: { params: string[] }): void => {
@@ -100,13 +101,13 @@ export class WalletConnect extends Connector {
         async (chainId): Promise<[number, string]> => [
           Number(chainId),
           await getBestUrl(this.rpc[Number(chainId)], this.timeout),
-        ]
-      )
+        ],
+      ),
     ).then((results) =>
       results.reduce<{ [chainId: number]: string }>((accumulator, [chainId, url]) => {
         accumulator[chainId] = url
         return accumulator
-      }, {})
+      }, {}),
     )
 
     return (this.eagerConnection = import('@walletconnect/ethereum-provider').then(async (m) => {
@@ -133,10 +134,14 @@ export class WalletConnect extends Connector {
 
       // Wallets may resolve eth_chainId and hang on eth_accounts pending user interaction, which may include changing
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
-      const accounts = await this.provider.request<string[]>({ method: 'eth_accounts' })
+      const accounts = await this.provider.request<string[]>({
+        method: 'eth_accounts',
+      })
       if (!accounts.length) throw new Error('No accounts returned')
 
-      const chainId = await this.provider.request<string>({ method: 'eth_chainId' })
+      const chainId = await this.provider.request<string>({
+        method: 'eth_chainId',
+      })
       this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
@@ -181,10 +186,22 @@ export class WalletConnect extends Connector {
           if (error?.message === 'User closed modal') await this.deactivate()
           throw error
         })
-      const chainId = await this.provider.request<string>({ method: 'eth_chainId' })
+
+      const chainId = this.parseChainId(await this.provider.request<string>({ method: 'eth_chainId' }))
+
+      /**
+       * TODO(INFRA-140): It is possible that the user has changed the chain in the wallet while the modal was open.
+       * In that case, WalletConnect will not update the RPC endpoint to the one configured for that chain.
+       * Unfortunately, there's no public API to set the `rpc` endpoint, rather than calling private `setHttpProvider`.
+       * We should remove this once the underlying bug is resolved upstream.
+       */
+      if (chainId !== desiredChainId) {
+        // @ts-ignore
+        this.provider.http = this.provider.setHttpProvider(chainId)
+      }
 
       this.actions.update({
-        chainId: this.parseChainId(chainId),
+        chainId,
         accounts,
         accountIndex: accounts?.length ? 0 : undefined,
       })

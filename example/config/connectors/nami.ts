@@ -4,5 +4,5 @@ import { NamiWallet } from '@web3-react/nami'
 import type { Web3ReactStore } from '@web3-react/types'
 
 export const [nami, hooks]: [NamiWallet, Web3ReactHooks, Web3ReactStore] = initializeConnector<NamiWallet>(
-  (actions) => new NamiWallet({ actions })
+  (actions) => new NamiWallet({ actions }),
 )

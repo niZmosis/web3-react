@@ -3,6 +3,7 @@ import { act, renderHook } from '@testing-library/react-hooks'
 import type { Actions } from '@web3-react/types'
 import { Connector } from '@web3-react/types'
 import EventEmitter from 'events'
+
 import type { Web3ReactHooks, Web3ReactPriorityHooks, Web3ReactSelectedHooks } from './hooks'
 import { getPriorityConnectorHooks, getSelectedConnectorHooks, initializeConnector } from './hooks'
 
@@ -55,7 +56,11 @@ describe('#initializeConnector', () => {
       const { result } = renderHook(() => hooks.useAccounts())
       expect(result.current).toBe(undefined)
 
-      act(() => connector.update({ accounts: ['0x0000000000000000000000000000000000000000'] }))
+      act(() =>
+        connector.update({
+          accounts: ['0x0000000000000000000000000000000000000000'],
+        }),
+      )
       expect(result.current).toEqual(['0x0000000000000000000000000000000000000000'])
     })
 
@@ -66,7 +71,7 @@ describe('#initializeConnector', () => {
       act(() =>
         connector.update({
           accounts: ['0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000001'],
-        })
+        }),
       )
       expect(result.current).toEqual([
         '0x0000000000000000000000000000000000000000',

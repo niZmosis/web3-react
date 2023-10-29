@@ -1,7 +1,8 @@
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
 import type { Actions, Web3ReactStore } from '@web3-react/types'
-import { Url } from '.'
+
 import { MockJsonRpcProvider } from '../../network/src/index.spec'
+import { Url } from '.'
 
 jest.mock('@ethersproject/providers', () => ({
   JsonRpcProvider: MockJsonRpcProvider,

@@ -1,5 +1,5 @@
 import { getImageUrlFromTrust } from '../../../utils/helpers'
-import { plsTestChainId } from '../chainIds'
+import { plsMainChainId, plsTestChainId } from '../chainIds'
 import { ChainConfig } from '../chains.interface'
 
 const chainConfig: ChainConfig = {
@@ -16,12 +16,12 @@ const chainConfig: ChainConfig = {
     symbol: 'WPLS',
     name: 'Wrapped PLS',
   },
-  rpcUrls: ['https://rpc.v2b.testnet.pulsechain.com'],
+  rpcUrls: ['https://rpc.v4.testnet.pulsechain.com'],
   walletConfig: {
     chainName: 'PulseChain Testnet',
-    iconUrls: [getImageUrlFromTrust(plsTestChainId)],
-    rpcUrls: ['https://rpc.v2b.testnet.pulsechain.com'],
-    blockExplorerUrls: ['https://scan.v2b.testnet.pulsechain.com/'],
+    iconUrls: [getImageUrlFromTrust(plsMainChainId)],
+    rpcUrls: ['https://rpc.v4.testnet.pulsechain.com'],
+    blockExplorerUrls: ['https://scan.v4.testnet.pulsechain.com/'],
   },
 }
 

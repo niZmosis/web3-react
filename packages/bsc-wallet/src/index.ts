@@ -81,7 +81,10 @@ export class BscWallet extends Connector {
           if (accounts.length === 0) {
             this.actions.resetState()
           } else {
-            this.actions.update({ accounts, accountIndex: accounts?.length ? 0 : undefined })
+            this.actions.update({
+              accounts,
+              accountIndex: accounts?.length ? 0 : undefined,
+            })
           }
         }
 

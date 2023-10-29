@@ -1,4 +1,5 @@
 import type { JsonRpcProvider } from '@ethersproject/providers'
+
 import { getBestProvider } from './utils'
 
 class MockJsonRpcProvider {

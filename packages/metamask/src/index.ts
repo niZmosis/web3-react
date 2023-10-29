@@ -63,7 +63,7 @@ export class MetaMask extends Connector {
 
       // Get the account permissions
       const accountsPermission = permissions.find(
-        (permission) => permission?.parentCapability === 'eth_accounts'
+        (permission) => permission?.parentCapability === 'eth_accounts',
       ) as Web3WalletPermission
 
       // Extract the accounts
@@ -75,6 +75,23 @@ export class MetaMask extends Connector {
     } catch (error) {
       return undefined
     }
+  }
+
+  /**
+   * Set the account index.
+   * If the index does not match the connectors selected address, the account will be read-only.
+   * Leave undefined to reset to the the connectors selected address.
+   */
+  public async setAccountIndex(index?: number): Promise<void> {
+    const accounts = await this.getAccounts()
+
+    if (!accounts) throw new Error('No accounts returned')
+
+    if ((index || index === 0) && index >= accounts.length) throw new Error('Index out of bounds')
+
+    this.actions.update({
+      accountIndex: index ?? accounts.indexOf(this?.selectedAddress ?? '') ?? undefined,
+    })
   }
 
   /**
@@ -120,8 +137,13 @@ export class MetaMask extends Connector {
               // handle this edge case by disconnecting
               this.actions.resetState()
             } else {
-              const index = accounts.indexOf(this?.selectedAddress ?? '')
-              this.actions.update({ accounts, accountIndex: index < 0 ? undefined : index })
+              const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
+              const index = indexOf < 0 ? undefined : indexOf
+
+              this.actions.update({
+                accounts,
+                accountIndex: index,
+              })
             }
           }
 
@@ -141,20 +163,25 @@ export class MetaMask extends Connector {
 
       // Wallets may resolve eth_chainId and hang on eth_accounts pending user interaction, which may include changing
       // chains; they should be requested serially, with accounts first, so that the chainId can settle.
-      const baseAccounts = (await this.provider.request({ method: 'eth_accounts' })) as string[]
+      const baseAccounts = (await this.provider.request({
+        method: 'eth_accounts',
+      })) as string[]
       if (!baseAccounts.length) throw new Error('No accounts returned')
 
       const accounts = (await this.getAccounts()) ?? baseAccounts
       if (!accounts.length) throw new Error('No accounts returned')
 
-      const chainId = (await this.provider.request({ method: 'eth_chainId' })) as string
+      const chainId = (await this.provider.request({
+        method: 'eth_chainId',
+      })) as string
 
-      const index = accounts.indexOf(this?.selectedAddress ?? '')
+      const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
+      const index = indexOf < 0 ? undefined : indexOf
 
       return this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
-        accountIndex: index < 0 ? undefined : index,
+        accountIndex: index,
       })
     } catch (error) {
       console.debug('Could not connect eagerly', error)
@@ -182,13 +209,16 @@ export class MetaMask extends Connector {
 
       if (!this.provider) throw new NoMetaMaskError()
 
-      const baseAccounts = (await this.provider.request({ method: 'eth_requestAccounts' })) as string[]
+      const baseAccounts = (await this.provider.request({
+        method: 'eth_requestAccounts',
+      })) as string[]
 
       // Check if we have access to get all connected accounts as per EIP-2255
       const accounts: string[] = (await this.getAccounts()) ?? baseAccounts
 
       // Get the account index
-      const index = accounts.indexOf(this?.selectedAddress ?? '')
+      const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
+      const index = indexOf < 0 ? undefined : indexOf
 
       // Request chainId after account request, incase user changes chain during process
       const currentChainId = this.parseChainId((await this.provider.request({ method: 'eth_chainId' })) as string)
@@ -203,7 +233,7 @@ export class MetaMask extends Connector {
         return this.actions.update({
           chainId: currentChainId,
           accounts,
-          accountIndex: index < 0 ? undefined : index,
+          accountIndex: index,
         })
       }
 
@@ -244,7 +274,12 @@ export class MetaMask extends Connector {
       else if (this.chainParameters && Object.keys(this.chainParameters).includes(String(desiredChainId))) {
         await this.provider.request({
           method: 'wallet_addEthereumChain',
-          params: [{ ...this.chainParameters[desiredChainId], chainId: desiredChainIdHex }],
+          params: [
+            {
+              ...this.chainParameters[desiredChainId],
+              chainId: desiredChainIdHex,
+            },
+          ],
         })
       }
 
@@ -262,7 +297,7 @@ export class MetaMask extends Connector {
    */
   public async switchChain(
     desiredChainIdOrChainParameters: number | AddEthereumChainParameter,
-    currentChainId?: number
+    currentChainId?: number,
   ) {
     const desiredChainId =
       typeof desiredChainIdOrChainParameters === 'number'

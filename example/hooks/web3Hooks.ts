@@ -21,7 +21,7 @@ export function useBlockNumber(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   subscribe?: boolean,
-  skip?: boolean
+  skip?: boolean,
 ): { blockNumber: number; isLoading: boolean; error: Error; fetch: () => Promise<void> } {
   const [error, setError] = useState<Error>(undefined)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -140,12 +140,12 @@ export function useBalances(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   accounts?: string[],
-  subscribe?: boolean
+  subscribe?: boolean,
 ): { balances: BigNumber[]; isLoading: boolean; error: Error; fetch: () => Promise<void> } {
   const [error, setError] = useState<Error>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [balances, setBalances] = useState<BigNumber[]>(
-    new Array<BigNumber>(accounts?.length ?? 0).fill(BigNumber.from(0))
+    new Array<BigNumber>(accounts?.length ?? 0).fill(BigNumber.from(0)),
   )
 
   // Used to update balance on every block update, if subscribed
@@ -199,8 +199,8 @@ export function useBalances(
       const balances = (
         await Promise.all(
           accounts.map((account: string) =>
-            connector.customProvider.trx.getBalance(connector.convertAddressTo41(account))
-          )
+            connector.customProvider.trx.getBalance(connector.convertAddressTo41(account)),
+          ),
         )
       ).map((amountSun) => BigNumber.from(amountSun))
 
@@ -262,7 +262,7 @@ export function useBalance(
   provider?: ReturnType<Web3ReactHooks['useProvider']>,
   chainId?: ReturnType<Web3ReactHooks['useChainId']>,
   account?: string,
-  subscribe?: boolean
+  subscribe?: boolean,
 ): { balance: BigNumber; isLoading: boolean; fetch: () => Promise<void> } {
   const { balances, isLoading, fetch } = useBalances(connector, provider, chainId, [account], subscribe)
 
@@ -331,4 +331,54 @@ export function useSignMessage({
   }, [account, connector, provider, onSigned, onRejected])
 
   return { signMessage, isLoading }
+}
+
+export function useTransactionCount({
+  provider,
+  account,
+  fetchOnMount,
+}: {
+  provider?: Web3Provider
+  account?: string
+  fetchOnMount?: boolean
+}): {
+  transactionCount: number
+  isLoading: boolean
+  fetch: () => Promise<void>
+} {
+  const [transactionCount, setTransaction] = useState<number | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const fetchLatestTransaction = useCallback(async () => {
+    if (!provider || !account) {
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const txCount = await provider.getTransactionCount(account, 'latest')
+
+      setTransaction(txCount)
+    } catch (error) {
+      console.error('Error fetching latest transactionCount:', error)
+    }
+
+    setIsLoading(false)
+  }, [provider, account])
+
+  const fetch = useCallback(async () => {
+    await fetchLatestTransaction()
+  }, [fetchLatestTransaction])
+
+  useEffect(() => {
+    if (!fetchOnMount) return
+    fetchLatestTransaction()
+  }, [fetchLatestTransaction, fetchOnMount])
+
+  return {
+    transactionCount,
+    isLoading,
+    fetch,
+  }
 }

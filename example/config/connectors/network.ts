@@ -6,5 +6,5 @@ import type { Web3ReactStore } from '@web3-react/types'
 import { URLS } from '../../utils/chains'
 
 export const [network, hooks]: [Network, Web3ReactHooks, Web3ReactStore] = initializeConnector<Network>(
-  (actions) => new Network({ actions, urlMap: URLS })
+  (actions) => new Network({ actions, urlMap: URLS }),
 )

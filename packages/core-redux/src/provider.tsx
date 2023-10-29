@@ -80,7 +80,7 @@ export function Web3ReactProvider({
     })
   )
     throw new Error(
-      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.'
+      'The connectors prop passed to Web3ReactProvider must be referentially static. If connectors is changing, try providing a key prop to Web3ReactProvider that changes every time connectors changes.',
     )
 
   const hooks = getPriorityConnectorHooks(...connectors)
@@ -116,7 +116,7 @@ export function Web3ReactProvider({
         setConnector(fallbackConnector)
       }
     },
-    [connector, fallbackConnector]
+    [connector, fallbackConnector],
   )
 
   const chainId = useSelectedChainId(connector)

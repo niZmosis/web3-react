@@ -103,7 +103,7 @@ export function getImageUrlFromTrust(chainId: number, tokenAddress?: string) {
 
   if (isAddress(tokenAddress)) {
     return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${blockChainName}/assets/${getAddress(
-      tokenAddress
+      tokenAddress,
     )}/logo.png`
   }
 

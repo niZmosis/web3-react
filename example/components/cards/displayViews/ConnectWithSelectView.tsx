@@ -120,7 +120,7 @@ export default function ConnectWithSelectView({
         setError(error)
       }
     },
-    [connector, desiredChainId, isActivating, isAddableNetwork, isSwitchableNetwork, setError]
+    [connector, desiredChainId, isActivating, isAddableNetwork, isSwitchableNetwork, setError],
   )
 
   const handleSwitchChain = useCallback(
@@ -141,7 +141,7 @@ export default function ConnectWithSelectView({
 
       void handleConnect(potentialChainId)
     },
-    [chainId, handleConnect, setError]
+    [chainId, handleConnect, setError],
   )
 
   const handleTryAgain = useCallback((): void => {

@@ -3,6 +3,7 @@ import type { Connector } from '@web3-react/types'
 import type { StaticImageData } from 'next/image'
 import type { ReactNode } from 'react'
 
+import { isReadOnlyConnector } from '../../utils/connectors'
 import AccountsView from './displayViews/AccountsView'
 import BlockNumberView from './displayViews/BlockNumberView'
 import ChainView from './displayViews/ChainView'
@@ -53,34 +54,51 @@ export function Card({
   hide,
   children,
 }: Props) {
+  const isReadOnly = accounts?.length ? isReadOnlyConnector(connector, accounts[accountIndex ?? 0]) : false
+
   return (
     <div
       style={{
         display: hide ? 'none' : 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        padding: '1rem',
         margin: '1rem',
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
         overflow: 'hidden',
         border: '1px solid',
         borderRadius: '1rem',
         borderColor: '#30363d',
         backgroundColor: 'rgb(14,16,22)',
+        boxSizing: 'border-box',
       }}
     >
-      <ConnectorTitleView connector={connector} walletLogoUrl={walletLogoUrl} />
-      <StatusView
-        connector={connector}
-        accounts={accounts}
-        accountIndex={accountIndex}
-        isActivating={isActivating}
-        isActive={isActive}
-        error={error}
-      />
-      <SelectionView connector={connector} />
-      <NetworkView chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
-      <ChainView connector={connector} chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
-      <BlockNumberView connector={connector} provider={provider} chainId={chainId} />
+      <div
+        style={{
+          width: '100%',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
+          boxSizing: 'border-box',
+          display: hide ? 'none' : 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <ConnectorTitleView connector={connector} walletLogoUrl={walletLogoUrl} />
+        <StatusView
+          connector={connector}
+          accounts={accounts}
+          accountIndex={accountIndex}
+          isActivating={isActivating}
+          isActive={isActive}
+          error={error}
+          isReadOnly={isReadOnly}
+        />
+        <SelectionView connector={connector} />
+        <NetworkView chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
+        <ChainView connector={connector} chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
+        <BlockNumberView connector={connector} provider={provider} chainId={chainId} />
+      </div>
       <AccountsView
         connector={connector}
         provider={provider}
@@ -90,23 +108,42 @@ export function Card({
         ENSNames={ENSNames}
         ENSAvatars={ENSAvatars}
       />
-      <ConnectWithSelectView
-        connector={connector}
-        chainId={chainId}
-        isActivating={isActivating}
-        isActive={isActive}
-        error={error}
-        setError={setError}
-        addingChain={addingChain}
-        switchingChain={switchingChain}
-      />
-      {isActive && <WatchAssetView connector={connector} chainId={chainId} watchingAsset={watchingAsset} />}
-      {children && (
-        <>
-          <SpacerView />
-          {children}
-        </>
-      )}
+      <div
+        style={{
+          width: '100%',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
+          boxSizing: 'border-box',
+          display: hide ? 'none' : 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <ConnectWithSelectView
+          connector={connector}
+          chainId={chainId}
+          isActivating={isActivating}
+          isActive={isActive}
+          error={error}
+          setError={setError}
+          addingChain={addingChain}
+          switchingChain={switchingChain}
+        />
+        {isActive && (
+          <WatchAssetView
+            connector={connector}
+            chainId={chainId}
+            watchingAsset={watchingAsset}
+            isReadOnly={isReadOnly}
+          />
+        )}
+        {children && (
+          <>
+            <SpacerView />
+            {children}
+          </>
+        )}
+      </div>
     </div>
   )
 }

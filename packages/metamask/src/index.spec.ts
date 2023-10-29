@@ -1,7 +1,8 @@
+import { MockEIP1193Provider } from '@web3-react/core'
 import { createWeb3ReactStoreAndActions } from '@web3-react/store'
 import type { Actions, Web3ReactStore } from '@web3-react/types'
+
 import { MetaMask } from '.'
-import { MockEIP1193Provider } from '../../eip1193/src/mock'
 
 const chainId = '0x1'
 const accounts: string[] = ['0x0000000000000000000000000000000000000000']
@@ -36,7 +37,7 @@ describe('MetaMask', () => {
     expect(mockProvider.eth_accounts).toHaveBeenCalled()
     expect(mockProvider.eth_chainId).toHaveBeenCalled()
     expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-      mockProvider.eth_accounts.mock.invocationCallOrder[0]
+      mockProvider.eth_accounts.mock.invocationCallOrder[0],
     )
 
     expect(store.getState()).toEqual({
@@ -60,7 +61,7 @@ describe('MetaMask', () => {
     expect(mockProvider.eth_accounts).not.toHaveBeenCalled()
     expect(mockProvider.eth_chainId).toHaveBeenCalled()
     expect(mockProvider.eth_chainId.mock.invocationCallOrder[0]).toBeGreaterThan(
-      mockProvider.eth_requestAccounts.mock.invocationCallOrder[0]
+      mockProvider.eth_requestAccounts.mock.invocationCallOrder[0],
     )
 
     expect(store.getState()).toEqual({

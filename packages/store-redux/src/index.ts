@@ -37,7 +37,7 @@ export function createWeb3ReactStoreAndActions(connectorName?: string): [Web3Rea
     reducers: {
       update: (
         existingState: Web3ReactState,
-        action: PayloadAction<Web3ReactStateUpdate & { skipValidation?: boolean }>
+        action: PayloadAction<Web3ReactStateUpdate & { skipValidation?: boolean }>,
       ) => {
         const stateUpdate = { ...action.payload }
 
@@ -105,7 +105,10 @@ export function createWeb3ReactStoreAndActions(connectorName?: string): [Web3Rea
     },
   })
 
-  const store = configureStore({ reducer: web3ReactSlice.reducer, devTools: { name: connectorName } })
+  const store = configureStore({
+    reducer: web3ReactSlice.reducer,
+    devTools: { name: connectorName },
+  })
 
   const { update, resetState } = web3ReactSlice.actions
 
@@ -115,7 +118,13 @@ export function createWeb3ReactStoreAndActions(connectorName?: string): [Web3Rea
 
       // return a function that cancels the activation if nothing else has happened
       return (): Web3ReactState => {
-        store.dispatch(update({ activating: false, addingChain: undefined, switchingChain: undefined }))
+        store.dispatch(
+          update({
+            activating: false,
+            addingChain: undefined,
+            switchingChain: undefined,
+          }),
+        )
 
         return store.getState()
       }
