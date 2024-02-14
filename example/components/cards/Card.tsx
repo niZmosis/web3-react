@@ -3,7 +3,6 @@ import type { Connector } from '@web3-react/types'
 import type { StaticImageData } from 'next/image'
 import type { ReactNode } from 'react'
 
-import { isReadOnlyConnector } from '../../utils/connectors'
 import AccountsView from './displayViews/AccountsView'
 import BlockNumberView from './displayViews/BlockNumberView'
 import ChainView from './displayViews/ChainView'
@@ -54,8 +53,6 @@ export function Card({
   hide,
   children,
 }: Props) {
-  const isReadOnly = accounts?.length ? isReadOnlyConnector(connector, accounts[accountIndex ?? 0]) : false
-
   return (
     <div
       style={{
@@ -92,7 +89,6 @@ export function Card({
           isActivating={isActivating}
           isActive={isActive}
           error={error}
-          isReadOnly={isReadOnly}
         />
         <SelectionView connector={connector} />
         <NetworkView chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
@@ -129,14 +125,7 @@ export function Card({
           addingChain={addingChain}
           switchingChain={switchingChain}
         />
-        {isActive && (
-          <WatchAssetView
-            connector={connector}
-            chainId={chainId}
-            watchingAsset={watchingAsset}
-            isReadOnly={isReadOnly}
-          />
-        )}
+        {isActive && <WatchAssetView connector={connector} chainId={chainId} watchingAsset={watchingAsset} />}
         {children && (
           <>
             <SpacerView />

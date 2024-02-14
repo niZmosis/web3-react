@@ -1,12 +1,10 @@
 import { formatUnits } from '@ethersproject/units'
 import type { Web3ReactHooks } from '@web3-react/core'
-import { MetaMask } from '@web3-react/metamask'
 import type { Connector } from '@web3-react/types'
 import Image from 'next/image'
 
 import { useBalances } from '../../../hooks/web3Hooks'
 import { CHAINS } from '../../../utils/chains'
-import { isEip2255Connector } from '../../../utils/connectors'
 import CircleLoader from '../../feedback/CircleLoader'
 import AddressEllipsis from './AddressEllipsis'
 import Blockies from './Blockies'
@@ -29,21 +27,15 @@ const greenColors: ColorOptions = {
   backgroundColor: 'rgba(56, 253, 72, 0.15)',
   outlineColor: 'rgba(56, 253, 72, 0.4)',
 }
-const orangeColors: ColorOptions = {
-  backgroundColor: 'rgba(160, 80, 0, 0.15)',
-  outlineColor: 'rgb(160, 80, 21)',
-}
 
 function getSelectionColorAndOutline({
   index,
   accounts,
   accountIndex,
-  connector,
 }: {
   index: number
   accounts: string[]
   accountIndex: number
-  connector: Connector
 }): ColorOptions {
   // Default to gray if accounts are undefined or empty
   if (!accounts?.length) {
@@ -51,31 +43,14 @@ function getSelectionColorAndOutline({
   }
 
   const selectedAccount = accounts[accountIndex]
-  const currentAccount = accounts[index]
+  const itemAccount = accounts[index]
 
   // Return gray if either selected or current accounts are undefined
-  if (!selectedAccount || !currentAccount) {
+  if (!selectedAccount || !itemAccount) {
     return grayColors
   }
 
-  // Handle case for MetaMask connector
-  if (isEip2255Connector(connector) && connector instanceof MetaMask) {
-    // If the index matches the selected account index
-    if (accountIndex === index) {
-      // If the MetaMask's selected address does not match the current account, use orange
-      if (connector.provider.selectedAddress.toLowerCase() !== currentAccount.toLowerCase()) {
-        return orangeColors
-      }
-      // Otherwise, use green
-      return greenColors
-    }
-    // If MetaMask's selected address matches the current account, use green
-    else if (connector.provider.selectedAddress.toLowerCase() === currentAccount.toLowerCase()) {
-      return greenColors
-    }
-  }
-  // If the index matches the selected account index but it's not a MetaMask connector, use green
-  else if (accountIndex === index) {
+  if (accountIndex === index) {
     return greenColors
   }
 
@@ -144,7 +119,6 @@ export default function AccountsView({
                 index,
                 accounts,
                 accountIndex,
-                connector,
               })
 
               return (

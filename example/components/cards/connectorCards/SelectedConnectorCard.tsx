@@ -1,7 +1,7 @@
 import { useWeb3React } from '@web3-react/core'
 
 import { network } from '../../../config/connectors/network'
-import { getName, isReadOnlyConnector } from '../../../utils/connectors'
+import { getName } from '../../../utils/connectors'
 import Button from '../../controls/Button'
 import AccountsView from '../displayViews/AccountsView'
 import BlockNumberView from '../displayViews/BlockNumberView'
@@ -28,8 +28,6 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
     switchingChain,
     hooks: { usePriorityConnector },
   } = useWeb3React()
-
-  const isReadOnly = accounts?.length ? isReadOnlyConnector(connector, accounts[accountIndex ?? 0]) : false
 
   const account = (accounts?.[accountIndex] as string) ?? undefined
   const priorityConnector = usePriorityConnector()
@@ -70,7 +68,6 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
           accountIndex={accountIndex}
           isActivating={isActivating}
           isActive={isActive}
-          isReadOnly={isReadOnly}
         />
         <NetworkView chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
         <ChainView connector={connector} chainId={chainId} addingChain={addingChain} switchingChain={switchingChain} />
@@ -99,7 +96,7 @@ export default function SelectedConnectorCard({ hide }: { hide: boolean }) {
       >
         {isActive && connector !== network && (
           <>
-            <SignerButton connector={connector} provider={provider} account={account} disabled={isReadOnly} />
+            <SignerButton connector={connector} provider={provider} account={account} />
             <LatestTransactionView provider={provider} account={account} />
           </>
         )}

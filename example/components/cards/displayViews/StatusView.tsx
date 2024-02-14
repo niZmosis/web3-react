@@ -11,7 +11,6 @@ export default function StatusView({
   isActivating,
   isActive,
   error,
-  isReadOnly,
 }: {
   connector?: Connector
   accountIndex?: ReturnType<Web3ReactHooks['useAccountIndex']>
@@ -19,7 +18,6 @@ export default function StatusView({
   isActivating: ReturnType<Web3ReactHooks['useIsActivating']>
   isActive: ReturnType<Web3ReactHooks['useIsActive']>
   error?: Error
-  isReadOnly?: boolean
 }) {
   const account = (accounts?.[accountIndex] as string) ?? undefined
 
@@ -152,20 +150,6 @@ export default function StatusView({
           </div>
         )}
       </div>
-      {isReadOnly && (
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            width: '100%',
-            whiteSpace: 'pre',
-            wordWrap: 'break-word',
-          }}
-        >
-          <p style={{ fontSize: '0.7em', lineHeight: '0.95em' }}>🟠</p>
-          {'  Read Only'}
-        </div>
-      )}
       {!!accounts?.length && <SpacerView />}
     </>
   )

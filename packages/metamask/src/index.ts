@@ -15,7 +15,6 @@ type MetaMaskProvider = Provider & {
   isMetaMask?: boolean
   isConnected?: () => boolean
   providers?: MetaMaskProvider[]
-  selectedAddress?: string
   get chainId(): string
   get accounts(): string[]
 }
@@ -48,10 +47,6 @@ export class MetaMask extends Connector {
     this.options = options
   }
 
-  private get selectedAddress() {
-    return this.provider?.selectedAddress
-  }
-
   /**
    * Get all connected accounts per EIP-2255.
    */
@@ -79,18 +74,34 @@ export class MetaMask extends Connector {
 
   /**
    * Set the account index.
-   * If the index does not match the connectors selected address, the account will be read-only.
-   * Leave undefined to reset to the the connectors selected address.
    */
-  public async setAccountIndex(index?: number): Promise<void> {
+  public async setAccountIndex(indexOrAddress?: number | string): Promise<void> {
     const accounts = await this.getAccounts()
 
     if (!accounts) throw new Error('No accounts returned')
 
-    if ((index || index === 0) && index >= accounts.length) throw new Error('Index out of bounds')
+    let newIndex
+
+    // Check if the input is a valid Ethereum address
+    if (typeof indexOrAddress === 'string' && Number.isNaN(Number(indexOrAddress))) {
+      const addressIndex = accounts.indexOf(indexOrAddress)
+      if (addressIndex === -1) throw new Error('Address not found in connected accounts')
+      newIndex = addressIndex
+    }
+    // If it's a number, proceed as before
+    else if (typeof indexOrAddress === 'number') {
+      if (indexOrAddress < 0 || indexOrAddress >= accounts.length) {
+        throw new Error('Index out of bounds')
+      }
+      newIndex = indexOrAddress
+    }
+    // Default to 0 if undefined
+    else {
+      newIndex = 0
+    }
 
     this.actions.update({
-      accountIndex: index ?? accounts.indexOf(this?.selectedAddress ?? '') ?? undefined,
+      accountIndex: newIndex,
     })
   }
 
@@ -133,16 +144,13 @@ export class MetaMask extends Connector {
         this.provider.on('accountsChanged', (baseAccounts: string[]): void => {
           const handleChange = async () => {
             const accounts = (await this.getAccounts()) ?? baseAccounts
+
             if (accounts.length === 0) {
               // handle this edge case by disconnecting
               this.actions.resetState()
             } else {
-              const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
-              const index = indexOf < 0 ? undefined : indexOf
-
               this.actions.update({
                 accounts,
-                accountIndex: index,
               })
             }
           }
@@ -175,13 +183,9 @@ export class MetaMask extends Connector {
         method: 'eth_chainId',
       })) as string
 
-      const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
-      const index = indexOf < 0 ? undefined : indexOf
-
       return this.actions.update({
         chainId: this.parseChainId(chainId),
         accounts,
-        accountIndex: index,
       })
     } catch (error) {
       console.debug('Could not connect eagerly', error)
@@ -202,7 +206,7 @@ export class MetaMask extends Connector {
    * specified parameters first, before being prompted to switch.
    */
   public async activate(desiredChainIdOrChainParameters?: number | AddEthereumChainParameter): Promise<Web3ReactState> {
-    const cancelActivation = this.selectedAddress ? null : this.actions.startActivation()
+    const cancelActivation = this.actions.startActivation()
 
     try {
       await this.isomorphicInitialize()
@@ -215,10 +219,6 @@ export class MetaMask extends Connector {
 
       // Check if we have access to get all connected accounts as per EIP-2255
       const accounts: string[] = (await this.getAccounts()) ?? baseAccounts
-
-      // Get the account index
-      const indexOf = accounts.indexOf(this?.selectedAddress ?? '')
-      const index = indexOf < 0 ? undefined : indexOf
 
       // Request chainId after account request, incase user changes chain during process
       const currentChainId = this.parseChainId((await this.provider.request({ method: 'eth_chainId' })) as string)
@@ -233,7 +233,6 @@ export class MetaMask extends Connector {
         return this.actions.update({
           chainId: currentChainId,
           accounts,
-          accountIndex: index,
         })
       }
 

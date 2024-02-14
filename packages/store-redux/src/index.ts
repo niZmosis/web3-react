@@ -17,9 +17,19 @@ export function validateChainId(chainId: number): void {
   }
 }
 
-export function validateAccount(account: string): string {
-  return getAddress(account)
+function normalizeAccountData(account: string | { address: string }): string {
+  // If the account is an object and has an 'address' property, return that.
+  if (typeof account === 'object' && account !== null && 'address' in account) {
+    return account.address
+  }
+  // Otherwise, return the account as it is (assuming it's a string).
+  return account
 }
+
+export function validateAccount(account: string): string {
+  return getAddress(normalizeAccountData(account))
+}
+
 const DEFAULT_STATE: Web3ReactState = {
   chainId: undefined,
   accounts: undefined,
@@ -53,24 +63,71 @@ export function createWeb3ReactStoreAndActions(connectorName?: string): [Web3Rea
 
         // determine the next chainId and accounts
         const chainId = stateUpdate.chainId ?? existingState.chainId
-        const accounts = stateUpdate.accounts ?? existingState.accounts
+        const newAccounts = stateUpdate.accounts ?? existingState.accounts
 
-        // ensure that the activating flag is cleared when appropriate
-        let activating = stateUpdate.activating ?? existingState.activating
-        if (activating && chainId && accounts) {
-          activating = false
+        let accountIndex = existingState.accountIndex
+        const existingAccounts = existingState.accounts
+
+        // Used to determine if a prop was explicity set to undefined or just missing from the update
+        const stateUpdatePropertyNames = Object.getOwnPropertyNames(stateUpdate)
+        const isUpdatingAccountIndex = stateUpdatePropertyNames.includes('accountIndex')
+
+        if (isUpdatingAccountIndex) {
+          // Explicitly set accountIndex is provided in the update
+          const newIndex = stateUpdate.accountIndex
+          const newAccountsLength = newAccounts?.length ?? 0
+
+          accountIndex = newIndex !== undefined && newIndex < newAccountsLength ? newIndex : 0
+
+          if (newAccountsLength === 0) {
+            accountIndex = undefined
+          }
+        } else if (newAccounts && existingAccounts) {
+          // Get accountIndex based on account addition or removal
+
+          const newAccountLength = newAccounts.length
+          const existingAccountLength = existingAccounts.length
+
+          if (newAccountLength > existingAccountLength) {
+            if (existingAccountLength === 0) {
+              // No existing accounts
+              accountIndex = 0
+            } else {
+              // Account added
+              accountIndex = newAccounts.indexOf(newAccounts[newAccountLength - 1])
+            }
+          } else if (newAccountLength < existingAccountLength) {
+            // Account removed
+            const removedAccount = existingAccounts.find((acc) => !newAccounts.includes(acc))
+
+            if (removedAccount) {
+              const removedIndex = existingAccounts.indexOf(removedAccount)
+              const existingAccountIndex = existingState.accountIndex ?? 0
+
+              if (removedIndex === existingState.accountIndex) {
+                accountIndex = newAccountLength > 0 ? 0 : undefined
+              } else if (removedIndex < existingAccountIndex) {
+                accountIndex = Math.max(0, existingAccountIndex - 1)
+              }
+            }
+          }
+        } else if (newAccounts) {
+          if (newAccounts.length > 0) {
+            // No existing accounts
+            accountIndex = 0
+          } else {
+            // No accounts
+            accountIndex = undefined
+          }
+        } else {
+          // No accounts
+          accountIndex = undefined
         }
 
-        // these properties may be set to undefined
-        const stateUpdatePropertyNames = Object.getOwnPropertyNames(stateUpdate)
-
-        let accountIndex = stateUpdatePropertyNames.includes('accountIndex')
-          ? stateUpdate.accountIndex
-          : existingState.accountIndex
-
-        // ensure we assign an account index if there are accounts
-        if (!accountIndex && !!accounts?.length) {
-          accountIndex = 0
+        // Ensure that the activating flag is cleared when appropriate
+        let activating = stateUpdate.activating ?? existingState.activating
+        if (activating && chainId && newAccounts) {
+          activating = false
         }
 
         const addingChain = stateUpdatePropertyNames.includes('addingChain')
@@ -86,7 +143,7 @@ export function createWeb3ReactStoreAndActions(connectorName?: string): [Web3Rea
         existingState = {
           chainId,
           accountIndex,
-          accounts,
+          accounts: newAccounts,
           activating,
           addingChain,
           switchingChain,

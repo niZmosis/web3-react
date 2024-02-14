@@ -11,15 +11,19 @@ export default function Tabs({
   selectedIndex: number
   setSelectedIndex: (index: number) => void
 }) {
-  return data?.length ? (
+  if (!data?.length) {
+    return null
+  }
+
+  return (
     <div
       style={{
         width: '100%',
-        height: 44,
-        display: 'inline-flex',
-        flexWrap: 'nowrap',
-        justifyContent: 'center',
-        alignItems: 'center',
+        overflowY: 'hidden',
+        overflowX: 'auto',
+        whiteSpace: 'nowrap',
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
       }}
     >
       {data.map((tab, index) => (
@@ -28,10 +32,10 @@ export default function Tabs({
           style={{
             height: 44,
             minWidth: 100,
-            marginLeft: 8,
-            marginRight: 8,
+            marginLeft: !index ? '1rem' : 0,
+            marginRight: index === data.length - 1 ? '1rem' : 0,
             color: selectedIndex === index ? 'rgba(0, 0, 0, 0.8)' : 'white',
-            display: 'inline-flex',
+            display: 'inline-flex', // inline-flex to keep them in line
             justifyContent: 'center',
             alignItems: 'center',
           }}
@@ -62,5 +66,5 @@ export default function Tabs({
         </Button>
       ))}
     </div>
-  ) : null
+  )
 }

@@ -71,20 +71,6 @@ export function isEip2255Connector(connector: Connector): boolean {
   return connector instanceof MetaMask
 }
 
-export function isReadOnlyConnector(connector: any, account: string) {
-  if (connector instanceof Network) {
-    return true
-  }
-
-  if (isEip2255Connector(connector)) {
-    if (connector instanceof MetaMask) {
-      return connector.provider?.selectedAddress?.toLowerCase() !== account?.toLowerCase()
-    }
-  }
-
-  return false
-}
-
 export function isSwitchableNetwork(connector: Connector): boolean {
   return (
     connector instanceof MetaMask ||

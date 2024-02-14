@@ -64,7 +64,6 @@ export default function CardContainer() {
     <div>
       <div
         style={{
-          padding: '1rem',
           margin: '1rem',
           overflow: 'hidden',
           border: '1px solid',
