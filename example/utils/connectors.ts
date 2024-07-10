@@ -10,7 +10,7 @@ import { PortisWallet } from '@web3-react/portis-wallet'
 import { SolflareWallet } from '@web3-react/solflare'
 import { TronLink } from '@web3-react/tron-link'
 import type { Connector } from '@web3-react/types'
-import { WalletConnect } from '@web3-react/walletconnect'
+import { WalletConnect } from '@web3-react/walletconnect-v2'
 import { YoroiWallet } from '@web3-react/yoroi'
 
 import { bscWallet, hooks as bscWalletHooks } from '../config/connectors/bscWallet'
@@ -23,7 +23,7 @@ import { hooks as phantomHooks, phantom } from '../config/connectors/phantom'
 import { hooks as portisWalletHooks, portisWallet } from '../config/connectors/portisWallet'
 import { hooks as solflareHooks, solflare } from '../config/connectors/solflare'
 import { hooks as tronLinkHooks, tronLink } from '../config/connectors/tronLink'
-import { hooks as walletConnectHooks, walletConnect } from '../config/connectors/walletConnect'
+import { hooks as walletConnectHooks, walletConnectV2 as walletConnect } from '../config/connectors/walletConnectV2'
 import { hooks as yoroiHooks, yoroi } from '../config/connectors/yoroi'
 
 export function getName(connector: Connector) {

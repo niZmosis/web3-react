@@ -6,7 +6,7 @@ import { Card } from '../Card'
 
 const { useChainId, useAccounts, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
 
-export default function WalletConnectV2Card() {
+export default function WalletConnectV2Card({ hide }: { hide: boolean }) {
   const chainId = useChainId()
   const accounts = useAccounts()
   const isActivating = useIsActivating()
@@ -34,6 +34,7 @@ export default function WalletConnectV2Card() {
 
   return (
     <Card
+      hide={hide}
       connector={walletConnectV2}
       chainId={chainId}
       isActivating={isActivating}

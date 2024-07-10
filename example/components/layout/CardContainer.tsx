@@ -14,7 +14,7 @@ import PortisWalletCard from '../cards/connectorCards/PortisWalletCard'
 import SelectedConnectorCard from '../cards/connectorCards/SelectedConnectorCard'
 import SolflareWalletCard from '../cards/connectorCards/SolflareWalletCard'
 import TronLinkCard from '../cards/connectorCards/TronLinkCard'
-import WalletConnectCard from '../cards/connectorCards/WalletConnectCard'
+import WalletConnectCard from '../cards/connectorCards/WalletConnectV2Card'
 import YoroiWalletCard from '../cards/connectorCards/YoroiWalletCard'
 import Tabs from '../controls/Tabs'
 

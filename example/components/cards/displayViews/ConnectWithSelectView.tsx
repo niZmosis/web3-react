@@ -6,7 +6,7 @@ import { PhantomWallet } from '@web3-react/phantom'
 import { PortisWallet } from '@web3-react/portis-wallet'
 import { SolflareWallet } from '@web3-react/solflare'
 import type { AddingChainInfo, Connector, SwitchingChainInfo } from '@web3-react/types'
-import { WalletConnect } from '@web3-react/walletconnect'
+import { WalletConnect } from '@web3-react/walletconnect-v2'
 import { useCallback, useEffect, useState } from 'react'
 
 import { allEvmChainIds, ethMainChainId } from '../../../config/chains/chainIds'
